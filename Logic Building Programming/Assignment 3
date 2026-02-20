@@ -132,3 +132,154 @@ public static void main(String[] args){
 	
 	}
 }
+
+
+//Bonus Program Menu-Driven Java Program
+
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.Scanner;
+class MenuDrivenProgram {
+    public static void main(String[] args) {
+        int choice;
+        do{
+            System.out.println("\n ---Menu---");
+            System.out.println("1. Grade Evalution System");
+            System.out.println("2. Leap Year Check");
+            System.out.println("3. Day of the Week");
+            System.out.println("4. Identify Default Values of Variables");
+            System.out.println("5. Exit");
+            System.out.println("\n\n");
+            System.out.println("Enter Your Choice");
+            Scanner scan = new Scanner(System.in);
+            choice = scan.nextInt();
+        
+            //Switch case to a execute a specific program
+            switch(choice){
+                case 1: executeGradeEvalutionSystem(scan);
+                        break;
+                case 2: executeLeapYear(scan); 
+                        break;
+                case 3: executeDayoftheWeek(scan);    
+                        break;
+                case 4: executeIdentifyDefaultValuesofVariables(scan);
+                        break;
+                case 5: System.out.println("---Exiting the Program---");
+                        break;
+                default:System.out.println("Invalid Choice No Program will execute");
+                        break;
+            }
+        }while(choice != 5);
+        
+    }
+     //variable declaration
+        static byte a;
+        static short b;
+        static int c;
+        static long d;
+        static float e;
+        static double f;
+        static char g;
+        static boolean h;
+        
+     public static void executeGradeEvalutionSystem(Scanner scan){
+            System.out.println("--1. Grade Evalution System--");
+               //perdefined values
+        int Mathsmarks = 80;
+        int Sciencemarks = 85;
+        int Historymarks = 90;
+    // Calculate Average
+        int Average = (Mathsmarks+Sciencemarks+Historymarks)/3;
+        String grade;
+        
+        if(Average>=90){
+            grade = "A";
+        }
+        else if(Average>=70){
+            grade = "B";
+        }
+        else if(Average>=50){
+            grade = "C";
+        }
+        else if(Average>=30){
+            grade = "D";
+        }
+        else{
+            grade = "fail";
+        }
+    
+        // Output Results
+        System.out.println("Average Marks: " + Average);
+        System.out.println("Grade: " + grade);
+        }
+    public static void executeLeapYear(Scanner scan){
+        System.out.println("--2. Leap Year Check--");
+        // predefined values 
+        int year1 = 2024;
+        int year2 = 1900;
+        if(year1%4==0){
+            if (year1%100!=0 || year1%400==0){
+            System.out.println(year1+" is a Leap year");
+            }
+        else {    
+            System.out.println(year1+" is a not Leap year");
+        }
+        }
+        else{
+              System.out.println(year1
+              +" is a not Leap year");
+        } 
+        
+        if(year2%4==0){
+            if (year2%100!=0 || year2%400==0){
+                  System.out.println(year2+" is a Leap year");
+            }
+             else{
+              System.out.println(year2+" is a not Leap year");
+        }
+        }    
+        else{
+              System.out.println(year2+" is a not Leap year");
+        }
+    }    
+    public static void executeDayoftheWeek(Scanner scan){
+        System.out.println("--3. Day of the Week--");
+        //prefined values
+        int Daynumber = 3;
+        String day = "a";
+        switch (Daynumber) {
+            
+            case 1: day = "Monday";
+                      break;
+            case 2: day = "Tuesday";
+                      break;
+            case 3: day = "Wednesday";
+                      break;
+            case 4: day = "Thrusday";
+                      break;
+            case 5: day = "Friday";
+                      break; 
+            case 6: day = "Saturday";
+                      break;       
+            case 7: day = "Sunday";
+                      break;     
+            default :  System.out.println("Invalid day number");
+                      break;
+        }
+        if(Daynumber<8)
+        System.out.println("The day is " + day);
+    }
+    public static void executeIdentifyDefaultValuesofVariables(Scanner scan){
+       System.out.println("--4.Identify Default Values of Variable--");
+       //Output 
+       System.out.println("byte a : " + a);
+       System.out.println("short b : " + b);
+       System.out.println("int c : " + c);
+       System.out.println("long d : " + d);
+       System.out.println("float e : " + e);
+       System.out.println("double f : " + f);
+       System.out.println("char g : ," + g+a );
+       System.out.println("boolean h : " + h);
+    }
+}
