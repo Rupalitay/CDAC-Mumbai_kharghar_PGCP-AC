@@ -1,0 +1,117 @@
+//1.Sum of Two Numbers
+
+
+import java.util.Scanner;
+public class sum
+{
+	public static int SumOfTwoNumbers(int a, int b){
+	int result;
+	result = a+b;
+	return result;
+}
+	public static void main(String[] args){
+	Scanner sc = new Scanner(System.in);
+	System.out.println("Enter First Number : ");
+	int i = sc.nextInt();
+	System.out.println("Enter Second Number : ");
+	int j = sc.nextInt();   
+	int sum = SumOfTwoNumbers(i,j);
+	System.out.println("The sum of " + i + " and " + j + " is " + sum);
+	}
+}
+
+
+//2.Simple Age Checker
+
+
+import java.util.Scanner;
+public class AgeCategory
+{
+	public static void CheckAgeCategory(int age){
+	
+	if(age<18){
+		System.out.println("You are a Minor");
+	}
+	else if(age<60){
+		System.out.println("You are an adult");
+	}
+	else{
+		System.out.println("You are a senior citizen");
+	}
+}
+public static void main(String[] args){
+    Scanner sc = new Scanner(System.in);
+	System.out.println("Enter their age : ");
+	int i = sc.nextInt();
+	CheckAgeCategory(i);
+    }
+}
+
+
+//3.Print Even Numbers
+
+
+import java.util.Scanner;
+public class EvenNumber
+{
+	public static void printEvenNumbers(){
+	int number = 1;
+	while(number<=50){
+		if(number%2 == 0){
+			System.out.println(number);
+		}
+		number++;
+	}
+}
+public static void main(String[] args){
+    printEvenNumbers();
+	}
+}
+
+
+//4.User Input for Positive Numbers(Using While loop)
+
+
+
+
+//5.Print Multiplication Table(Using Loop)
+
+
+import java.util.Scanner;
+public class Multiplication
+{
+	public static void printMultiplicationTable(int number){
+	for(int j = 1;j<=10;j++){
+		System.out.println(number + " * " + j +  " = " +(number*j));
+    }
+}
+public static void main(String[] args){
+    Scanner sc = new Scanner(System.in);
+	System.out.println("Enter a number : ");
+	int i = sc.nextInt();
+	printMultiplicationTable(i);
+	}
+}
+
+
+//6.Calculate the Sum Of Numbers from 1 to N(Using for loop)
+
+
+import java.util.Scanner;
+public class sum
+{
+	public static void calculateSum(int number){
+	int sum = 0;
+	for(int j = 1;j<=number;j++){
+		sum = sum + j;
+		System.out.println("The sum of numbers from 1 to " + number + " is : " + sum );
+    }
+}
+public static void main(String[] args){
+    Scanner sc = new Scanner(System.in);
+	System.out.println("Enter a number : ");
+	int N = sc.nextInt();
+	calculateSum(N);  
+	
+	}
+}
