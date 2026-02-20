@@ -1,1 +1,130 @@
 
+//1. Grade Evaluation System
+
+
+public class StudentAverageandGradeCalculator{
+    public static void main(String[] args) {
+    //perdefined values
+        int Mathsmarks = 80;
+        int Sciencemarks = 85;
+        int Historymarks = 90;
+    // Calculate Average
+        int Average = (Mathsmarks+Sciencemarks+Historymarks)/3;
+        String grade;
+        
+        if(Average>=90){
+            grade = "A";
+        }
+        else if(Average>=70){
+            grade = "B";
+        }
+        else if(Average>=50){
+            grade = "C";
+        }
+        else if(Average>=30){
+            grade = "D";
+        }
+        else{
+            grade = "fail";
+        }
+    
+        // Output Results
+        System.out.println("Average Marks: " + Average);
+        System.out.println("Grade: " + grade);
+    }
+}
+
+
+//2.Leap Year
+
+class LeapYear {
+    public static void main(String[] args) {
+        // predefined values 
+        int year1 = 2024;
+        int year2 = 1900;
+        if(year1%4==0){
+            if (year1%100!=0 || year1%400==0){
+            System.out.println(year1+" is a Leap year");
+            }
+        else {    
+            System.out.println(year1+" is a not Leap year");
+        }
+        }
+        else{
+              System.out.println(year1
+              +" is a not Leap year");
+        } 
+        
+        if(year2%4==0){
+            if (year2%100!=0 || year2%400==0){
+                  System.out.println(year2+" is a Leap year");
+            }
+             else{
+              System.out.println(year2+" is a not Leap year");
+        }
+        }    
+        else{
+              System.out.println(year2+" is a not Leap year");
+        }
+        
+    }    
+}
+
+//3.Days of the Weeks
+
+class DayOfWeeks {
+    public static void main(String[] args) {
+        //prefined values
+        int Daynumber = 3;
+        String day = "a";
+        switch (Daynumber) {
+            
+            case 1: day = "Monday";
+                      break;
+            case 2: day = "Tuesday";
+                      break;
+            case 3: day = "Wednesday";
+                      break;
+            case 4: day = "Thrusday";
+                      break;
+            case 5: day = "Friday";
+                      break; 
+            case 6: day = "Saturday";
+                      break;       
+            case 7: day = "Sunday";
+                      break;     
+            default :  System.out.println("Invalid day number");
+                      break;
+        }
+        if(Daynumber<8)
+        System.out.println("The day is " + day);
+    }
+}
+
+
+//4.Identify the values of Unintialized Variables
+
+class Main {
+   
+        //variable declaration
+        static byte a;
+        static short b;
+        static int c;
+        static long d;
+        static float e;
+        static double f;
+        static char g;
+        static boolean h;
+    public static void main(String[] args) {
+       //Output 
+       System.out.println("byte a : " + a);
+       System.out.println("short b : " + b);
+       System.out.println("int c : " + c);
+       System.out.println("long d : " + d);
+       System.out.println("float e : " + e);
+       System.out.println("double f : " + f);
+       System.out.println("char g : ," + g+a );
+       System.out.println("boolean h : " + h);
+       
+    }
+}
