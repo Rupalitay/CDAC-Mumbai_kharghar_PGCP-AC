@@ -1,0 +1,187 @@
+//1.Print Numbers from 1 to N
+
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a number : ");
+        int N = sc.nextInt();
+        System.out.println("");
+        for(int i = 1;i<=N;i++){
+            System.out.println(i);
+        }
+    }
+}
+
+//2.Print Mutiples of 3 between 1 to N
+
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a number : ");
+        int N = sc.nextInt();
+        System.out.println("");
+        for(int i=1;i<=N;i++){
+            if(i%3 == 0){
+            System.out.println(i);
+            }
+        }
+    }
+}
+
+
+//3.Calculate the Factorial of a Number
+
+
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a number : ");
+        int N = sc.nextInt();
+        int factorial = 1;
+        System.out.println("");
+        for(int i=1;i<=N;i++){
+            factorial = factorial*i;
+        }
+        System.out.println(" Factorial of " + N + " is " + factorial);
+    }
+}
+
+
+//4.Print Even Numbers from 1 to N
+
+
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a number : ");
+        int N = sc.nextInt();
+        System.out.println("");
+        for(int i=1;i<=N;i++){
+            if(i%2==0){
+            System.out.println(i);
+                
+            }
+        }
+    }
+}
+
+
+//5.Sum of Odd Numbers between 1 and N
+
+
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a number : ");
+        int N = sc.nextInt();
+        System.out.println("");
+        for(int i=1;i<=N;i++){
+            if(i%2!=0){
+            System.out.println(i);
+                
+            }
+        }
+    }
+}
+
+
+//6.Print All Elements of an Array
+
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 5 integers : ");
+        int[] arr = new int[5]; 
+        for (int i = 0; i < 5; i++) {
+            if (sc.hasNextInt()) {
+                arr[i] = sc.nextInt();
+            }
+        }
+        System.out.println(" ");
+        for (int element : arr) {
+            System.out.println(element);
+        }
+
+        // Close the scanner
+        sc.close();
+    }
+}
+
+//7.Find the sum of All Elements in an Array
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 5 integers : ");
+        int[] arr = new int[5]; 
+        for (int i = 0; i < 5; i++) {
+            if (sc.hasNextInt()) {
+                arr[i] = sc.nextInt();
+            }
+        }
+        System.out.println(" ");
+        int sum = 0;
+        for (int element : arr) {
+            sum = sum + element;
+        }
+        System.out.println("The sum of all numbers is : " + sum);
+        // Close the scanner
+        sc.close();
+    }
+
+
+//8.Print All Names in a String Array
+
+//9.Find the Largest Element in a Array
+
+//10.Find the Average of Elements in an Array
+
+//11. Count Positive and Negative Numbers in an Array
+
+//12.Sort an Array in Ascending Order
+
+//13.Check if an Array Contains a Specific Element
+
+//14.Find the Index of an Element in an Array
+
+//15.Write a Program to print the Following pattern
+
+//16.Write a Program to print the Following pattern
+
+//17.Write a Program to print the Following pattern
+
+//18.Write a Program to print the Following pattern
+
+//19.Write a Program to print the Following pattern
+
+//20.Write a Program to print the Following pattern
+
+//21.Write a Program to print the Following pattern
+
+//22.Write a Program to print the Following pattern
+
+//23.Write a Program to print the Following pattern
+
+//24.Reverse a String
+
+//25.Count Vowels in a String
+
+//26.Check if a String is a Palindrome
+
+//27.String Literal and Object Creation
+
+//28.String Creation with new keyword
+
+//29.String Concatenation and Object Creation
+
+//30.String Pool with intern() Method
+
+//31.Multiple String Literals with Same Content
+
+
