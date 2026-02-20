@@ -72,6 +72,23 @@ public static void main(String[] args){
 //4.User Input for Positive Numbers(Using While loop)
 
 
+import java.util.Scanner;
+public class PositiveNumber {
+    public static void main(String[] args) {
+         askForPositiveNumber();
+    }
+    public static void askForPositiveNumber()
+    {
+        
+        
+        int number = 7;
+        do{
+            System.out.println("Enter a positive number : ");
+            Scanner sv = new Scanner(System.in);
+	        number = sv.nextInt();
+        }while(number <= 0);
+        System.out.println(" You entered a positive number : " + number);
+    }
 
 
 //5.Print Multiplication Table(Using Loop)
