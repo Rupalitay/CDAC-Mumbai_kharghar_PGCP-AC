@@ -11,6 +11,7 @@ class Main {
             System.out.println(i);
         }
     }
+
 }
 
 //2.Print Mutiples of 3 between 1 to N
@@ -478,10 +479,62 @@ class Main {
 //22.Write a Program to print the Following pattern
 
 
+class Main {
+    public static void main(String[] args) {
+        for(int i=1 ; i<=6 ; i++){
+                for(int j=1 ; j<=6 ;j++){
+                    if(i == 1||i == 6){
+                     System.out.println("*");
+                    }
+                    else  if((i != 1||i != 6)&&(j == 1||j == 6)){
+                     System.out.println("*");
+                    }
+                    else{
+                        System.out.println(" ");
+                    }
+                }
+        }
+    }
+}
+
 
 //23.Write a Program to print the Following pattern
 
+
+class Main {
+    public static void main(String[] args) {
+        for(int i=1 ; i<=11 ; i++){
+                for(int j=1 ; j<=11 ;j++){
+                    if((i == 1||i == 11)&&j==6){
+                     System.out.println("*");
+                    }
+                    else  if((i == 2||i == 10)&&(j == 5||j == 6||j==7)){
+                     System.out.println("*");
+                    }
+                    else  if((i == 3||i == 9)&&(j==4||j == 5||j == 6||j==7||j==8)){
+                     System.out.println("*");
+                    }
+                    else  if((i == 4||i == 8)&&(j==3||j==4||j == 5||j == 6||j==7||j==8||j==9)){
+                     System.out.println("*");
+                    }
+                    else  if((i == 5||i == 7)&&(j==2||j==3||j==4||j == 5||j == 6||j==7||j==8||j==9||j==10)){
+                     System.out.println("*");
+                    }
+                    else  if(i == 6){
+                     System.out.println("*");
+                    }
+                    else{
+                        System.out.println(" ");
+                    }
+                }
+        }
+    }
+}
+
+
 //24.Reverse a String
+
+
 
 //25.Count Vowels in a String
 
