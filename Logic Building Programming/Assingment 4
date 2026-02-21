@@ -113,7 +113,10 @@ class Main {
     }
 }
 
+
 //7.Find the sum of All Elements in an Array
+
+
 import java.util.Scanner;
 class Main {
     public static void main(String[] args) {
@@ -138,21 +141,250 @@ class Main {
 
 //8.Print All Names in a String Array
 
+
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 4 names : "); 
+        String [] arr = new String[4]; 
+        for (int i = 0; i < 4; i++) {
+            if (sc.hasNext()) {
+                arr[i] = sc.next();
+            }
+        }
+        System.out.println(" ");
+        for (String element : arr) {
+            System.out.println(element);
+        }
+
+        // Close the scanner
+        sc.close();
+    }
+}
+
+
 //9.Find the Largest Element in a Array
+
+import java.util.Scanner;
+import java.util.Arrays;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 5 integers : ");
+        int[] arr = new int[5]; 
+        for (int i = 0; i < 5; i++) {
+            if (sc.hasNextInt()) {
+                arr[i] = sc.nextInt();
+            }
+        }
+        System.out.println(" ");
+        Arrays.sort(arr);
+        int max = arr[arr.length-1];
+        System.out.println("The Largest element is :  " + max);    
+        // Close the scanner
+        sc.close();
+    }
+}
+
 
 //10.Find the Average of Elements in an Array
 
+
+import java.util.Arrays;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 5 integers : ");
+        int[] arr = new int[5]; 
+        for (int i = 0; i < 5; i++) {
+            if (sc.hasNextInt()) {
+                arr[i] = sc.nextInt();
+            }
+        }
+        System.out.println(" ");
+        float Average = 0;
+        int Sum =0;
+        for(int j = 0; j < 5; j++){
+            Sum = Sum + arr[j];
+        }
+        Average = Sum/5;
+        System.out.println("The Average of the Numbers is :  " + Average);    
+        // Close the scanner
+        sc.close();
+    }
+}
+
+
 //11. Count Positive and Negative Numbers in an Array
+
+
+import java.util.Scanner;
+import java.util.Arrays;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 6 integers : ");
+        int[] arr = new int[6]; 
+        for (int i = 0; i < 6; i++) {
+            if (sc.hasNextInt()) {
+                arr[i] = sc.nextInt();
+            }
+        }
+        System.out.println(" ");
+        int PositiveCount = 0;
+        int NegativeCount = 0;
+        for(int j = 0; j < 6; j++){
+            if(arr[j]>0)
+            {
+                PositiveCount++;
+            }
+            if(arr[j]<0)
+            {
+                NegativeCount++;
+            }
+            
+        }
+        System.out.println("Positive Numbers  :  " + PositiveCount);
+        System.out.println("Negative Numbers  :  " + NegativeCount);    
+        // Close the scanner
+        sc.close();
+    }
+}
+
 
 //12.Sort an Array in Ascending Order
 
+
+import java.util.Scanner;
+import java.util.Arrays;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 5 integers : ");
+        int[] arr = new int[5]; 
+        for (int i = 0; i < 5; i++) {
+            if (sc.hasNextInt()) {
+                arr[i] = sc.nextInt();
+            }
+        }
+        System.out.println(" ");
+        Arrays.sort(arr);
+        System.out.println("Sorted array :  ");    
+        for (int j=0 ; j<5 ; j++){
+            System.out.println(arr[j]);
+        }
+        // Close the scanner
+        sc.close();
+    }
+}
+
+
 //13.Check if an Array Contains a Specific Element
+
+
+import java.util.Scanner;
+import java.util.Arrays;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 5 integers : ");
+        int[] arr = new int[5]; 
+        for (int i = 0; i < 5; i++) {
+            if (sc.hasNextInt()) {
+                arr[i] = sc.nextInt();
+            }
+        }
+        System.out.println(" ");
+        Arrays.asList(arr);
+        int numbersearch = 0;
+        System.out.println("Enter the number to search :  "); 
+        numbersearch = sc.nextInt();
+        System.out.println(" ");
+        int j=0;
+        int count = 0;
+        for (j=0 ; j<5 ; j++){
+            if(numbersearch == arr[j]){
+                count++;
+                System.out.println("Found");
+                break;
+            }
+        }
+        if(count == 0){
+                System.out.println("Not Found");
+            }
+        // Close the scanner
+        sc.close();
+    }
+}
+
 
 //14.Find the Index of an Element in an Array
 
+
+import java.util.Scanner;
+import java.util.Arrays;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 5 integers : ");
+        int[] arr = new int[5]; 
+        for (int i = 0; i < 5; i++) {
+            if (sc.hasNextInt()) {
+                arr[i] = sc.nextInt();
+            }
+        }
+        System.out.println(" ");
+        Arrays.asList(arr);
+        int numbersearch = 0;
+        System.out.println("Enter the number to search :  "); 
+        numbersearch = sc.nextInt();
+        System.out.println(" ");
+        int j=0;
+        int count = 0;
+        for (j=0 ; j<5 ; j++){
+            if(numbersearch == arr[j]){
+                count++;
+                System.out.println("The number " + numbersearch + " is found at index " + j );
+            }
+        }
+        if(count == 0){
+                System.out.println("The number " + numbersearch + " Not Found");
+            }
+        // Close the scanner
+        sc.close();
+    }
+}
+
+
 //15.Write a Program to print the Following pattern
 
+
+class Main {
+    public static void main(String[] args) {
+        for(int i=1 ; i<=5 ; i++){
+            if(i>1){
+                for(int j=1 ; j<i ;j++){
+                     System.out.println(i + "*");
+                }
+            }
+             System.out.println(i);
+        }
+        for(int i=5 ; i>1 ; i--){
+            if(i>1){
+                for(int j=1 ; j<i ;j++){
+                     System.out.println(i + "*");
+                }
+            }
+             System.out.println(i);
+        }
+    }
+}
+
+
 //16.Write a Program to print the Following pattern
+
+
 
 //17.Write a Program to print the Following pattern
 
