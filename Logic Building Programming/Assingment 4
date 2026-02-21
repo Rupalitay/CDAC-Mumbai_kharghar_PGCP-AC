@@ -609,13 +609,91 @@ class Palindrome
 //27.String Literal and Object Creation
 
 
+class Main {
+    public static void main(String[] args) {
+        String str1 = "hello"; 
+        String str2 = "hello"; 
+        boolean bool = false;
+        if (str1.equals(str2))
+        {
+            bool = true;   
+        }
+        System.out.println("Both variables point to the same object : " + bool);
+    }
+}
+
 
 //28.String Creation with new keyword
 
+class Main {
+    public static void main(String[] args) {
+        String str1 = new String("hello"); 
+        String str2 = new String("hello"); 
+        boolean bool1 = false;
+        boolean bool2 = false;
+        if (str1.equals(str2))
+        {
+            bool2 = true;   
+        }
+        if (str1 == str2)
+        {
+            bool1 = true;   
+        }
+        System.out.println("using == : " + bool1);
+        System.out.println("using .equals methods : " + bool2);
+    }
+}
+
+
 //29.String Concatenation and Object Creation
+
+
+class Main {
+    public static void main(String[] args) {
+        String str1 = "hello"; 
+        String str2 = "world";
+        String str3 = str1 + str2;
+        boolean bool = false;
+        if (str3 == str1)
+        {
+            bool = true;   
+        }
+        System.out.println("Is str3 pointing to the same object as str1 ? " + bool);
+    }
+}
+
 
 //30.String Pool with intern() Method
 
+class Main {
+    public static void main(String[] args) {
+        String str1 = new String("hello"); 
+        String str2 = str1.intern();
+        String str3 = "hello";
+        boolean bool = false;
+        if (str2 == str3)
+        {
+            bool = true;   
+        }
+        System.out.println("Is str3 pointing to the same object as str1 ? " + bool);
+    }
+}
+
+
 //31.Multiple String Literals with Same Content
 
+
+class Main {
+    public static void main(String[] args) {
+        String str1 = "java"; 
+        String str2 = "java";
+        String str3 = "java";
+        boolean bool = false;
+        if ((str2 == str3) && (str2 == str1) && (str3 == str1))
+        {
+            bool = true;   
+        }
+        System.out.println("All strings point to the same object : " + bool);
+    }
+}
 
