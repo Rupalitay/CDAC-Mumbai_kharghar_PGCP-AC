@@ -535,8 +535,50 @@ class Main {
 //24.Reverse a String
 
 
+import java.util.Scanner;
+class ReverseofaString
+{
+	public static void main(String[ ] arg)
+	{
+	String str;
+	Scanner scan=new Scanner(System.in);
+	System.out.print("Enter a string : ");
+	str=scan.nextLine();	
+	char[] ch=str.toCharArray(); 
+	System.out.println("Reverse of a String is :"); 
+	int j=ch.length;
+	for(int i=j;i>0;i--)
+	{
+	System.out.print(ch[i-1]); 
+	}
+	}
+}
+
 
 //25.Count Vowels in a String
+
+
+import java.util.Scanner;
+class vowelscount
+{
+	public static void main(String[ ] arg)
+	{
+	String str;
+	Scanner scan=new Scanner(System.in);
+	System.out.print("Enter a string : ");
+	str=scan.nextLine();	
+	char[] ch=str.toCharArray(); 
+	int j=ch.length;
+	int vowelcount = 0;
+	for(int i=0 ; i<j ;i++){
+	    if(ch[i]=='a' || ch[i]=='e' || ch[i]=='i' ||ch[i]=='o' || ch[i]=='u'|| ch[i]=='A' || ch[i]=='E' || ch[i]=='I' || ch[i]=='O' || ch[i]=='U'){
+	        vowelcount++;
+	    }
+	}
+	System.out.print("The number of vowels in 'programming is : '" + vowelcount); 
+	}
+}
+
 
 //26.Check if a String is a Palindrome
 
