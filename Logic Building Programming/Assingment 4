@@ -582,7 +582,33 @@ class vowelscount
 
 //26.Check if a String is a Palindrome
 
+
+import java.util.Scanner;
+class Palindrome
+{
+	public static void main(String[ ] arg)
+	{
+    	String str;
+    	Scanner scan=new Scanner(System.in);
+    	System.out.print("Enter a string : ");
+    	String inputString = scan.nextLine();
+        String reverseString = "";
+        int length = inputString.length();
+        for (int i = length - 1; i >= 0; i--) {
+            reverseString = reverseString + inputString.charAt(i);
+        }
+        if (inputString.equalsIgnoreCase(reverseString)) {
+            System.out.println("The String " + inputString + " is a Palindrome");
+        } else {
+            System.out.println("The string " + inputString + " is not a palindrome.");
+        }
+	}
+}
+
+
 //27.String Literal and Object Creation
+
+
 
 //28.String Creation with new keyword
 
