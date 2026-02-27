@@ -15,13 +15,21 @@ int main() {
 	percentage = (total/500)*100 ;
     printf("Percentage : %.2f\n",percentage);
 
-    grade = (percentage<=75) ? "A":
-    		(percentage<=60) ? "B":
-    		(percentage<=45) ? "C":
+    grade = (percentage>=75) ? "A":
+    		(percentage>=60) ? "B":
+    		(percentage>=45) ? "C":
     						"Fail";
     printf("Grade : %s\n",grade);
 	return 0;
 }
+
+Output:-
+				Enter the marks of English, Mathematics, Science, Hindi and Computer out of 100
+				89 98 87 79 88
+				Total : 441.00
+				Percentage : 88.20
+				Grade : A
+
 
 2. Type Size Explorer
 
@@ -68,6 +76,18 @@ int main() {
 	return 0;
 }
 
+Output:-
+
+					short int variable size is 2
+					int variable size is 4
+					long int variable size is 4
+					long long int variable size is 8
+					unsigned int variable size is 4
+					float size variable is 4
+					double size variable is 8
+					long double variable size is 12
+					char size is variable 1
+
 3. Temperature Converter
 
 #include <stdio.h>
@@ -100,6 +120,14 @@ float fahrenheitToCelsius(float f){
 		celsius = ((f * 9.0/5.0) + 32.0);
 		return celsius;
 }
+
+Output:-
+					Enter temperature in celsius :
+					89
+					Enter temperature in fahrenheit :
+					23
+					celsiusToFahrenheit is 192.20
+					fahrenheitToCelsius is 73.40
 
 4. Min-Max via Reference Parameters
 
@@ -139,6 +167,13 @@ int main() {
 	return 0;
 }
 
+Output:-
+			Find the Minimum and Maximum value from 13, 45, 3 
+			
+			Minimum value :  3
+			
+			Maximum value :  45
+
 5.Spot the bug - Call by Value Trap
 
 #include <stdio.h>
@@ -153,6 +188,9 @@ int main() {
     return 0;
 }
 
+Output:-
+			Inside doubleIt: 14
+			In main after call: 14
 
 6.Pointer Swap
 
@@ -186,6 +224,17 @@ int main() {
 	return 0;
 }
 
+Output:-
+			Before the swap:
+			x = 10 , y = 20, z = 30 
+			Addresses of store in pointer:
+			px = 0x7ffe88ec81f0 , py = 0x7ffe88ec81ec, pz = 0x7ffe88ec81e8 
+			
+			After the swap:
+			x = 30 , y = 20, z = 10 
+			Addresses of store in pointer:
+			px = 0x7ffe88ec81f0 , py = 0x7ffe88ec81ec, pz = 0x7ffe88ec81e8 
+	
 
 7.const Constant in Functions
 
@@ -219,15 +268,22 @@ int main() {
 	return 0;
 }
 
+output:-
+			Enter radius of circle : 6.5
+		
+		    Area of circle : 132.7322 
+			Circumference of circle : 40.8407
+
 
 8.(Challenge Absolute value & Clamp - No if-Else)
+
 
 #include <iostream>
 using namespace std;
 
 //function returns the absolute value of n using ternary operator
 int absolute(int n){
-	return (n>0) ? n : -n ;
+	return (n>=0) ? n : -n ;
 }
 //function returns the clamp using ternary operator
 int clamp(int val, int lo, int hi){
@@ -237,32 +293,39 @@ int clamp(int val, int lo, int hi){
 }
 
 int main() {
-	//test case 1
-	int val1 = -15, lo1 = -10, hi1 = 10;
-	//output in table format
-	cout << "val	lo	hi	absolute(val)	clamp(val, lo, hi)" << endl ;
-	cout <<"--------------------------------------------------" << endl;
-	cout << val1<<"	"<<lo1<<"	"<<hi1<<"	"<<absolute(val1)<<"		"<<clamp(val1, lo1, hi1)<<endl;
 
-	//test case 2
-	int val2 = 0, lo2 = -10, hi2 = 10;
-	//output in table format
-	cout <<"--------------------------------------------------" << endl;
-	cout << val2<<"	"<<lo2 <<"	"<<hi2<<"	"<<absolute(val2)<<"		"<<clamp(val2, lo2, hi2)<<endl;
+	// Given test cases in  array
+	    int val[] = {-15, 0, 25, -3};
+	    int lo[]  = {-10, -10, -10, 0};
+	    int hi[]  = { 10,  10,  10, 5};
 
-	//test case 3
-	int val3 = 25, lo3 = -10, hi3 = 10;
-	//output in table format
-	cout <<"--------------------------------------------------" << endl;
-	cout << val3<<"	"<<lo3<<"	"<<hi3<<"	"<<absolute(val3)<<"		"<<clamp(val3, lo3, hi3)<<endl;
+	    //print output on console
+	    cout << "val\tlo\thi\tabsolute(val)\tclamp(val, lo, hi)\n";
 
-	//test case 4
-	int val4 = -3, lo4 = 0, hi4 = 5;
-	//output in table format
-	cout <<"--------------------------------------------------" << endl;
-	cout << val4<<"	"<<lo4<<"	"<<hi4<<"	"<<absolute(val4)<<"		"<<clamp(val4          , lo4, hi4)<<endl;
+	    for(int i = 0; i < 4; i++) {
+	    	cout << "----------------------------------------------------------\n";
+
+	        cout << val[i] << "\t"
+	             << lo[i] << "\t"
+	             << hi[i] << "\t"
+	             << absolute(val[i]) << "\t\t"
+	             << clamp(val[i], lo[i], hi[i]) << endl;
+	    }
 
 	return 0;
 }
+
+output:-
+
+			val	lo	hi	absolute(val)	clamp(val, lo, hi)
+			----------------------------------------------------------
+			-15	-10	10	15		-10
+			----------------------------------------------------------
+			0	-10	10	0		0
+			----------------------------------------------------------
+			25	-10	10	25		10
+			----------------------------------------------------------
+			-3	0	5	3		0
+
 
 
