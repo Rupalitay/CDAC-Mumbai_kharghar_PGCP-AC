@@ -1,0 +1,268 @@
+1. Grade Calculator
+
+
+#include <stdio.h>
+
+int main() {
+	float english_marks, maths_marks, science_marks, hindi_marks, computer_marks, total, percentage;
+	const char *grade;//Pointer to string
+	printf("Enter the marks of English, Mathematics, Science, Hindi and Computer out of 100\n");
+	scanf("%f %f %f %f %f",&english_marks, &maths_marks, &science_marks, &hindi_marks, &computer_marks);
+
+	total = (english_marks + maths_marks + science_marks + hindi_marks + computer_marks);
+    printf("Total : %.2f\n",total);
+
+	percentage = (total/500)*100 ;
+    printf("Percentage : %.2f\n",percentage);
+
+    grade = (percentage<=75) ? "A":
+    		(percentage<=60) ? "B":
+    		(percentage<=45) ? "C":
+    						"Fail";
+    printf("Grade : %s\n",grade);
+	return 0;
+}
+
+2. Type Size Explorer
+
+#include <stdio.h>
+#include<stddef.h>
+
+int main() {
+	//declaration of variables
+	short int si;
+	int i;
+	long int li;
+	long long int lli;
+	unsigned int ui;
+	float f;
+	double d ;
+	long double ld;
+	char c;
+	//int ,long int, unsigned int and float variables have same size
+	//double , long long int variables have the same size
+	//unsigned int and int variables have same size
+
+	// changing the type of the data types to An unsigned int type
+	size_t sizeShort_int = sizeof(si);
+	size_t sizeInt = sizeof(i);
+	size_t sizeLong_int = sizeof(li);
+	size_t sizeLong_long_int = sizeof(lli);
+	size_t sizeUnsigned_int = sizeof(ui);
+	size_t sizeFloat = sizeof(f);
+	size_t sizeDouble = sizeof(d);
+	size_t sizeLong_double = sizeof(ld);
+	size_t sizechar = sizeof(c);
+
+	//Printing the size of variable in An unsigned interger type
+	printf("short int variable size is %zu",sizeShort_int);
+	printf("\nint variable size is %zu",sizeInt);
+	printf("\nlong int variable size is %zu",sizeLong_int);
+	printf("\nlong long int variable size is %zu",sizeLong_long_int);
+	printf("\nunsigned int variable size is %zu",sizeUnsigned_int);
+	printf("\nfloat size variable is %zu",sizeFloat);
+	printf("\ndouble size variable is %zu",sizeDouble);
+	printf("\nlong double variable size is %zu",sizeLong_double);
+	printf("\nchar size is variable %zu",sizechar);
+
+	return 0;
+}
+
+3. Temperature Converter
+
+#include <stdio.h>
+float celsiusToFahrenheit(float c);//— converts Celsius to Fahrenheit
+float fahrenheitToCelsius(float f);//- converts Fahrenheit to Celsius
+int main() {
+	//declaration of variables
+	float celsius;
+	float fahrenheit;
+	//printing and scaning the values form user
+	printf("Enter temperature in celsius :\n");
+	scanf("%f",&celsius);
+	printf("Enter temperature in fahrenheit :\n");
+	scanf("%f",&fahrenheit);
+
+	//printing the result of after calling the function in printf
+	printf("celsiusToFahrenheit is %.2f",celsiusToFahrenheit(celsius));
+	printf("fahrenheitToCelsius is %.2f",fahrenheitToCelsius(fahrenheit)); // @suppress("Invalid arguments")
+	return 0;
+}
+//Funtion defination
+float celsiusToFahrenheit(float c){
+	float fahrenheit;
+	fahrenheit = ((c * 9.0/5.0) + 32.0);
+	return fahrenheit;
+}
+
+float fahrenheitToCelsius(float f){
+	float celsius;
+		celsius = ((f * 9.0/5.0) + 32.0);
+		return celsius;
+}
+
+4. Min-Max via Reference Parameters
+
+#include <iostream>
+using namespace std;
+void findMinMax(int a, int b, int c, int &minVal, int &maxVal){
+	//consider minval and maxval is a
+	minVal = a;
+	maxVal = a;
+
+	//campare minval and maxval with b
+	if(b<minVal){
+		minVal = b;
+	}
+	if(b>maxVal){
+			maxVal = b;
+		}
+
+	//campare minval and maxval with c
+		if(c<minVal){
+			minVal = c;
+		}
+		if(c>maxVal){
+				maxVal = c;
+			}
+
+}
+
+int main() {
+	//decalre two variables
+	int lo , hi;
+	//call function to find Minimum and Maximum value
+	findMinMax(13 , 45 , 3 , lo , hi);
+	cout << "Find the Minimum and Maximum value from 13, 45, 3 \n" << endl;
+	cout << "Minimum value :  " << lo << endl;
+	cout << "\nMaximum value :  " << hi << endl;
+	return 0;
+}
+
+5.Spot the bug - Call by Value Trap
+
+#include <stdio.h>
+void doubleIt(int &n) {
+    n = n * 2;
+printf("Inside doubleIt: %d\n", n);
+}
+int main() {
+	int num = 7;
+    doubleIt(num);
+    printf("In main after call: %d\n", num);
+    return 0;
+}
+
+
+6.Pointer Swap
+
+#include <stdio.h>
+
+int main() {
+	//declare three integer variables
+	int x = 10 , y = 20, z = 30;
+	// create three pointer pointing to variables
+	int *px = &x ;
+	int *py = &y;
+	int *pz = &z;
+
+	//Print all three variables before the swap
+	printf("Before the swap:\n");
+	printf("x = %d , y = %d, z = %d \n", x,y,z);
+	printf("Addresses of store in pointer:\n");
+	printf("px = %p , py = %p, pz = %p \n", px,py,pz);
+
+	//to swap the values of x and z using another variable(temp) and pointers
+	int temp = *px;
+	*px = *pz;
+	*pz = temp;
+
+	//Print all three variables after the swap
+	printf("\nAfter the swap:\n");
+	printf("x = %d , y = %d, z = %d \n", x,y,z);
+	printf("Addresses of store in pointer:\n");
+	printf("px = %p , py = %p, pz = %p \n", px,py,pz);
+
+	return 0;
+}
+
+
+7.const Constant in Functions
+
+#include <stdio.h>
+//declaration of global variable
+const float PI = 3.14159f;
+
+// function returns area of a circle.
+float circleArea(float radius){
+	float area =  PI * radius * radius;
+	return area;
+}
+//Functon returns circumference of  circle
+float circlePerimeter(float radius){
+	float circum = 2 * PI * radius;
+	return circum;
+}
+
+int main() {
+	//declaration and initailization of varaible radius
+	float radius = 7.0;
+	//taking the value form user
+	printf("Enter radius of circle : ");
+	scanf("%f",&radius);
+
+	//PI = 3.0f; // attempt to modify const //compiler error : assignment of read-only variable 'PI'
+
+	//print the area and circumference of circle
+	printf("\nArea of circle : %.4f ",circleArea(radius));
+	printf("\nCircumference of circle : %.4f",circlePerimeter(radius));
+	return 0;
+}
+
+
+8.(Challenge Absolute value & Clamp - No if-Else)
+
+#include <iostream>
+using namespace std;
+
+//function returns the absolute value of n using ternary operator
+int absolute(int n){
+	return (n>0) ? n : -n ;
+}
+//function returns the clamp using ternary operator
+int clamp(int val, int lo, int hi){
+	return  (val < lo) ? lo:
+			(val > hi) ? hi:
+					val;
+}
+
+int main() {
+	//test case 1
+	int val1 = -15, lo1 = -10, hi1 = 10;
+	//output in table format
+	cout << "val	lo	hi	absolute(val)	clamp(val, lo, hi)" << endl ;
+	cout <<"--------------------------------------------------" << endl;
+	cout << val1<<"	"<<lo1<<"	"<<hi1<<"	"<<absolute(val1)<<"		"<<clamp(val1, lo1, hi1)<<endl;
+
+	//test case 2
+	int val2 = 0, lo2 = -10, hi2 = 10;
+	//output in table format
+	cout <<"--------------------------------------------------" << endl;
+	cout << val2<<"	"<<lo2 <<"	"<<hi2<<"	"<<absolute(val2)<<"		"<<clamp(val2, lo2, hi2)<<endl;
+
+	//test case 3
+	int val3 = 25, lo3 = -10, hi3 = 10;
+	//output in table format
+	cout <<"--------------------------------------------------" << endl;
+	cout << val3<<"	"<<lo3<<"	"<<hi3<<"	"<<absolute(val3)<<"		"<<clamp(val3, lo3, hi3)<<endl;
+
+	//test case 4
+	int val4 = -3, lo4 = 0, hi4 = 5;
+	//output in table format
+	cout <<"--------------------------------------------------" << endl;
+	cout << val4<<"	"<<lo4<<"	"<<hi4<<"	"<<absolute(val4)<<"		"<<clamp(val4          , lo4, hi4)<<endl;
+
+	return 0;
+}
+
+
