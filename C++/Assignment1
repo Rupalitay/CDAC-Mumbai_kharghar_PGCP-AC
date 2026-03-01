@@ -1,13 +1,9 @@
-2. Bank
+1. Student
+--------------------------------------------------------------------------
+Output:-
 
-
-//============================================================================
-// Name        : main.cpp
-// Author      : 
-// Version     :
-// Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
-//============================================================================
+-----------------------------------------------------------------------------
+2. Simple Banking System
 
 #include <iostream>
 #include <string>
@@ -154,3 +150,282 @@ Balance        : 11210.8
 4. Exit Program
 4
 ------------------------------------------------------------------------------------------
+3. Toll Booth 
+
+#include <iostream>
+#include <string>
+class TollBooth{
+	int totalVehicles ;
+	double totalRevenue;
+
+public:
+	TollBooth(int totalVehicles,double totalRevenue) : totalVehicles(totalVehicles), totalRevenue(totalRevenue){}
+	//reset both totalVehicles and totalRevenue to Zero
+	void reset(){
+		totalVehicles = 0;
+	    totalRevenue = 0.0;
+	}
+
+	//function should increment totalVehicles by 1 and tollAmount to totalRevenue based on the car type.
+	void vehiclePayingToll(int vehicleType, double tollAmount){
+		totalVehicles++;
+		//if vehicle type is 1 then it is standard car, tollAmount is  RS.180 for standard cars
+		if(vehicleType == 1){totalRevenue += tollAmount; }
+		//if vehicle type is 2 then it is truck, tollAmount is  RS.300 for trucks
+		else if(vehicleType == 2){totalRevenue += tollAmount; }
+		//if vehicle type is 3 then it is bus, tollAmount is  RS.350 for buses
+		else if(vehicleType == 3){totalRevenue += tollAmount; }
+		else{std::cerr<<"Invalid vehicle Type";
+			totalVehicles--;//decrement the value of the totalvehicles assigned in the function
+		}
+	}
+
+	//getter that returns the total revenue collected
+	double getTotalRevenue() const {
+		return totalRevenue;
+	}
+
+	//getter that returns the total number of vehicles passed through the booth
+	int getTotalVehicles() const {
+		return totalVehicles;
+	}
+};
+int main() {
+	TollBooth TB(0,0.0);
+	//Declaration of choice variable to take choice from user
+		int choice;
+
+		do{
+			std::cout << "\n---Choice Driven program---\n";
+		    std::cout << "1. Add a standard car and collect toll\n";
+			std::cout << "2. Add a truck and collect toll\n";
+			std::cout << "3. Add a bus and collect toll\n";
+			std::cout << "4. Display total cars passed\n";
+			std::cout << "5. Display total revenue collected\n";
+			std::cout << "6. Reset booth statistics\n";
+			std::cout << "7. Exit Program\n";
+			std::cin >> choice;
+
+			switch(choice){
+			case 1 :   	// To Add a standard car and collect toll
+			             std::cout << "Entered choice is 1. Add a standard car and collect toll\n";
+			             std::cout << "Standard car added\n";
+						//Standard car vehicle type is 1, and toll amount is 180
+							TB.vehiclePayingToll(1,180.0); break;
+
+			case 2 :   	 std::cout << "Entered choice is 2. Add a truck and collect toll\n";
+			            std::cout << "Truck added \n";
+			            // To Add a truck and collect toll
+						//Truck vehicle type is 2, and toll amount is 300
+							TB.vehiclePayingToll(2,300.0); break;
+
+			case 3 :   	std::cout << "Entered choice is 3. Add a Bus and collect toll\n";
+			            std::cout << "Bus added\n";
+			            // To Add a bus and collect toll
+						//bus vehicle type is 3, and toll amount is 350
+							TB.vehiclePayingToll(3,350.0); break;
+
+			case 4 :    {std::cout << "Entered choice is 4. Display total cars passed\n";
+			            //create a variable to store the value of total vehicles form getter and then print the values using cout
+				        int totalCarsPassed = TB.getTotalVehicles();
+						std::cout<<"Total Cars Passed are "<<totalCarsPassed<<"\n";break;}
+
+			case 5 :    {std::cout << "Entered choice is 5. Display total revenue collected\n";
+			            //create a variable to store the value of total Revenue form getter and then print the values using cout
+				        double totalRevenue = TB.getTotalRevenue();
+						std::cout<<"Total Revenue is "<<totalRevenue<<"\n";break;}
+
+			case 6 : 	std::cout << "Entered choice is 6. Reset booth statistics\n";TB.reset();break;
+
+			case 7 :	std::cout << "Entered choice is 7. Exit Program\n";std::cout<<"Exiting..\n";break;
+
+			default :	std::cerr<<"Invalid Choice\n";
+
+			}
+		}while(choice != 7);
+
+	return 0;
+}
+
+--------------------------------------------------------------------------------------
+Output:-
+
+
+---Choice Driven program---
+1. Add a standard car and collect toll
+2. Add a truck and collect toll
+3. Add a bus and collect toll
+4. Display total cars passed
+5. Display total revenue collected
+6. Reset booth statistics
+7. Exit Program
+1
+Entered choice is 1. Add a standard car and collect toll
+Standard car added
+
+---Choice Driven program---
+1. Add a standard car and collect toll
+2. Add a truck and collect toll
+3. Add a bus and collect toll
+4. Display total cars passed
+5. Display total revenue collected
+6. Reset booth statistics
+7. Exit Program
+2
+Entered choice is 2. Add a truck and collect toll
+Truck added 
+
+---Choice Driven program---
+1. Add a standard car and collect toll
+2. Add a truck and collect toll
+3. Add a bus and collect toll
+4. Display total cars passed
+5. Display total revenue collected
+6. Reset booth statistics
+7. Exit Program
+2
+Entered choice is 2. Add a truck and collect toll
+Truck added 
+
+---Choice Driven program---
+1. Add a standard car and collect toll
+2. Add a truck and collect toll
+3. Add a bus and collect toll
+4. Display total cars passed
+5. Display total revenue collected
+6. Reset booth statistics
+7. Exit Program
+3
+Entered choice is 3. Add a Bus and collect toll
+Bus added
+
+---Choice Driven program---
+1. Add a standard car and collect toll
+2. Add a truck and collect toll
+3. Add a bus and collect toll
+4. Display total cars passed
+5. Display total revenue collected
+6. Reset booth statistics
+7. Exit Program
+3
+Entered choice is 3. Add a Bus and collect toll
+Bus added
+
+---Choice Driven program---
+1. Add a standard car and collect toll
+2. Add a truck and collect toll
+3. Add a bus and collect toll
+4. Display total cars passed
+5. Display total revenue collected
+6. Reset booth statistics
+7. Exit Program
+4
+Entered choice is 4. Display total cars passed
+Total Cars Passed are 5
+
+---Choice Driven program---
+1. Add a standard car and collect toll
+2. Add a truck and collect toll
+3. Add a bus and collect toll
+4. Display total cars passed
+5. Display total revenue collected
+6. Reset booth statistics
+7. Exit Program
+5
+Entered choice is 5. Display total revenue collected
+Total Revenue is 1480
+
+---Choice Driven program---
+1. Add a standard car and collect toll
+2. Add a truck and collect toll
+3. Add a bus and collect toll
+4. Display total cars passed
+5. Display total revenue collected
+6. Reset booth statistics
+7. Exit Program
+6
+Entered choice is 6. Reset booth statistics
+
+---Choice Driven program---
+1. Add a standard car and collect toll
+2. Add a truck and collect toll
+3. Add a bus and collect toll
+4. Display total cars passed
+5. Display total revenue collected
+6. Reset booth statistics
+7. Exit Program
+4
+Entered choice is 4. Display total cars passed
+Total Cars Passed are 0
+
+---Choice Driven program---
+1. Add a standard car and collect toll
+2. Add a truck and collect toll
+3. Add a bus and collect toll
+4. Display total cars passed
+5. Display total revenue collected
+6. Reset booth statistics
+7. Exit Program
+5
+Entered choice is 5. Display total revenue collected
+Total Revenue is 0
+
+---Choice Driven program---
+1. Add a standard car and collect toll
+2. Add a truck and collect toll
+3. Add a bus and collect toll
+4. Display total cars passed
+5. Display total revenue collected
+6. Reset booth statistics
+7. Exit Program
+1
+Entered choice is 1. Add a standard car and collect toll
+Standard car added
+
+---Choice Driven program---
+1. Add a standard car and collect toll
+2. Add a truck and collect toll
+3. Add a bus and collect toll
+4. Display total cars passed
+5. Display total revenue collected
+6. Reset booth statistics
+7. Exit Program
+4
+Entered choice is 4. Display total cars passed
+Total Cars Passed are 1
+
+---Choice Driven program---
+1. Add a standard car and collect toll
+2. Add a truck and collect toll
+3. Add a bus and collect toll
+4. Display total cars passed
+5. Display total revenue collected
+6. Reset booth statistics
+7. Exit Program
+5
+Entered choice is 5. Display total revenue collected
+Total Revenue is 180
+
+---Choice Driven program---
+1. Add a standard car and collect toll
+2. Add a truck and collect toll
+3. Add a bus and collect toll
+4. Display total cars passed
+5. Display total revenue collected
+6. Reset booth statistics
+7. Exit Program
+8
+Invalid Choice
+
+---Choice Driven program---
+1. Add a standard car and collect toll
+2. Add a truck and collect toll
+3. Add a bus and collect toll
+4. Display total cars passed
+5. Display total revenue collected
+6. Reset booth statistics
+7. Exit Program
+7
+Entered choice is 7. Exit Program
+Exiting..
+----------------------------------------------------------------------------------------
