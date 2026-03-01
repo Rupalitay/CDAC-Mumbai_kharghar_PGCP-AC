@@ -1,0 +1,156 @@
+2. Bank
+
+
+//============================================================================
+// Name        : main.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <string>
+
+class BankAccount{
+	int accountNumber = 0;
+	std::string accountHolderName;
+	double balance = 0.0;
+
+public:
+	//constructor
+	BankAccount() = default ;
+	BankAccount(int accNo, const std::string& name, double bal = 0.0)
+	        : accountNumber(accNo), accountHolderName(name), balance(bal) {}
+
+
+	//setters
+	 void setAccountNumber(int accNo) { accountNumber = accNo; }
+	 void setAccountHolderName(const std::string& name) { accountHolderName = name; }
+     void setBalance(double bal) { balance = bal; }
+
+
+	//getters
+	int getAccountNumber() const { return accountNumber; }
+    std::string getAccountHolderName() const { return accountHolderName; }
+	double getBalance() const { return balance; }
+
+	//Behaviour
+	//deposit the money in bank account
+	bool deposit (double amount){
+		if(amount <= 0.0) return false;
+		balance += amount;
+		return true;
+	}
+	//withdraw money from bank account
+	bool withdraw(double amount){
+		if(amount <= 0.0) return false;
+		if(amount > balance) return false;
+		balance -= amount;
+		return true;
+	}
+	//print the details of Account
+	void displayAccountDetails() const{
+		 std::cout << "\nAccount Number : " << accountNumber
+		           << "\nAccount Holder : " << accountHolderName
+		           << "\nBalance        : " << balance << '\n';
+	}
+};
+int main() {
+	//Object creation
+	BankAccount B(1101, "rupali", 5000.0);
+	//Declaration of choice variable to take choice from user
+	int choice;
+
+	do{
+		std::cout << "\n---Choice Driven program---\n";
+	    std::cout << "1. Deposit money into an existing account\n";
+		std::cout << "2. Withdraw money from an existing account\n";
+		std::cout << "3. Display the account details\n";
+		std::cout << "4. Exit Program\n";
+		std::cin >> choice;
+
+		switch(choice){
+		case 1 :    {
+            		    std::cout << "Entered choice is 1. Deposit money into an existing account\n";
+            		    double amount;
+            		    std::cout << "Enter amount to deposit: ";
+            		    std::cin >> amount;
+            
+            		    if(B.deposit(amount))
+            		        std::cout << "Deposit successful\n";
+            		    else
+            		        std::cout << "Invalid deposit amount\n";
+            		    break;
+		}
+
+		case 2 :   {
+            		    std::cout << "Entered choice is 2. Withdraw money from an existing account\n";
+            		    double amount;
+            		    std::cout << "Enter amount to withdraw: ";
+            		    std::cin >> amount;
+            
+            		    if(B.withdraw(amount))
+            		        std::cout << "Withdrawal successful\n";
+            		    else
+            		        std::cout << "Invalid or insufficient balance\n";
+            		    break;
+		}
+		case 3 :	std::cout << "Entered choice is 3. Display the account details\n";
+		            B.displayAccountDetails();break;
+		            
+		case 4 :	std::cout << "Entered choice is 4. Exit Program\n";
+		            std::cout<<"Exiting..\n";break;
+		
+		default :	std::cerr<<"Invalid Choice\n";
+
+		}
+	}while(choice != 4);
+
+	return 0;
+}
+
+
+-------------------------------------------------------------------------------------------------
+Output:-
+
+
+---Choice Driven program---
+1. Deposit money into an existing account
+2. Withdraw money from an existing account
+3. Display the account details
+4. Exit Program
+1
+Entered choice is 1. Deposit money into an existing account
+Enter amount to deposit: 6885.786
+Deposit successful
+
+---Choice Driven program---
+1. Deposit money into an existing account
+2. Withdraw money from an existing account
+3. Display the account details
+4. Exit Program
+2
+Entered choice is 2. Withdraw money from an existing account
+Enter amount to withdraw: 675
+Withdrawal successful
+
+---Choice Driven program---
+1. Deposit money into an existing account
+2. Withdraw money from an existing account
+3. Display the account details
+4. Exit Program
+3
+Entered choice is 3. Display the account details
+
+Account Number : 1101
+Account Holder : rupali
+Balance        : 11210.8
+
+---Choice Driven program---
+1. Deposit money into an existing account
+2. Withdraw money from an existing account
+3. Display the account details
+4. Exit Program
+4
+------------------------------------------------------------------------------------------
