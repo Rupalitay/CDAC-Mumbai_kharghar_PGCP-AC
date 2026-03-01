@@ -1,7 +1,191 @@
 1. Student
+/*------------------------------------------------
+ * main.cpp
+ *
+ *  Created on: 28-Feb-2026
+ *      Author: rupali
+ --------------------------------------------------------*/
+#include <iostream>
+#include <string>
+#include"Student.h"
+using namespace std;
+
+int main() {
+	//Object creation
+	Student S;
+	//Declaration of choice variable to take choice from user
+	int choice;
+
+	do{
+		cout << "\n---choice Driven program---\n";
+	    cout << "1. Accept Information\n";
+		cout << "2. Display Information\n";
+		cout << "3. Calculate Grade\n";
+		cout << "4. Exit Program\n";
+		cin >> choice;
+
+		switch(choice){
+		case 1 :    S.acceptInfo();break;
+		case 2 :    S.displayInfo();break;
+		case 3 :	S.calculateGrade();break;
+		case 4 :	cout<<"Exiting..\n";break;
+		default :	cerr<<"Invalid Choice\n";
+
+		}
+	}while(choice != 4);
+
+	return 0;
+}
+
+/*-----------------------------------------------------------
+ * Student.h
+ *
+ *  Created on: 28-Feb-2026
+ *      Author: rupal
+ -------------------------------------------------------------*/
+
+#ifndef STUDENT_H_
+#define STUDENT_H_
+
+#include <string>
+
+class Student{
+
+	std::string name;
+	int rollnumber = 0;
+	float marks = 0.0f;
+	char grade = 'F';
+
+public:
+	// Constructors
+    Student();
+
+    // Setters
+    void setName(const std::string& n);
+    void setRollNumber(int r);
+    void setMarks(float m);
+    void setGrade(char g);
+
+    // Getters
+    std::string getName() const;
+    int getRollNumber() const;
+    float getMarks() const;
+    char getGrade() const;
+
+    // Behavior
+	void calculateGrade(); //calculate grade from marks
+	void displayInfo();	// display or print output on console
+	void acceptInfo();  // accept the information
+
+};
+
+
+#endif /* STUDENT_H_ */
+/*------------------------------------------------
+ *Student.cpp
+ *
+ *  Created on: 28-Feb-2026
+ *      Author: rupali
+ --------------------------------------------------------*/
+#include <iostream>
+#include <string>
+#include "Student.h"
+
+void Student::setName(const std::string& n) { name = n; }
+void Student::setRollNumber(int r) { rollnumber = r; }
+void Student::setMarks(float m) { marks = m; }
+void Student::setGrade(char g) { grade = g; }
+
+std::string Student::getName() const { return name; }
+int Student::getRollNumber() const { return rollnumber; }
+float Student::getMarks() const { return marks; }
+char Student::getGrade() const { return grade; }
+
+
+	void Student :: calculateGrade(){
+		this->grade = (marks<=100 && marks>=90) ? 'A':
+					  (marks>=80) ? 'B':
+		              (marks>=70) ? 'C':
+		              (marks>=60) ? 'D':
+		                	        'F';
+		std::cout<<"Grade calculated\n";
+	}
+
+	void Student :: displayInfo(){
+		std::cout << "\nName : " << name ;
+		std::cout << "\nMarks : " << marks ;
+		std::cout << "\nRollNo : " << rollnumber ;
+		std::cout << "\nGrade : " << grade;
+	}
+
+	void Student :: acceptInfo(){
+		std::cin.ignore();
+		std::cout<<"Enter the Name : ";
+		std::getline(std::cin, name);//getline is used to discard the leftover newline and then read the full line
+
+		std::cout <<"Enter the Marks : ";
+		std::cin >> marks;
+
+		std::cout <<"Enter the RollNo : ";
+		std::cin >> rollnumber;
+
+
+	}
+
+
 --------------------------------------------------------------------------
 Output:-
 
+---choice Driven program---
+1. Accept Information
+2. Display Information
+3. Calculate Grade
+4. Exit Program
+1
+Entered choice is 1. Accept Information
+Enter the Name : Kartik
+
+Enter the Marks : 78
+
+Enter the RollNo : 45
+
+---choice Driven program---
+1. Accept Information
+2. Display Information
+3. Calculate Grade
+4. Exit Program
+3
+Entered choice is 3. Calculate Grade
+Grade calculated
+
+---choice Driven program---
+1. Accept Information
+2. Display Information
+3. Calculate Grade
+4. Exit Program
+2
+Entered choice is 2. Display Information
+
+Name : Kartik
+Marks : 78
+RollNo : 45
+Grade : C
+---choice Driven program---
+1. Accept Information
+2. Display Information
+3. Calculate Grade
+4. Exit Program
+7
+
+---choice Driven program---
+1. Accept Information
+2. Display Information
+3. Calculate Grade
+4. Exit Program
+Invalid Choice
+4
+Entered choice is 4. Exit Program
+Exiting..
 -----------------------------------------------------------------------------
 2. Simple Banking System
 
@@ -429,3 +613,223 @@ Invalid Choice
 Entered choice is 7. Exit Program
 Exiting..
 ----------------------------------------------------------------------------------------
+4. Employee management system
+
+
+
+#include <iostream>
+#include <string>
+
+class Employee{
+	 static int nextId; //
+	 int empID ; //(EmployeeID)
+	 std::string empName ;//(Employee-Name)
+	 double empSalary ;//(Employee Salary
+	 //declaration of variable to calculate the gross Salary
+	 double grossSalary;
+
+public:
+
+	 //contructor initialier list
+	 Employee(std::string en, double ems)
+	 :empName(en),empSalary(ems),grossSalary(0.0){
+		 empID = nextId++; //Auto assignment of the employee id
+	 }
+
+
+	 //setters
+
+	 	void setEmpName(const std::string &empName) {
+	 		this->empName = empName;
+	 	}
+
+	 	void setEmpSalary(double empSalary) {
+	 		this->empSalary = empSalary;
+	 		calculateGrossSalary(); //auto update the salary of employee
+	 	}
+
+	 //getters
+	 int getEmpId() const {
+	 		return empID;
+	 	}
+
+	 	const std::string& getEmpName() const {
+	 		return empName;
+	 	}
+
+	 	double getEmpSalary() const {
+	 		return empSalary;
+	 	}
+
+	 //calculate the gross Salary of Employee
+	 	void calculateGrossSalary(){
+
+	 		if(empSalary <= 5000 ){
+	 			grossSalary = empSalary + (empSalary*0.10);
+	 		}
+	 		else if(empSalary <= 10000 ){
+	 			grossSalary = empSalary + (empSalary*0.15);
+	 		}
+	 		else grossSalary = empSalary + (empSalary*0.20);
+
+	 		//print the gross salary for the chosen employee
+	 		std::cout<<"The gross Salary for the chosen employee is "<<grossSalary<<"\n";
+	 	}
+
+	 	//display details of the employee
+	 	void displayEmployeeDetails() const{
+	 		std::cout<<"Employee ID : "<<empID<<"\n";
+	 		std::cout<<"Name of Employee is : "<<empName<<"\n";
+	 		std::cout<<"Salary of Employee is  : "<<empSalary<<"\n";
+	 		std::cout<<"Gross Salary of Employee is : "<<grossSalary<<"\n";
+
+
+	 	}
+
+
+};
+int Employee::nextId = 1001;   // starting ID
+int main() {
+	Employee Emp("abc",0.0);
+
+	int choice;
+
+		do{
+			std::cout << "\n---Choice Driven program---\n";
+		    std::cout << "1. Add new Employee \n";
+			std::cout << "2. Calculate the gross salary for an employee\n";
+			std::cout << "3. Display the Employee details\n";
+			std::cout << "4. Update the Employee information.\n";
+			std::cout << "5. Exit Program\n";
+			std::cin >> choice;
+
+			switch(choice){
+			case 1 :    {
+							 std::string empName;
+							 double empsalary;
+				 	 	 	 std::cout << "\nYou Entered choice 1. Add new Employee \n";
+
+				 	 	 	 std::cin.ignore();
+
+				 	 	 	 std::cout<<"\nEnter the new Employee name\n";
+				 	 	 	 std::getline(std::cin, empName);
+
+				 	 	 	 std::cout<<"Enter the salary ";
+				 	 	 	 std::cin>> empsalary;
+
+
+							 Emp.setEmpName(empName);
+							 Emp.setEmpSalary(empsalary);
+							 break;
+						}
+
+			case 2 :   {
+						std::cout<<"You entered choice 2. Calculate the gross salary for an employee\n ";
+
+						//To display the gross Salary
+						Emp.calculateGrossSalary();
+						break;}
+
+			case 3 :	std::cout<<"You have Entered Choice 3. Display Employees details\n";
+						Emp.displayEmployeeDetails();break;
+
+			case 4 :    {std::cout << "You have Entered choice 4. Update the Employee information.\n";
+						//declare the variables to get the value from user
+						double empsalary;
+						std::string empname;
+						//Update the employee's name and salary using setter methods
+						std::cout << "Enter the Employee Name to update\n";
+						std::cin >> empname;
+						std::cout <<"Enter the salary of Employee to update\n";
+						std::cin >> empsalary;
+						Emp.setEmpSalary(empsalary);
+						Emp.setEmpName(empname);
+						break;}
+
+			case 5 :	std::cout << "You have Entered choice 5. Exit the program \n";
+						std::cout<<"Exiting..\n";break;
+
+			default :	std::cerr<<"Invalid Choice\n";
+
+			}
+		}while(choice != 5);
+
+		return 0;
+	}
+
+
+-----------------------------------------------------------------------------
+Output:-
+
+
+---Choice Driven program---
+1. Add new Employee 
+2. Calculate the gross salary for an employee
+3. Display the Employee details
+4. Update the Employee information.
+5. Exit Program
+1
+
+You Entered choice 1. Add new Employee 
+
+Enter the new Employee name
+Harry
+Enter the salary 5790.987
+The gross Salary for the chosen employee is 6659.64
+
+---Choice Driven program---
+1. Add new Employee 
+2. Calculate the gross salary for an employee
+3. Display the Employee details
+4. Update the Employee information.
+5. Exit Program
+2
+You entered choice 2. Calculate the gross salary for an employee
+ The gross Salary for the chosen employee is 6659.64
+
+---Choice Driven program---
+1. Add new Employee 
+2. Calculate the gross salary for an employee
+3. Display the Employee details
+4. Update the Employee information.
+5. Exit Program
+3
+You have Entered Choice 3. Display Employees details
+Employee ID : 1001
+Name of Employee is : Harry
+Salary of Employee is  : 5790.99
+Gross Salary of Employee is : 6659.64
+
+---Choice Driven program---
+1. Add new Employee 
+2. Calculate the gross salary for an employee
+3. Display the Employee details
+4. Update the Employee information.
+5. Exit Program
+4
+You have Entered choice 4. Update the Employee information.
+Enter the Employee Name to update
+jay
+Enter the salary of Employee to update
+356433.08
+The gross Salary for the chosen employee is 427720
+
+---Choice Driven program---
+1. Add new Employee 
+2. Calculate the gross salary for an employee
+3. Display the Employee details
+4. Update the Employee information.
+5. Exit Program
+6
+Invalid Choice
+
+---Choice Driven program---
+1. Add new Employee 
+2. Calculate the gross salary for an employee
+3. Display the Employee details
+4. Update the Employee information.
+5. Exit Program
+5
+You have Entered choice 5. Exit the program 
+Exiting..
+
