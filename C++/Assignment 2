@@ -15,7 +15,11 @@ public:
 	Box(){
 		length = 0.0; width = 0.0; height = 0.0;
 	}
-	Box(int length , int width, int height):length(length),width(width),height(height){}
+	Box(int length , int width, int height){
+		this->length = length;
+		this->width = width;
+		this->height = height;
+	}
 
 	void setDimensions(int l, int w, int h){
 		this->length = l;this->width = w; this->height=h;
@@ -186,6 +190,7 @@ Marks : 89.8
  // Created on: 03-Mar-2026
  //      Author: rupal
 //============================================================================
+
 
 -----------------------------------------------------------------------
 Output:-
