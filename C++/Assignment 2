@@ -108,8 +108,73 @@ Output-
  //      Author: rupal
 //============================================================================
 
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+/*
+ * main.cpp
+ *
+ *  Created on: 03-Mar-2026
+ *      Author: rupal
+ */
+
+#include <iostream>
+#include <string>
+using namespace std;
+class Student{
+
+	string name;
+	int rollnumber = 0;
+	float marks = 0.0f;
+
+
+public:
+	// Constructors
+    Student(){}
+
+    Student(string name,int rollnumber ,float marks ){
+    this-> name = name;
+	this-> rollnumber = rollnumber;
+	this-> marks = marks;
+
+    }
+
+    // display or print output on console
+	void displayInfo(){
+	    cout<<"Name : "<<this->name<<endl;
+	    cout<<"Rollnumber : "<<this->rollnumber<<endl;
+	    cout<<"Marks : "<<this->marks<<endl;
+	}
+
+
+};
+
+int main(){
+	Student S;
+	Student S1("Mooni",34,76.8);
+	Student S2("falguni",10,89.8);
+
+	S.displayInfo();cout<<"\n";
+	S1.displayInfo();cout<<"\n";
+	S2.displayInfo();
+	return 0;
+}
+
 -----------------------------------------------------------------------
 Output:-
+
+Name : Mooni
+Rollnumber : 34
+Marks : 76.8
+
+Name : falguni
+Rollnumber : 10
+Marks : 89.8
 
 ------------------------------------------------------------------------
 5.2
