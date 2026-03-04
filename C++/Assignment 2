@@ -53,6 +53,17 @@ volume is 0
 volume is 48
 ----------------------------------------------------------------------------
 1.2 
+>>Initialization must happen before assignment because assignment requires an already constructed object .
+consider int i = 10; // this is intialization
+          i = 20;   //assignment
+First memory is create for i, then i is initialized with 10. Later assignment will replaces its value with 20.  
+Intialization is done when you create and assignment is done when you need to change.
+Intialization builds the object and assignment modifies with afterwards.
+
+>>Initialization preferred over assignment because if we don't intialize the datamembers then it will hold some garbage value.
+When we are defining the const datamemebers intialization is required. In case of reference variable we also intialize it 
+first we don't declare it and the assign the value. In case of constructor we use the consturcture Initializer list to initialize
+the datamembers of the class.
 
 -----------------------------------------------------------------------
 2. Write three function :
@@ -124,6 +135,8 @@ int main() {
 
 -----------------------------------------------------------------------
 Output:-
+Before the swap:
+x = 10 , y = 20 
 
 After the swap by values :
 x = 20 , y = 10 
@@ -136,6 +149,10 @@ x = 10 , y = 20
 
 ------------------------------------------------------------------------
 2.2
+When we uses swapByReference() means we will use swap by reference in which we pass x and y original values and in the 
+function swapByReference(int &a, int &b) we use &a and &b which means that a and b is and alias of x and y which will 
+get the copy of x and y where operation swap will perform and the original values of x and y will remain unchange and the 
+values of a and b will get swaped.
 
 -----------------------------------------------------------------------
 3.Store an integer value in variable
@@ -172,7 +189,14 @@ changed by pointer, value of a :45
 changed by reference, value of a : 65
 ---------------------------------------------------------------------------
 3.2
-
+>>Pointer which is represented as *ptra is a pointer to a, means ptra points to the memory address of a at which it is stored.
+and ptra stores the memory address of a and has its own memory address.
+>>Reference which is represented as &refa is a reference which is an alias of a means it is an another name of a. It doesn't 
+has its own memory location to store value because it is an alias of a.
+hence we can't reseated reference as it doesn't have its own memory address and it refere to the variable it is initialized
+with we can't reassign it with another variable.
+>>Reference cannot be NULL because it is an alias of variable so we can't have it create the refernce of NULL.
+  
 ----------------------------------------------------------------------------
 4. Write a program :
 //============================================================================
@@ -322,7 +346,12 @@ Marks : 89.8
 
 ------------------------------------------------------------------------
 5.2
-
+>>If we don't define a constructor in a class then complier provide the default constructor when we create a object.
+>>If the default constructor is create in class then complier doesn't generate one .
+>>Yes, constructor be overloaded means we can create constructor with different parameters 
+eg.#Default constructor :- Student(){}
+#Parameterized constructor :- Student(int rollNo, int marks){ rollNo = rollNo; marks = marks;}
+#Constructor Initializer list :-Student(int rollno, int marks):rollNo(rollNo), marks = marks{}
 -----------------------------------------------------------------------
 6.1 And 6.2  Create a class Employee with: :
 //============================================================================
