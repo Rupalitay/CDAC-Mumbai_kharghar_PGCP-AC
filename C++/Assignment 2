@@ -181,9 +181,36 @@ changed by reference, value of a : 65
  //      Author: rupal
 //============================================================================
 
+#include <iostream>
+using namespace std;
+
+int main() {
+	//declaration of array with new
+	int *arr = new int[5];
+	
+	cout<<"Enter the array element : "<<endl;
+	//take input from user
+	for(int i = 0; i < 5; i++){
+		cin>>arr[i];
+	}
+
+    cout<<"Array element : "<<endl;
+	//print all the values
+	for(int i = 0; i < 5; i++){
+		cout<<arr[i]<<" ";
+	}
+
+	delete[]  arr;
+	return 0;
+}
+
+
 -----------------------------------------------------------------------
 Output:-
-
+Enter the array element : 
+3 4 6 7 8
+Array element : 
+3 4 6 7 8 
 ------------------------------------------------------------------------
 4.2 with malloc and free
 
