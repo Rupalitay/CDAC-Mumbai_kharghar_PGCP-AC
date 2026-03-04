@@ -145,10 +145,31 @@ x = 10 , y = 20
  //      Author: rupal
 //============================================================================
 
+#include <iostream>
+using namespace std;
 
+int main() {
+	//declaration of variables
+	int a = 23;
+	int *ptra = &a;//pointer to a
+	int &refa = a;//reference or alias of a
+
+	cout<<"intial value of a : "<<a<<endl;
+	//modify the values
+	*ptra = 45;//change the value of a by pointer
+	cout<<"changed by pointer, value of a :"<<a<<endl;
+
+	//modify the values
+	refa=65;//change the value of a by reference
+	cout<<"changed by reference, value of a : "<<a;
+	return 0;
+}
 --------------------------------------------------------------------------
 Output-
 
+intial value of a : 23
+changed by pointer, value of a :45
+changed by reference, value of a : 65
 ---------------------------------------------------------------------------
 3.2
 
