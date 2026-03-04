@@ -63,8 +63,76 @@ volume is 48
 //============================================================================
 
 
+#include <iostream>
+#include<cstdio>
+using namespace std;
+
+void swapByValue(int a, int b){
+	int temp = a;
+	 a = b;
+	 b = temp;
+//Print all two variables after the swap
+	 	printf("\nAfter the swap by values :\n");
+	 	printf("x = %d , y = %d \n", a, b);
+
+}
+void swapByAddress(int *a, int *b){
+	int temp = *a;
+		 *a = *b;
+		 *b = temp;
+		 //Print all two variables after the swap
+	    printf("\nAfter the swap by pointer or address:\n");
+		printf("x = %d , y = %d \n", *a,*b);
+
+
+}
+void swapByReference(int &a, int &b){
+	int temp = a;
+		 a = b;
+		 b = temp;
+	 //Print all two variables after the swap
+		printf("\nAfter the swap by Reference :\n");
+		printf("x = %d , y = %d \n", a,b);
+
+}
+
+int main() {
+
+	//declare two integer variables
+		int x = 10 , y = 20;
+
+
+	//Print all two variables before the swap
+		printf("Before the swap:\n");
+		printf("x = %d , y = %d \n", x,y);
+
+
+	 //Call the swapByValue function
+		swapByValue(x, y);
+
+
+	 //Call the swapByAddress function
+		swapByAddress( &x, &y);
+
+
+     //Call the swapByReference function
+	    swapByReference(x, y);
+
+
+	return 0;
+}
+
 -----------------------------------------------------------------------
 Output:-
+
+After the swap by values :
+x = 20 , y = 10 
+
+After the swap by pointer or address:
+x = 20 , y = 10 
+
+After the swap by Reference :
+x = 10 , y = 20 
 
 ------------------------------------------------------------------------
 2.2
@@ -169,7 +237,7 @@ Marks : 89.8
 5.2
 
 -----------------------------------------------------------------------
-6.  Create a class Employee with: :
+6.1 And 6.2  Create a class Employee with: :
 //============================================================================
  // main.cpp
  // Created on: 03-Mar-2026
@@ -177,12 +245,58 @@ Marks : 89.8
 //============================================================================
 
 
+#include <iostream>
+using namespace std;
+class Employee{
+	 const int employeeId = 100; //(EmployeeID)
+	 std::string empName ;//(Employee-Name)
+	 double empSalary ;//(Employee Salary
+
+
+public:
+	 Employee(){
+		 empName = "Ram";
+		 empSalary = 5000.50;
+	 }
+
+	 //Constructor initializer list
+	 Employee(std::string en, double ems)
+	 :empName(en),empSalary(ems){
+		 }
+
+
+
+	 	//display details of the employee
+	 	void displayEmployeeDetails() const{
+	 		cout<<"Employee ID : "<<employeeId<<"\n";
+	 		cout<<"Name of Employee is : "<<empName<<"\n";
+	 		cout<<"Salary of Employee is  : "<<empSalary<<"\n\n";
+
+
+	 	}
+
+
+};
+int main() {
+	Employee E;
+	Employee E2("Andy",10000);
+	E.displayEmployeeDetails();
+	E2.displayEmployeeDetails();
+	return 0;
+}
+
 -----------------------------------------------------------------------
 Output:-
 
-------------------------------------------------------------------------
-6.2
+Employee ID : 100
+Name of Employee is : Ram
+Salary of Employee is  : 5000.5
 
------------------------------------------------------------------------
+Employee ID : 100
+Name of Employee is : Andy
+Salary of Employee is  : 10000
+------------------------------------------------------------------------
 6.3
+
+
 ----------------------------------------------------------------------
