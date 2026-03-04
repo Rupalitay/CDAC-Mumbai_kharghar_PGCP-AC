@@ -207,6 +207,7 @@ int main() {
 
 -----------------------------------------------------------------------
 Output:-
+
 Enter the array element : 
 3 4 6 7 8
 Array element : 
@@ -296,7 +297,7 @@ Marks : 89.8
 #include <iostream>
 using namespace std;
 class Employee{
-	 const int employeeId = 100; //(EmployeeID)
+	 const int employeeId = 100 ; //(EmployeeID)
 	 std::string empName ;//(Employee-Name)
 	 double empSalary ;//(Employee Salary
 
@@ -308,8 +309,8 @@ public:
 	 }
 
 	 //Constructor initializer list
-	 Employee(std::string en, double ems)
-	 :empName(en),empSalary(ems){
+	 Employee(int employeeId, std::string en, double ems)
+	 :employeeId(employeeId ), empName(en),empSalary(ems){
 		 }
 
 
@@ -327,7 +328,7 @@ public:
 };
 int main() {
 	Employee E;
-	Employee E2("Andy",10000);
+	Employee E2(1001,"Andy",10000);
 	E.displayEmployeeDetails();
 	E2.displayEmployeeDetails();
 	return 0;
@@ -336,13 +337,14 @@ int main() {
 -----------------------------------------------------------------------
 Output:-
 
-Employee ID : 100
+Employee ID : 0
 Name of Employee is : Ram
 Salary of Employee is  : 5000.5
 
-Employee ID : 100
+Employee ID : 1001
 Name of Employee is : Andy
 Salary of Employee is  : 10000
+
 ------------------------------------------------------------------------
 6.3
 
