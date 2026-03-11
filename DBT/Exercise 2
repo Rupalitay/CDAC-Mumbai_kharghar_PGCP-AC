@@ -63,9 +63,32 @@ Empty set (0.017 sec)
 
 
 5. Display all the Part names starting with the letter ‘S’.   
-	
+
+mysql> select pname from parts
+    -> where pname >='S' and pname <'T';
++-------+
+| pname |
++-------+
+| Screw |
++-------+
+1 row in set (0.109 sec)
 
 6. Display all the Suppliers, belonging to cities starting with the letter ‘L’.   
 
+mysql> select * from suppliers
+    -> where city like 'L';
+Empty set (0.716 sec)
+
 
 7. Display all the Projects, with the third letter in JNAME as ‘n’.  
+
+mysql> select * from projects
+    -> where jname like '__n%';
++------+-----------+----------+
+| J#   | JNAME     | CITY     |
++------+-----------+----------+
+| J2   | Windows   | New York |
+| J5   | Generator | Delhi    |
+| J8   | Console   | London   |
++------+-----------+----------+
+3 rows in set (0.922 sec)
