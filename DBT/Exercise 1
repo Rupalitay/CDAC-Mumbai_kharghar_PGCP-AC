@@ -1,0 +1,350 @@
+
+    
+1. Create the table SEMP with the following structure:-    
+    
+   EMPNO      CHAR(4)    
+   EMPNAME    CHAR(20)    
+   BASIC      FLOAT    
+   DEPTNO     CHAR(2)    
+   DEPTHEAD   CHAR(4)  
+
+mysql> CREATE TABLE SEMP
+    -> (
+    -> EMPNO CHAR(4),
+    -> EMPNAME CHAR(20),
+    -> BASIC FLOAT,
+    -> DEPTNO CHAR(20),
+    -> DEPTHEAD CHAR(4)
+    -> );
+Query OK, 0 rows affected (2.212 sec)
+
+2. Create the table SDEPT with the following structure:-    
+		
+	   DEPTNO     CHAR(2)    
+	   DEPTNAME   CHAR(15)   
+
+mysql>
+    -> CREATE TABLE SDEPT
+    -> (
+    -> DEPTNO CHAR(2),
+    -> DEPTNAME CHAR(15)
+    -> );
+Query OK, 0 rows affected (0.452 sec)
+
+3. Insert into the SDEPT table the following values:-    
+    
+		10, Development    
+		20, Training    
+
+mysql> INSERT INTO SDEPT
+    -> VALUES(10 ,'Development'),
+    -> (20,'Training');
+Query OK, 2 rows affected (1.920 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+
+
+4. Insert into the SEMP table the following values:-    
+    
+0001, SUNIL, 6000, 10    
+0002, HIREN, 8000, 20    
+0003, ALI, 4000, 10, 0001    
+0004, GEORGE, 6000, 0002   
+
+mysql> insert into semp(EMPNO, EMPNAME,BASIC,DEPTNO)
+    -> values
+    -> ('0001', 'SUNIL',6000,'10');
+Query OK, 1 row affected (0.242 sec)
+
+
+mysql> INSERT INTO SEMP(EMPNO,EMPNAME,BASIC,DEPTNO)
+    -> VALUES('0002','HIREN',8000,'20');
+Query OK, 1 row affected (0.204 sec)
+
+mysql> INSERT INTO SEMP
+    -> VALUES('0003','ALI',4000, '10', '0001');
+Query OK, 1 row affected (0.235 sec)
+
+mysql> INSERT INTO SEMP(EMPNO,EMPNAME,BASIC,DEPTNO)
+    -> VALUES('0004','GEORRGE',6000,'0002');
+Query OK, 1 row affected (0.039 sec)
+
+Create S, P, J, SPJ tables as specified below and insert a
+few rows in each table :-
+
+mysql> create table SUPPLIERS
+    -> (
+    -> `S#` CHAR(4),
+    -> SNAME CHAR(20),
+    -> STATUS INT(10),
+    -> CITY CHAR(10)
+    -> );
+Query OK, 0 rows affected, 1 warning (0.378 sec)
+
+
+mysql> create table SUPPLIER_PARTS_PROJECT
+    -> (
+    -> `S#` CHAR(4),
+    -> `P#` CHAR(4),
+    -> `J#` CHAR(4),
+    -> QTY CHAR(10)
+    -> );
+Query OK, 0 rows affected (0.279 sec)
+
+mysql> Create TABLE PROJECTS
+    -> (
+    -> `J#` CHAR(4),
+    -> JNAME CHAR(20),
+    -> CITY CHAR(10)
+    -> );
+Query OK, 0 rows affected (0.369 sec)
+
+mysql> CREATE TABLE PARTS
+    -> (
+    -> `P#` CHAR(3),
+    -> PNAME CHAR(25),
+    -> COLOR CHAR(10),
+    -> WEIGHT FLOAT(5,2),
+    -> CITY CHAR(10)
+    -> );
+Query OK, 0 rows affected, 1 warning (0.448 sec)
+
+
+
+mysql> Insert INTO SUPPLIERS
+    -> values('s1','Jay',10,'Mumbai'),
+    -> ('s2','Paul',20,'Pune'),
+    -> ('s3','Jhon',30,'Delhi'),
+    -> ('s4','Kiran',10,'Jaipur'),
+    -> ('s5','Jaya',40,'Mumbai'),
+    -> ('s6','Adi',20,'Ujjain'),
+    -> ('s7','Amiy',30,'Bihar'),
+	-> ('s3','john',30,'Athens'),
+    -> ('s4','Harry',10,'Paris'),
+    -> ('s5','Chris',40,'New York');
+Query OK, 7 rows affected (0.300 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+mysql> insert into parts
+    -> values('P1','Mirror','White',2.0,'London'),
+    -> ('P2','Battery','Black',15.6,'Mumbai'),
+    -> ('P3','Screw','Silver',1.5,'Mumbai'),
+    -> ('P4','Glass','White',5.0,'Delhi'),
+    -> ('P5','Brake','Black',1.3,'Mumbai'),
+    -> ('P6','Disc','Black',3.0,'Bihar'),
+    -> ('P7','Car Tyre','Black',5.6,'Jaipur'),
+    -> ('P8','Touch Panel','White',1.5,'Mumbai')
+	-> ('P10','Fan','Black',13,'London')
+	-> ('P9','Engine','Black',12,'Paris');
+Query OK, 8 rows affected (0.273 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+mysql> insert into projects
+    -> values('J1','Car','London'),
+    -> ('J2','Windows','New York'),
+    -> ('J3','Network','USA'),
+    -> ('J4','LCD','Mumbai'),
+    -> ('J5','Generator','Delhi'),
+    -> ('J6','Printer','Mumbai'),
+    -> ('J7','Server','Mumbai'),
+    -> ('J8','Console','London');
+Query OK, 8 rows affected (1.821 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+mysql> insert into SUPPLIER_PARTS_PROJECT
+    -> values('S1','P1','J1','300'),
+    -> ('S1','P1','J1','300'),
+    -> ('S9','P2','J3','600'),
+    -> ('S2','P3','J5','300'),
+    -> ('S5','P1','J2','100'),
+    -> ('S3','P4','J5','600'),
+    -> ('S8','P3','J2','400'),
+    -> ('S2','P5','J5','700'),
+    -> ('S3','P2','J7','3100'),
+    -> ('S1','P7','J2','3200'),
+    -> ('S4','P5','J10','100'),
+    -> ('S1','P19','J1','6200');
+Query OK, 12 rows affected (0.603 sec)
+Records: 12  Duplicates: 0  Warnings: 0
+
+Write the SELECT queries to do the following:-    
+    
+5. Display all the data from the S table.  
+SELECT * FROM SUPPLIERS;
+ 
+mysql> SELECT * FROM SUPPLIERS;
++------+-------+--------+----------+
+| S#   | SNAME | STATUS | CITY     |
++------+-------+--------+----------+
+| s1   | Jay   |     10 | Mumbai   |
+| s2   | Paul  |     20 | Pune     |
+| s3   | Jhon  |     30 | Delhi    |
+| s4   | Kiran |     10 | Jaipur   |
+| s5   | Jaya  |     40 | Mumbai   |
+| s6   | Adi   |     20 | Ujjain   |
+| s7   | Amiy  |     30 | Bihar    |
+| s3   | john  |     30 | Athens   |
+| s4   | Harry |     10 | Paris    |
+| s5   | Chris |     40 | New York |
++------+-------+--------+----------+
+10 rows in set (0.010 sec)
+
+6. Display only the S# and SNAME fields from the S table.    
+    
+mysql> SELECT `S#`,SNAME
+    ->  FROM SUPPLIERS;
++------+-------+
+| S#   | SNAME |
++------+-------+
+| s1   | Jay   |
+| s2   | Paul  |
+| s3   | Jhon  |
+| s4   | Kiran |
+| s5   | Jaya  |
+| s6   | Adi   |
+| s7   | Amiy  |
+| s3   | john  |
+| s4   | Harry |
+| s5   | Chris |
++------+-------+
+10 rows in set (0.007 sec)
+
+	
+7. Display the PNAME and COLOR from the P table for the CITY=”London”.    
+	
+	mysql> SELECT PNAME , COLOR
+    ->  FROM PARTS;
++-------------+--------+
+| PNAME       | COLOR  |
++-------------+--------+
+| Mirror      | White  |
+| Battery     | Black  |
+| Screw       | Silver |
+| Glass       | White  |
+| Brake       | Black  |
+| Disc        | Black  |
+| Car Tyre    | Black  |
+| Touch Panel | White  |
++-------------+--------+
+8 rows in set (0.062 sec)
+    
+8. Display all the Suppliers from London.
+
+    mysql>  SELECT * FROM SUPPLIERS
+    ->  WHERE CITY = 'London';
+Empty set (0.216 sec)
+    
+9. Display all the Suppliers from Paris or Athens.    
+    SELECT * FROM SUPPLIERS
+    WHERE CITY = 'Paris' or city = 'Athens';
+	
+	mysql> SELECT * FROM SUPPLIERS
+    ->     WHERE CITY = 'Paris' or city = 'Athens';
++------+-------+--------+--------+
+| S#   | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+| s3   | john  |     30 | Athens |
+| s4   | Harry |     10 | Paris  |
++------+-------+--------+--------+
+2 rows in set (0.014 sec)
+
+	
+10. Display all the Projects in Athens.    
+
+	SELECT *  
+	from projects
+	where city = 'Athens';
+    
+	mysql>  SELECT *
+    ->  from projects
+    ->  where city = 'Athens';
+Empty set (0.050 sec)
+	
+11. Display all the Partnames with the weight between 12 and 14 (inclusive of both).    
+    
+	mysql> select pname from parts
+    ->  where weight >= '12' and weight <= '14';
++--------+
+| pname  |
++--------+
+| Engine |
+| Fan    |
++--------+
+2 rows in set (0.109 sec)
+	
+12. Display all the Suppliers with a Status greater than or equal to 20.    
+    
+	mysql> select *  from suppliers
+    -> where status >= 20;
++------+-------+--------+----------+
+| S#   | SNAME | STATUS | CITY     |
++------+-------+--------+----------+
+| s2   | Paul  |     20 | Pune     |
+| s3   | Jhon  |     30 | Delhi    |
+| s5   | Jaya  |     40 | Mumbai   |
+| s6   | Adi   |     20 | Ujjain   |
+| s7   | Amiy  |     30 | Bihar    |
+| s3   | john  |     30 | Athens   |
+| s5   | Chris |     40 | New York |
++------+-------+--------+----------+
+7 rows in set (0.137 sec)
+
+	
+13. Display all the Suppliers except the Suppliers from London.    
+    
+	mysql> select *  from suppliers
+    -> where city != 'London';
++------+-------+--------+----------+
+| S#   | SNAME | STATUS | CITY     |
++------+-------+--------+----------+
+| s1   | Jay   |     10 | Mumbai   |
+| s2   | Paul  |     20 | Pune     |
+| s3   | Jhon  |     30 | Delhi    |
+| s4   | Kiran |     10 | Jaipur   |
+| s5   | Jaya  |     40 | Mumbai   |
+| s6   | Adi   |     20 | Ujjain   |
+| s7   | Amiy  |     30 | Bihar    |
+| s3   | john  |     30 | Athens   |
+| s4   | Harry |     10 | Paris    |
+| s5   | Chris |     40 | New York |
++------+-------+--------+----------+
+10 rows in set (0.012 sec)
+	
+14. Display only the Cities from where the Suppliers come from.    
+    
+	mysql> select city from suppliers;
++----------+
+| city     |
++----------+
+| Mumbai   |
+| Pune     |
+| Delhi    |
+| Jaipur   |
+| Mumbai   |
+| Ujjain   |
+| Bihar    |
+| Athens   |
+| Paris    |
+| New York |
++----------+
+10 rows in set (0.008 sec)
+	
+15. Assuming that the Part Weight is in GRAMS, display the same in 
+MILLIGRAMS and KILOGRAMS.   
+
+	mysql> select weight , weight/1000 'MILLIGRAMS',weight*1000 'KILOGRAMS'
+    -> from parts;
++--------+------------+-----------+
+| weight | MILLIGRAMS | KILOGRAMS |
++--------+------------+-----------+
+|   2.00 |   0.002000 |   2000.00 |
+|  15.60 |   0.015600 |  15600.00 |
+|   1.50 |   0.001500 |   1500.00 |
+|   5.00 |   0.005000 |   5000.00 |
+|   1.30 |   0.001300 |   1300.00 |
+|   3.00 |   0.003000 |   3000.00 |
+|   5.60 |   0.005600 |   5600.00 |
+|   1.50 |   0.001500 |   1500.00 |
+|  12.00 |   0.012000 |  12000.00 |
+|  13.00 |   0.013000 |  13000.00 |
++--------+------------+-----------+
+10 rows in set (0.083 sec)
