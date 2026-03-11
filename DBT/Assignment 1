@@ -1,0 +1,70 @@
+mysql> use kharghar;
+Database changed
+
+mysql> create table SALEPEOPLE
+    -> (
+    -> SNUM INT(4),
+    -> SNAME VARCHAR(10),
+    -> CITY VARCHAR(10),
+    -> COMM FLOAT(3,2)
+    -> );
+	Query OK, 0 rows affected, 3 warnings (0.385 sec)
+
+
+mysql> create table CUSTOMER
+    -> (
+    -> CNUM INT(4),
+    -> CNAME VARCHAR(10),
+    -> CITY VARCHAR(10),
+    -> RATING INT(4),
+    -> SNUM INT(4)
+    -> );
+Query OK, 0 rows affected, 3 warnings (0.359 sec)
+
+mysql> create table ORDERS
+    -> (
+    -> ONUM INT(4),
+    -> AMT FLOAT(7,2),
+    -> ODATE DATE,
+    -> CNUM INT(4),
+    -> SNUM INT(4)
+    -> );
+Query OK, 0 rows affected, 4 warnings (0.265 sec)
+
+
+mysql> insert into SALEPEOPLE values
+    -> (1001 ,'Peel' , 'London', .12  ),
+    -> (1002 ,'Serres', ' San Jose', .13),
+    -> (1004 ,'Motika' , 'London', .11 ) ,
+    -> (1007 ,'Rifkin' , 'Barcelona', .15),
+    -> (1003 ,'Axelrod' , 'New York',.10 );
+Query OK, 5 rows affected (0.102 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> insert into CUSTOMER values
+    -> (2001 , 'Hoffman' , 'London'   ,  100 , 1001),
+    -> (2002 , 'Giovanni', 'Rome'     ,  200 , 1003),
+    -> (2003 , 'Liu'     , 'San Jose' ,  200 , 1002),
+    -> (2004 , 'Grass'   , 'Berlin'   ,  300 , 1002 ),
+    -> (2006 , 'Clemens' , 'London'   ,  100 , 1001 ),
+    -> (2008 , 'Cisneros', 'San Jose' ,  300 , 1007 ),
+    -> (2007 , 'Pereira' , 'Rome'     ,  100 , 1004 );
+Query OK, 7 rows affected (0.145 sec)
+
+
+mysql> insert into ORDERS values
+    -> (3001 , 18.69   , '1990-10-03'   , 2008 , 1007),
+    -> (3003 , 767.19  , '1990-10-03' , 2001 , 1001),
+    -> (3002 , 1900.10 , '1990-10-03' , 2007 , 1004),
+    -> (3005 , 5160.45 , '1990-10-03' , 2003 , 1002),
+    -> (3006 , 1098.16 , '1990-10-03' , 2008 ,1007),
+    -> (3009 , 1713.23 , '1990-10-04' , 2002 , 1003),
+    -> (3007 , 75.75   , '1990-10-04' , 2004 , 1002),
+    -> (3008 , 4723.00 , '1990-10-05' , 2006 , 1001),
+    -> (3010 , 1309.95 , '1990-10-06' , 2004 , 1002),
+    -> (3011 , 9891.88 , '1990-10-06' , 2006 , 1001);
+Query OK, 10 rows affected (0.183 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+
+
