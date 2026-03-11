@@ -69,3 +69,182 @@ Default copy Constructor by Deep copy ..
 
 2. Student
 
+
+#include <iostream>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+class Student{
+    int roll;
+    string name;
+    double marks;
+
+public:
+    // default constructor
+        Student(){
+            roll = 0;
+            name = "";
+            marks = 0;
+        }
+
+//prametrized constructor
+    Student(int roll, string name, double marks){
+       this-> roll = roll;
+        this->name = name;
+        this->marks = marks;
+    }
+    //to get data form user
+    void getdata(){
+        cin>>roll>>name>>marks;
+    }
+   // write on file
+   void oswrite(ostream &os){
+       os<<roll<<" "<<name<<" "<<marks<<endl;
+   }
+
+   //Read form file
+   void ifread(istream &ifs){
+       ifs>>roll>>name>>marks;
+   }
+
+    //to display data
+    void display(){
+        cout<<"RollNo: "<<roll
+            <<"Name: "<<name
+            <<"Marks: "<<marks<<endl;
+    }
+
+	~Student(){
+	    cout<<"Destroying Student..."<<endl;
+
+	}
+
+};
+
+int main(){
+    vector <Student> S(3);
+    for (int i=0 ; i<3 ; i++){
+        S[i].getdata();
+    }
+    ofstream os("students.txt");
+    for(int i=0 ; i<3 ; i++){
+        S[i].oswrite(os);
+    }
+    Student S1;
+    os.close();
+    ifstream is("students.txt");
+    while(is) {
+            S1.ifread(is);
+            if(is)
+                S1.display();
+        }
+    is.close();
+
+	return 0;
+}
+--------------------------------------------------------------------------------------------
+Output:
+
+56 Harry 78.9
+65 Grace 45.9
+23 John 68.9
+RollNo: 56Name: HarryMarks: 78.9
+RollNo: 65Name: GraceMarks: 45.9
+RollNo: 23Name: JohnMarks: 68.9
+Destroying Student...
+Destroying Student...
+Destroying Student...
+Destroying Student...
+-------------------------------------------------------------------------------------------
+
+3. Matrix
+
+
+---------------------------------------------------------------------------------------
+Output:
+
+
+---------------------------------------------------------------------------------------
+4. Try and Catch
+
+#include<iostream>
+using namespace std;
+class DivideByZeroException{
+public:
+	const char* mess(){
+		return "Error: Division by zero is not allowed"
+	}
+};
+int main(){
+	int num, den;
+
+	cout<<"Enter numerator: ";
+	cin>>num;
+
+	cout<<"Enter numerator: ";
+	cin>>den;
+
+	try{
+
+		if(den == 0){
+		throw DivideByZeroException();//throw custom exception
+		}
+		try{
+				throw"Inner throw";
+		}catch(const char* ms){
+			cout<<"Inner Inner Catch"<<endl;
+			throw;
+			cerr<<"Inner Catch"<<ms<<endl;
+		}
+		cout<<"Result = "<< num/den <<endl;
+	}catch(DivideByZeroException e){
+        cout<< e.mess()<<endl;
+    }
+	return 0;
+}
+
+-------------------------------------------------------------------------------------------------
+Output:
+1.
+Enter numerator: 4
+Enter denominator: 0
+ERROR!
+Error: Division by zero is not allowed
+
+2.
+
+Enter numerator: 3
+Enter numerator: 2
+Inner Inner Catch
+terminate called after throwing an instance of 'char const*'
+
+----------------------------------------------------------------------------------------------------
+5.
+
+--------------------------------------------------------------------------------------------------
+Output:-
+
+
+-----------------------------------------------------------------------------------------------------
+
+6.
+
+--------------------------------------------------------------------------------------------------
+Output:-
+
+
+-----------------------------------------------------------------------------------------------------
+
+7.
+
+--------------------------------------------------------------------------------------------------
+Output:-
+
+
+-----------------------------------------------------------------------------------------------------
+
+
+
+
+--------------------------------------------------------------------------------------------------
