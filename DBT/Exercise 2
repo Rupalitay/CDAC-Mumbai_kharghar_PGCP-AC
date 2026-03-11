@@ -1,0 +1,71 @@
+1. Display the Supplier table in the descending order of CITY.   
+	
+	mysql> select * from suppliers
+    -> order by city desc;
++------+-------+--------+----------+
+| S#   | SNAME | STATUS | CITY     |
++------+-------+--------+----------+
+| s6   | Adi   |     20 | Ujjain   |
+| s2   | Paul  |     20 | Pune     |
+| s4   | Harry |     10 | Paris    |
+| s5   | Chris |     40 | New York |
+| s1   | Jay   |     10 | Mumbai   |
+| s5   | Jaya  |     40 | Mumbai   |
+| s4   | Kiran |     10 | Jaipur   |
+| s3   | Jhon  |     30 | Delhi    |
+| s7   | Amiy  |     30 | Bihar    |
+| s3   | john  |     30 | Athens   |
++------+-------+--------+----------+
+10 rows in set (0.136 sec)
+
+2. Display the Part Table in the ascending order of CITY and within the city in 
+the ascending order of Part names.   
+    mysql> select * from parts
+    -> order by city, pname;
++------+-------------+--------+--------+--------+
+| P#   | PNAME       | COLOR  | WEIGHT | CITY   |
++------+-------------+--------+--------+--------+
+| P6   | Disc        | Black  |   3.00 | Bihar  |
+| P4   | Glass       | White  |   5.00 | Delhi  |
+| P7   | Car Tyre    | Black  |   5.60 | Jaipur |
+| P10  | Fan         | Black  |  13.00 | London |
+| P1   | Mirror      | White  |   2.00 | London |
+| P2   | Battery     | Black  |  15.60 | Mumbai |
+| P5   | Brake       | Black  |   1.30 | Mumbai |
+| P3   | Screw       | Silver |   1.50 | Mumbai |
+| P8   | Touch Panel | White  |   1.50 | Mumbai |
+| P9   | Engine      | Black  |  12.00 | Paris  |
++------+-------------+--------+--------+--------+
+10 rows in set (0.034 sec)
+
+
+3. Display all the Suppliers with a status between 10 and 20.   
+	mysql> select *  from suppliers
+    -> where status>=10 and status >= 20;
++------+-------+--------+----------+
+| S#   | SNAME | STATUS | CITY     |
++------+-------+--------+----------+
+| s2   | Paul  |     20 | Pune     |
+| s3   | Jhon  |     30 | Delhi    |
+| s5   | Jaya  |     40 | Mumbai   |
+| s6   | Adi   |     20 | Ujjain   |
+| s7   | Amiy  |     30 | Bihar    |
+| s3   | john  |     30 | Athens   |
+| s5   | Chris |     40 | New York |
++------+-------+--------+----------+
+7 rows in set (0.077 sec)
+
+
+4. Display all the Parts and their Weight, which are not in the range of 10 and 15.   
+	mysql> select pname, weight from parts
+    -> where weight>15 and weight<10;
+Empty set (0.017 sec)
+
+
+5. Display all the Part names starting with the letter ‘S’.   
+	
+
+6. Display all the Suppliers, belonging to cities starting with the letter ‘L’.   
+
+
+7. Display all the Projects, with the third letter in JNAME as ‘n’.  
