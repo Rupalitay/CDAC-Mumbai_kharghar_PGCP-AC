@@ -222,9 +222,94 @@ terminate called after throwing an instance of 'char const*'
 ----------------------------------------------------------------------------------------------------
 5.
 
+#include <iostream>
+using namespace std;
+class Number;
+class Inspector{
+public:
+	void show(Number N);
+};
+class Number{
+	int value;
+
+public:
+	Number(int v=0){
+		value = v;
+	}
+
+	//Pre increment ++value
+	Number operator++(){
+		++value;
+		return *this;
+	}
+
+	//Post increment value++
+		Number operator++(int){
+			Number temp = *this;
+			value++;
+			return *this;
+		}
+
+		 // Assignment operator
+		    Number& operator=(const Number &N){
+		        value = N.value;
+		        return *this;
+		    }
+
+	friend class Inspector;
+
+	friend bool operator>(Number a, Number b);
+};
+
+//friend function definition
+bool operator>(Number a, Number b){
+	return a.value > b.value;
+}
+
+void Inspector::show(Number N){
+		cout<<"private data , value "<<N.value<<endl;
+	}
+
+int main(){
+
+	Number n1(3), n2(19);
+
+	cout<<"Original Values are: "<<endl;
+	Inspector I;
+	I.show(n1);
+	I.show(n2);
+
+	cout<<"After PreIncrement value: ";
+	++n1;
+	I.show(n1);
+
+	cout<<"After PostIncrement value: ";
+		n1++;
+		I.show(n1);
+
+	if(n1>n2)
+		cout<<"n1 is greater "<<endl;
+	else
+		cout<<"n2 is greater or equal to n1 "<<endl;
+
+	n1=n2;
+	cout<<"After assignment n1 is assigned the value of n2"<<endl;
+	I.show(n1);
+	return 0;
+}
+
 
 --------------------------------------------------------------------------------------------------
 Output:-
+
+Original Values are: 
+private data , value 3
+private data , value 19
+After PreIncrement value: private data , value 4
+After PostIncrement value: private data , value 5
+n2 is greater or equal to n1 
+After assignment n1 is assigned the value of n2
+private data , value 19
 
 
 -----------------------------------------------------------------------------------------------------
