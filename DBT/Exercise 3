@@ -1,0 +1,130 @@
+1. Display all the Supplier names with the initial letter capital.   
+
+
+
+----------------------------------------------------------------------------------------------
+2. Display all the Supplier names in upper case.   
+
+mysql> select Upper(sname) from salepeople;
++--------------+
+| Upper(sname) |
++--------------+
+| PEEL         |
+| SERRES       |
+| MOTIKA       |
+| RIFKIN       |
+| AXELROD      |
++--------------+
+5 rows in set (0.012 sec)
+-------------------------------------------------------------------------------------------------
+3. Display all the Supplier names in lower case.   
+
+mysql> select lower(sname) from salepeople;
++--------------+
+| lower(sname) |
++--------------+
+| peel         |
+| serres       |
+| motika       |
+| rifkin       |
+| axelrod      |
++--------------+
+5 rows in set (0.008 sec)
+
+------------------------------------------------------------------------------------------------
+4. Display all the Supplier names padded to 25 characters, with spaces on the left.   
+
+mysql> select lpad(sname,25,' ') from salepeople;
++---------------------------+
+| lpad(sname,25,' ')        |
++---------------------------+
+|                      PEEL |
+|                    SERRES |
+|                    MOTIKA |
+|                    RIFKIN |
+|                   AXELROD |
++---------------------------+
+5 rows in set (0.007 sec)
+-----------------------------------------------------------------------------------------------
+5. Display all the Supplier names (with ‘la’ replaced by ‘ro’).     
+HINT: REPLACE.   
+
+mysql> select replace(sname,'la','ro') from salepeople;
++--------------------------+
+| replace(sname,'la','ro') |
++--------------------------+
+| PEEL                     |
+| SERRES                   |
+| MOTIKA                   |
+| RIFKIN                   |
+| AXELROD                  |
++--------------------------+
+5 rows in set (0.010 sec)
+------------------------------------------------------------------------------------------------------
+6. Implement the above command such that ‘l’ is replaced with ‘r’ and ‘a’ is replaced 
+with ‘o’.   
+
+mysql> select replace(replace(sname,'L','R'),'A','O') from salepeople;
++-----------------------------------------+
+| replace(replace(sname,'L','R'),'A','O') |
++-----------------------------------------+
+| PEER                                    |
+| SERRES                                  |
+| MOTIKO                                  |
+| RIFKIN                                  |
+| OXERROD                                 |
++-----------------------------------------+
+5 rows in set (0.012 sec)
+-------------------------------------------------------------------------------------------------------
+7. Display the Supplier names and the lengths of the names.   
+
+mysql> select sname,length(sname) from salepeople;
++---------+---------------+
+| sname   | length(sname) |
++---------+---------------+
+| PEEL    |             4 |
+| SERRES  |             6 |
+| MOTIKA  |             6 |
+| RIFKIN  |             6 |
+| AXELROD |             7 |
++---------+---------------+
+5 rows in set (0.006 sec)
+------------------------------------------------------------------------------------------------------
+8. Use the soundex function to search for a supplier by the name of ‘BLOKE’.   
+
+mysql> select sname from salepeople
+    -> WHERE SOUNDEX(SNAME)=SOUNDEX('BLOKE');
+Empty set (0.012 sec)
+-------------------------------------------------------------------------------------------------------
+9. Display the Supplier name and the status (as Ten, Twenty, Thirty, etc.).   
+
+
+mysql> SELECT SNAME ,
+    -> CASE
+    -> WHEN SNUM = 1001 THEN 'TEN'
+    -> WHEN SNUM = 1002 THEN 'TWENTY'
+    -> WHEN SNUM = 1003 THEN 'TIRTY'
+    -> WHEN SNUM = 1004 THEN 'FOURTY'
+    -> ELSE 'OTHERS'
+    -> END 'STATUS'
+    -> FROM SALEPEOPLE;
++---------+--------+
+| SNAME   | STATUS |
++---------+--------+
+| PEEL    | TEN    |
+| SERRES  | TWENTY |
+| MOTIKA  | FOURTY |
+| RIFKIN  | OTHERS |
+| AXELROD | TIRTY  |
++---------+--------+
+5 rows in set (0.010 sec)
+-------------------------------------------------------------------------------------------------------------
+10. Display the current day (e.g. Thursday).  
+
+mysql> SELECT DISTINCT DAYNAME(SYSDATE()) FROM SALEPEOPLE;
++--------------------+
+| DAYNAME(SYSDATE()) |
++--------------------+
+| Friday             |
++--------------------+
+1 row in set (0.052 sec)
