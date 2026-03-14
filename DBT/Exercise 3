@@ -5,123 +5,158 @@
 ----------------------------------------------------------------------------------------------
 2. Display all the Supplier names in upper case.   
 
-mysql> select Upper(sname) from salepeople;
+mysql> select Upper(sname) from suppliers;
 +--------------+
 | Upper(sname) |
 +--------------+
-| PEEL         |
-| SERRES       |
-| MOTIKA       |
-| RIFKIN       |
-| AXELROD      |
+| JAY          |
+| PAUL         |
+| JHON         |
+| KIRAN        |
+| JAYA         |
+| ADI          |
+| AMIY         |
+| JOHN         |
+| HARRY        |
+| CHRIS        |
 +--------------+
-5 rows in set (0.012 sec)
+10 rows in set (0.049 sec)
 -------------------------------------------------------------------------------------------------
 3. Display all the Supplier names in lower case.   
 
-mysql> select lower(sname) from salepeople;
+mysql> select lower(sname) from suppliers;
 +--------------+
 | lower(sname) |
 +--------------+
-| peel         |
-| serres       |
-| motika       |
-| rifkin       |
-| axelrod      |
+| jay          |
+| paul         |
+| jhon         |
+| kiran        |
+| jaya         |
+| adi          |
+| amiy         |
+| john         |
+| harry        |
+| chris        |
 +--------------+
-5 rows in set (0.008 sec)
+10 rows in set (0.043 sec)
 
 ------------------------------------------------------------------------------------------------
 4. Display all the Supplier names padded to 25 characters, with spaces on the left.   
 
-mysql> select lpad(sname,25,' ') from salepeople;
+mysql> select lpad(sname,25,' ') from suppliers;
 +---------------------------+
 | lpad(sname,25,' ')        |
 +---------------------------+
-|                      PEEL |
-|                    SERRES |
-|                    MOTIKA |
-|                    RIFKIN |
-|                   AXELROD |
+|                       Jay |
+|                      Paul |
+|                      Jhon |
+|                     Kiran |
+|                      Jaya |
+|                       Adi |
+|                      Amiy |
+|                      john |
+|                     Harry |
+|                     Chris |
 +---------------------------+
-5 rows in set (0.007 sec)
+10 rows in set (0.010 sec)
 -----------------------------------------------------------------------------------------------
 5. Display all the Supplier names (with ‘la’ replaced by ‘ro’).     
 HINT: REPLACE.   
 
-mysql> select replace(sname,'la','ro') from salepeople;
+mysql> select replace(sname,'la','ro') from suppliers;
 +--------------------------+
 | replace(sname,'la','ro') |
 +--------------------------+
-| PEEL                     |
-| SERRES                   |
-| MOTIKA                   |
-| RIFKIN                   |
-| AXELROD                  |
+| Jay                      |
+| Paul                     |
+| Jhon                     |
+| Kiran                    |
+| Jaya                     |
+| Adi                      |
+| Amiy                     |
+| john                     |
+| Harry                    |
+| Chris                    |
 +--------------------------+
-5 rows in set (0.010 sec)
+10 rows in set (0.043 sec)
 ------------------------------------------------------------------------------------------------------
 6. Implement the above command such that ‘l’ is replaced with ‘r’ and ‘a’ is replaced 
 with ‘o’.   
 
-mysql> select replace(replace(sname,'L','R'),'A','O') from salepeople;
-+-----------------------------------------+
-| replace(replace(sname,'L','R'),'A','O') |
-+-----------------------------------------+
-| PEER                                    |
-| SERRES                                  |
-| MOTIKO                                  |
-| RIFKIN                                  |
-| OXERROD                                 |
-+-----------------------------------------+
-5 rows in set (0.012 sec)
+mysql> select replace(replace(sname,'L','R'),'A','O') "REPLACE" from suppliers;
++---------+
+| REPLACE |
++---------+
+| Jay     |
+| Paul    |
+| Jhon    |
+| Kiran   |
+| Jaya    |
+| Odi     |
+| Omiy    |
+| john    |
+| Harry   |
+| Chris   |
++---------+
+10 rows in set (0.006 sec)
 -------------------------------------------------------------------------------------------------------
 7. Display the Supplier names and the lengths of the names.   
 
-mysql> select sname,length(sname) from salepeople;
-+---------+---------------+
-| sname   | length(sname) |
-+---------+---------------+
-| PEEL    |             4 |
-| SERRES  |             6 |
-| MOTIKA  |             6 |
-| RIFKIN  |             6 |
-| AXELROD |             7 |
-+---------+---------------+
-5 rows in set (0.006 sec)
+mysql> select sname,length(sname) LENGTH from SUPPLIERS;
++-------+--------+
+| sname | LENGTH |
++-------+--------+
+| Jay   |      3 |
+| Paul  |      4 |
+| Jhon  |      4 |
+| Kiran |      5 |
+| Jaya  |      4 |
+| Adi   |      3 |
+| Amiy  |      4 |
+| john  |      4 |
+| Harry |      5 |
+| Chris |      5 |
++-------+--------+
+10 rows in set (0.015 sec)
 ------------------------------------------------------------------------------------------------------
 8. Use the soundex function to search for a supplier by the name of ‘BLOKE’.   
 
-mysql> select sname from salepeople
+mysql> select sname from suppliers
     -> WHERE SOUNDEX(SNAME)=SOUNDEX('BLOKE');
-Empty set (0.012 sec)
+Empty set (0.046 sec)
 -------------------------------------------------------------------------------------------------------
 9. Display the Supplier name and the status (as Ten, Twenty, Thirty, etc.).   
 
 
-mysql> SELECT SNAME ,
+mysql>  SELECT SNAME ,
     -> CASE
-    -> WHEN SNUM = 1001 THEN 'TEN'
-    -> WHEN SNUM = 1002 THEN 'TWENTY'
-    -> WHEN SNUM = 1003 THEN 'TIRTY'
-    -> WHEN SNUM = 1004 THEN 'FOURTY'
-    -> ELSE 'OTHERS'
-    -> END 'STATUS'
-    -> FROM SALEPEOPLE;
-+---------+--------+
-| SNAME   | STATUS |
-+---------+--------+
-| PEEL    | TEN    |
-| SERRES  | TWENTY |
-| MOTIKA  | FOURTY |
-| RIFKIN  | OTHERS |
-| AXELROD | TIRTY  |
-+---------+--------+
-5 rows in set (0.010 sec)
+    -> WHEN STATUS = 10 THEN 'Ten'
+    -> WHEN STATUS = 20 THEN 'Twenty'
+    -> WHEN STATUS = 30 THEN 'Thirty'
+    -> WHEN STATUS = 40 THEN 'Fourty'
+    -> else 'Others'
+    -> end STATUS
+    -> FROM SUPPLIERS;
++-------+--------+
+| SNAME | STATUS |
++-------+--------+
+| Jay   | Ten    |
+| Paul  | Twenty |
+| Jhon  | Thirty |
+| Kiran | Ten    |
+| Jaya  | Fourty |
+| Adi   | Twenty |
+| Amiy  | Thirty |
+| john  | Thirty |
+| Harry | Ten    |
+| Chris | Fourty |
++-------+--------+
+10 rows in set (0.009 sec)
 -------------------------------------------------------------------------------------------------------------
 10. Display the current day (e.g. Thursday).  
 
-mysql> SELECT DISTINCT DAYNAME(SYSDATE()) FROM SALEPEOPLE;
+mysql> SELECT DISTINCT DAYNAME(SYSDATE()) FROM Suppliers;
 +--------------------+
 | DAYNAME(SYSDATE()) |
 +--------------------+
