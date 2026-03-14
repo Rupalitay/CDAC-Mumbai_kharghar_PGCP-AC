@@ -1,0 +1,60 @@
+1) Assume each salesperson has a 12% commission. Write a query on the orders 
+table that will produce the order number, the salesperson number, and the amount 
+of the salesperson’s commission for that order. 
+
+
+
+----------------------------------------------------------------------------------------
+2) Write a query on the Customers table that will find the highest rating in each city. 
+Put the output in this form: 
+For the city (city), the highest rating is : (rating).
+
+mysql> select distinct City , max(rating) Rating
+    -> from customers
+    -> group by City;
++----------+--------+
+| City     | Rating |
++----------+--------+
+| London   |    100 |
+| Rome     |    200 |
+| San Jose |    300 |
+| Berlin   |    300 |
++----------+--------+
+4 rows in set (0.015 sec)
+
+
+------------------------------------------------------------------------------------
+3) Write a query that lists customers in descending order of rating. Output the rating 
+field first, followed by the customer’s name and number. 
+
+mysql> select max(rating) Rating , City
+    -> from customers
+    -> group by City
+    -> order by 1;
++--------+----------+
+| Rating | City     |
++--------+----------+
+|    100 | London   |
+|    200 | Rome     |
+|    300 | San Jose |
+|    300 | Berlin   |
++--------+----------+
+4 rows in set (0.013 sec)
+
+-----------------------------------------------------------------------------------------------
+4) Write a query that totals the orders for each day and places the results in 
+descending order.
+
+mysql> select Odate , count(snum) "Orders"
+    -> from orders
+    -> group by odate
+    -> order by 2 desc;
++------------+--------+
+| Odate      | Orders |
++------------+--------+
+| 1990-10-03 |      5 |
+| 1990-10-04 |      2 |
+| 1990-10-06 |      2 |
+| 1990-10-05 |      1 |
++------------+--------+
+4 rows in set (0.011 sec)
