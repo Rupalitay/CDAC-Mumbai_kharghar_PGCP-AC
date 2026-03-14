@@ -1,0 +1,78 @@
+1) Write a query that counts all orders for October 3. 
+
+mysql> select count(*) from orders;
++-------------+
+| count(*) |
++-------------+
+|          10 |
++-------------+
+1 row in set (0.088 sec)
+
+-------------------------------------------------------------------------------------
+2) Write a query that counts the number of different non-NULL city values in the 
+Customers table. 
+
+mysql> select count(city) from customers;
++-------------+
+| count(city) |
++-------------+
+|           7 |
++-------------+
+1 row in set (0.012 sec)
+
+
+----------------------------------------------------------------------------------------
+3) Write a query that selects each customer’s smallest order. 
+
+mysql> select Cname , min(amt) Smallest_Order
+    -> from orders , customers
+    -> where orders.cnum = customers.cnum
+    -> group by cname;
++----------+----------------+
+| Cname    | Smallest_Order |
++----------+----------------+
+| Cisneros |          18.69 |
+| Hoffman  |         767.19 |
+| Pereira  |        1900.10 |
+| Liu      |        5160.45 |
+| Giovanni |        1713.23 |
+| Grass    |          75.75 |
+| Clemens  |        4723.00 |
++----------+----------------+
+7 rows in set (0.050 sec)
+
+---------------------------------------------------------------------------------------------
+4) Write a query that selects the first customer, in alphabetical order, whose name 
+begins with G. 
+
+mysql> select cname from customers
+    -> where cname like 'G%';
++----------+
+| cname    |
++----------+
+| Giovanni |
+| Grass    |
++----------+
+2 rows in set (0.256 sec)
+
+----------------------------------------------------------------------------------------------
+5) Write a query that selects the highest rating in each city. 
+
+mysql> select distinct City , max(rating) Highest_rating
+    -> from customers
+    -> group by City;
++----------+----------------+
+| City     | Highest_rating |
++----------+----------------+
+| London   |            100 |
+| Rome     |            200 |
+| San Jose |            300 |
+| Berlin   |            300 |
++----------+----------------+
+4 rows in set (0.011 sec)
+
+-------------------------------------------------------------------------------------------------
+6) Write a query that counts the number of salespeople registering orders for each 
+day. (If a salesperson has more than one order on a given day, he or she should be 
+counted only once.).
+
