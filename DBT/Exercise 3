@@ -1,5 +1,21 @@
 1. Display all the Supplier names with the initial letter capital.   
 
+mysql> select concat(upper(substr(sname,1,1)),lower(substr(sname,2))) 'Initial Letter Capital ' from suppliers;
++-------------------------+
+| Initial Letter Capital  |
++-------------------------+
+| Jay                     |
+| Paul                    |
+| Jhon                    |
+| Kiran                   |
+| Jaya                    |
+| Adi                     |
+| Amiy                    |
+| John                    |
+| Harry                   |
+| Chris                   |
++-------------------------+
+10 rows in set (0.007 sec)
 
 
 ----------------------------------------------------------------------------------------------
