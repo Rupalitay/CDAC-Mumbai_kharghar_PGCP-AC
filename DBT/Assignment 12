@@ -1,6 +1,22 @@
-) Write a query that selects all customers whose ratings are equal to or greater than 
+1) Write a query that selects all customers whose ratings are equal to or greater than 
 ANY of Serres’.  
 
+mysql> select *
+    -> from customers
+    -> where rating >= any
+    -> (select rating from customers
+    -> where customers.snum in
+    -> (select snum from salepeople
+    -> where sname = 'SERRES'));
++------+----------+----------+--------+------+
+| CNUM | CNAME    | CITY     | RATING | SNUM |
++------+----------+----------+--------+------+
+| 2002 | Giovanni | Rome     |    200 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1002 |
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
++------+----------+----------+--------+------+
+4 rows in set (0.056 sec)
 
 
 ---------------------------------------------------------------------------------------
