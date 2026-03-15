@@ -1,0 +1,91 @@
+1) Write a query that lists each order number followed by the name of the customer 
+who made the order. 
+
+mysql> SELECT CNAME , ONUM FROM CUSTOMERS, ORDERS
+    -> WHERE CUSTOMERS.CNUM = ORDERS.CNUM;
++----------+------+
+| CNAME    | ONUM |
++----------+------+
+| Cisneros | 3001 |
+| Hoffman  | 3003 |
+| Pereira  | 3002 |
+| Liu      | 3005 |
+| Cisneros | 3006 |
+| Giovanni | 3009 |
+| Grass    | 3007 |
+| Clemens  | 3008 |
+| Grass    | 3010 |
+| Clemens  | 3011 |
++----------+------+
+10 rows in set (0.122 sec)
+
+----------------------------------------------------------------------------------------
+2) Write a query that gives the names of both the salesperson and the customer for 
+each order along with the order number. 
+
+mysql> SELECT ONUM , CNAME , SNAME
+    -> FROM CUSTOMERS ,ORDERS, SALEPEOPLE
+    -> WHERE ORDERS.SNUM = CUSTOMERS.SNUM AND ORDERS.SNUM = SALEPEOPLE.SNUM
+    -> ORDER BY 1;
++------+----------+---------+
+| ONUM | CNAME    | SNAME   |
++------+----------+---------+
+| 3001 | Cisneros | RIFKIN  |
+| 3002 | Pereira  | MOTIKA  |
+| 3003 | Hoffman  | PEEL    |
+| 3003 | Clemens  | PEEL    |
+| 3005 | Liu      | SERRES  |
+| 3005 | Grass    | SERRES  |
+| 3006 | Cisneros | RIFKIN  |
+| 3007 | Liu      | SERRES  |
+| 3007 | Grass    | SERRES  |
+| 3008 | Hoffman  | PEEL    |
+| 3008 | Clemens  | PEEL    |
+| 3009 | Giovanni | AXELROD |
+| 3010 | Liu      | SERRES  |
+| 3010 | Grass    | SERRES  |
+| 3011 | Hoffman  | PEEL    |
+| 3011 | Clemens  | PEEL    |
++------+----------+---------+
+16 rows in set (0.049 sec)
+
+------------------------------------------------------------------------------------------
+3) Write a query that produces all customers serviced by salespeople with a 
+commission above 12%. Output the customer’s name, the salesperson’s name, 
+and the salesperson’s rate of commission. 
+
+mysql> SELECT CNAME , SNAME, COMM
+    -> FROM SALEPEOPLE, CUSTOMERS
+    -> WHERE SALEPEOPLE.COMM > 0.12 AND CUSTOMERS.SNUM = SALEPEOPLE.SNUM;
++----------+--------+------+
+| CNAME    | SNAME  | COMM |
++----------+--------+------+
+| Liu      | SERRES | 0.13 |
+| Grass    | SERRES | 0.13 |
+| Cisneros | RIFKIN | 0.15 |
++----------+--------+------+
+3 rows in set (0.009 sec)
+
+
+-----------------------------------------------------------------------------------------------
+4) Write a query that calculates the amount of the salesperson’s commission on each 
+order by a customer with a rating above 100.
+
+mysql> SELECT CNAME, SNAME , ORDERS.AMT/SALEPEOPLE.COMM
+    -> "COMMISION"
+    -> FROM SALEPEOPLE , CUSTOMERS , ORDERS
+    -> WHERE CUSTOMERS.RATING > 100 AND ORDERS.SNUM = SALEPEOPLE.SNUM  AND CUSTOMERS.SNUM = ORDERS.SNUM;
++----------+---------+--------------+
+| CNAME    | SNAME   | COMMISION    |
++----------+---------+--------------+
+| Cisneros | RIFKIN  |   124.599999 |
+| Liu      | SERRES  | 39695.772189 |
+| Grass    | SERRES  | 39695.772189 |
+| Cisneros | RIFKIN  |  7321.066604 |
+| Giovanni | AXELROD | 17132.299549 |
+| Liu      | SERRES  |   582.692329 |
+| Grass    | SERRES  |   582.692329 |
+| Liu      | SERRES  | 10076.538456 |
+| Grass    | SERRES  | 10076.538456 |
++----------+---------+--------------+
+9 rows in set (0.051 sec)
