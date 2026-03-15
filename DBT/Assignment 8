@@ -2,6 +2,28 @@
 table that will produce the order number, the salesperson number, and the amount 
 of the salesperson’s commission for that order. 
 
+mysql> SELECT CNAME , SNAME, COMM
+    -> FROM SALEPEOPLE, CUSTOMERS
+    -> WHERE SALEPEOPLE.COMM > 0.12;
++----------+--------+------+
+| CNAME    | SNAME  | COMM |
++----------+--------+------+
+| Hoffman  | RIFKIN | 0.15 |
+| Hoffman  | SERRES | 0.13 |
+| Giovanni | RIFKIN | 0.15 |
+| Giovanni | SERRES | 0.13 |
+| Liu      | RIFKIN | 0.15 |
+| Liu      | SERRES | 0.13 |
+| Grass    | RIFKIN | 0.15 |
+| Grass    | SERRES | 0.13 |
+| Clemens  | RIFKIN | 0.15 |
+| Clemens  | SERRES | 0.13 |
+| Cisneros | RIFKIN | 0.15 |
+| Cisneros | SERRES | 0.13 |
+| Pereira  | RIFKIN | 0.15 |
+| Pereira  | SERRES | 0.13 |
++----------+--------+------+
+14 rows in set (0.062 sec)
 
 
 ----------------------------------------------------------------------------------------
