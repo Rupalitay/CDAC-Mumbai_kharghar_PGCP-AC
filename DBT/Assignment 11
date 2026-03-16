@@ -40,3 +40,15 @@ mysql> select cname , rating
 whom this total is greater than the amount of the largest order in the table.
 
 
+mysql> select sname from salepeople
+    -> where (select sum(amt) from orders where salepeople.snum = orders.snum ) >= (select max(Amt) from orders);
++-------+
+| sname |
++-------+
+| PEEL  |
++-------+
+1 row in set (0.010 sec)
+
+
+
+
