@@ -34,39 +34,114 @@ mysql> select distinct avg(weight) from parts;
 ----------------------------------------------------------------------------
 4. Display the total Quantity sold for part ‘P1’.   
 
-
+mysql> select `P#`, sum(qty) "Total Quantity"
+    -> from supplier_parts_project
+    -> where `P#` = 'P1'
+    -> group by `P#`;
++------+----------------+
+| P#   | Total Quantity |
++------+----------------+
+| P1   |            700 |
++------+----------------+
+1 row in set (0.064 sec)
 
 ---------------------------------------------------------------------------------
 5. Display the total Quantity sold for each part.   
 
-
+mysql> select `P#`, sum(qty) "Total Quantity"
+    -> from supplier_parts_project
+    -> group by `P#`;
++------+----------------+
+| P#   | Total Quantity |
++------+----------------+
+| P1   |            700 |
+| P2   |           3700 |
+| P3   |            700 |
+| P4   |            600 |
+| P5   |            800 |
+| P7   |           3200 |
+| P19  |           6200 |
++------+----------------+
+7 rows in set (0.067 sec)
 
 --------------------------------------------------------------------------------------
 6. Display the average Quantity sold for each part.   
 
+mysql> select `P#`, avg(qty) "Average Quantity"
+    -> from supplier_parts_project
+    -> group by `P#`;
++------+--------------------+
+| P#   | Average Quantity   |
++------+--------------------+
+| P1   | 233.33333333333334 |
+| P2   |               1850 |
+| P3   |                350 |
+| P4   |                600 |
+| P5   |                400 |
+| P7   |               3200 |
+| P19  |               6200 |
++------+--------------------+
+7 rows in set (0.051 sec)
 
 
 --------------------------------------------------------------------------------------
 7. Display the maximum Quantity sold for each part, provided the maximum Quantity 
 is greater than 800.   
 
-
+mysql> select `P#`, max(cast(qty as unsigned)) "Maximum Quantity"
+    -> from supplier_parts_project
+    -> group by `P#`
+    -> having max(cast(qty as unsigned)) > 800;
++------+------------------+
+| P#   | Maximum Quantity |
++------+------------------+
+| P2   |             3100 |
+| P7   |             3200 |
+| P19  |             6200 |
++------+------------------+
+3 rows in set (0.092 sec)
 
 
 ----------------------------------------------------------------------------------------
 8. Display the Status and the count of Suppliers with that Status.  
 
-
+mysql> select Status , count(Status)
+    -> from suppliers
+    -> group by Status;
++--------+---------------+
+| Status | count(Status) |
++--------+---------------+
+|     10 |             3 |
+|     20 |             2 |
+|     30 |             3 |
+|     40 |             2 |
++--------+---------------+
+4 rows in set (0.042 sec)
 
 ----------------------------------------------------------------------------
 9. Display the count of Projects going on in different cities.   
 
-
+mysql> select City, count(jname)
+    -> from projects
+    -> group by City
+    -> order by City;
++----------+--------------+
+| City     | count(jname) |
++----------+--------------+
+| Delhi    |            1 |
+| London   |            2 |
+| Mumbai   |            3 |
+| New York |            1 |
+| USA      |            1 |
++----------+--------------+
+5 rows in set (0.010 sec)
 
 ---------------------------------------------------------------------------------------
 10. What is the difference between COUNT(Status) and COUNT(*) ?   
 
-
+    The group function is count() is used to count all the columns and they are independent of datatypes.
+The count(Status) will count all the values which are not NULL. 
+The count(*) will count all the values including NULL also.
 
 
 ---------------------------------------------------------------------------------------------
