@@ -1,0 +1,42 @@
+1) Write a command that puts the following values, in their given order, into the 
+salespeople table: city – San Jose, name – Blanco, comm – NULL, snum – 1100. 
+
+mysql> insert into salepeople
+    -> (city,sname,comm,snum)
+    -> values
+    -> ('San Jose','Blanco',Null,1100);
+Query OK, 1 row affected (0.567 sec)
+
+-------------------------------------------------------------------------------------
+2) Write a command that removes all orders from customer Clemens from the 
+Orders table. 
+
+mysql> delete from orders
+    -> where cnum =
+    -> (select cnum from customers
+    -> where cname = 'Clemens');
+Query OK, 2 rows affected (0.132 sec)
+
+------------------------------------------------------------------------------------
+3) Write a command that increases the rating of all customers in Rome by 100. 
+
+mysql> update customers
+    -> set rating = rating + 100
+    -> where city = 'Rome';
+Query OK, 2 rows affected (0.099 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+----------------------------------------------------------------------------------
+4) Salesperson Serres has left the company. Assign her customers to Motika.
+
+mysql> update customers
+    -> set snum =
+    -> (select snum from salepeople
+    -> where sname = 'MOTIKA')
+    -> Where snum =
+    -> (select snum from salepeople
+    -> where sname = 'SERRES');
+Query OK, 2 rows affected (0.059 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+
