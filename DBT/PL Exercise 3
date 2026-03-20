@@ -142,8 +142,68 @@ mysql> SELECT * FROM TEM;
 level, radar, etc. Write a program to Selects from any table a five letter word and 
 determine whether it is a palindrome.    
 
+DELIMITER //
+CREATE PROCEDURE PCC34()
+BEGIN
+	DECLARE PAL CHAR(5);
+    DECLARE TEMP CHAR(5) DEFAULT '';
+    DECLARE L INT ;
+    SELECT PNAME INTO PAL FROM PARTS LIMIT 1 OFFSET 10;
+    SET L = LENGTH(PAL);
+    WHILE L > 0 DO
+    SET TEMP = CONCAT(TEMP,SUBSTR(PAL, L ,1));
+    SET L = L - 1;
+    END WHILE;
+    IF TEMP = PAL THEN
+		INSERT INTO TEMCC VALUES('1' , PAL ,'IS PALINDROME');
+	ELSE 
+		INSERT INTO TEMCC VALUES('2' , PAL ,'IS NOT PALINDROME');
+    END IF;    
+END; //
+DELIMITER ;
 
+mysql> CALL PCC34();
+Query OK, 1 row affected (0.120 sec)
+
+mysql> SELECT * FROM TEMCC;
++-------+--------+---------------+
+| FIRST | SECOND | THIRD         |
++-------+--------+---------------+
+| 1     | LINIL  | IS PALINDROME |
++-------+--------+---------------+
+1 row in set (0.009 sec)
 
 ---------------------------------------------------------------------------
 5. Modify the above program to Select from any table a variable length word. This 
 requires determining how many characters are read in.
+
+DELIMITER //
+CREATE PROCEDURE PCC35()
+BEGIN
+	DECLARE PAL VARCHAR(150);
+    DECLARE TEMP VARCHAR(150) DEFAULT '';
+    DECLARE L INT ;
+    SELECT PNAME INTO PAL FROM PARTS LIMIT 1 OFFSET 11;
+    SET L = LENGTH(PAL);
+    WHILE L > 0 DO
+    SET TEMP = CONCAT(TEMP,SUBSTR(PAL, L ,1));
+    SET L = L - 1;
+    END WHILE;
+    IF TEMP = PAL THEN
+		INSERT INTO TEMCC VALUES('1' , PAL ,'IS PALINDROME');
+	ELSE 
+		INSERT INTO TEMCC VALUES('2' , PAL ,'IS NOT PALINDROME');
+    END IF;    
+END; //
+DELIMITER ;
+mysql> CALL PCC35();
+Query OK, 1 row affected (0.085 sec)
+
+mysql> SELECT * FROM TEMCC;
++-------+--------+---------------+
+| FIRST | SECOND | THIRD         |
++-------+--------+---------------+
+| 1     | LINIL  | IS PALINDROME |
+| 1     | REPPER | IS PALINDROME |
++-------+--------+---------------+
+2 rows in set (0.007 sec)
