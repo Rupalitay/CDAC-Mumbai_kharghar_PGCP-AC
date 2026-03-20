@@ -1,0 +1,165 @@
+
+
+CREATE TABLE CUSTOMERSS
+(
+	METER_NUMBER VARCHAR(40),
+    METER_TYPE CHAR(1),
+    PREVIOUS_READING INT,
+    CURRENT_READING INT,
+    CUSTOMER_TYPE CHAR(1),
+    LAST_BILL_PAYMENT CHAR(1)
+);
+-----------------------------------------------------------------
+CREATE TABLE BILLTABL
+(
+	METER_NO VARCHAR(40),
+    UNITS_USED INT,
+    RATE FLOAT,
+    AMOUNT FLOAT,
+    SURCHARGE FLOAT,
+    EXCISE FLOAT,
+    NET FLOAT
+);
+----------------------------------------------------------------------
+CREATE TABLE BILLT
+(
+	TOTAL_AMOUNT FLOAT,
+    SURCHARGE FLOAT,
+    EXCISE FLOAT,
+    NET FLOAT
+);
+---------------------------------------------------------------------------------
+mysql> SELECT * FROM CUSTOMERSS;
++--------------+------------+------------------+-----------------+---------------+-------------------+
+| METER_NUMBER | METER_TYPE | PREVIOUS_READING | CURRENT_READING | CUSTOMER_TYPE | LAST_BILL_PAYMENT |
++--------------+------------+------------------+-----------------+---------------+-------------------+
+| 1001         | S          |              345 |             370 | A             | N                 |
+| 1002         | T          |              340 |             450 | I             | Y                 |
+| 1003         | T          |              290 |             350 | C             | Y                 |
+| 1004         | S          |              280 |             320 | R             | Y                 |
+| 1005         | T          |              333 |             389 | C             | N                 |
++--------------+------------+------------------+-----------------+---------------+-------------------+
+5 rows in set (0.008 sec)
+
+-----------------------------------------------------------------------------------------------
+STORED PROCEDURE 
+ 
+
+BDELIMITER //
+CREATE PROCEDURE BILL_PROCED()
+BEGIN
+	DECLARE V_METER_NO VARCHAR(40);
+    DECLARE UNITS_USED INT  ;
+    DECLARE RATE FLOAT ;
+    DECLARE AMOUNT FLOAT ;
+    DECLARE SURCHARGE FLOAT  ;
+    DECLARE EXCISE FLOAT ;
+    DECLARE NET FLOAT ;
+    
+    DECLARE V_METER_TYPE CHAR(1);
+    DECLARE V_PREVIOUS_READING INT;
+    DECLARE V_CURRENT_READING INT;
+    DECLARE V_CUSTOMER_TYPE CHAR(1);
+    DECLARE V_LAST_BILL_PAYMENT CHAR(1);
+    
+    DECLARE DONE INT DEFAULT 0;
+    
+	DECLARE C1 CURSOR FOR
+    SELECT METER_NUMBER , METER_TYPE, PREVIOUS_READING, CURRENT_READING, CUSTOMER_TYPE, LAST_BILL_PAYMENT  
+    FROM CUSTOMERSS;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET DONE = 1;
+    SET DONE = 0;
+    OPEN C1;
+	CURSOR_C1_LOOP : LOOP	
+			FETCH C1 INTO V_METER_NO , V_METER_TYPE, V_PREVIOUS_READING, V_CURRENT_READING, V_CUSTOMER_TYPE, V_LAST_BILL_PAYMENT ;
+
+            IF DONE = 1 THEN 
+				LEAVE CURSOR_C1_LOOP;
+            END IF;    
+            
+            SET V_CURRENT_READING = IFNULL(V_CURRENT_READING,0);
+            SET V_PREVIOUS_READING = IFNULL(V_PREVIOUS_READING,0);
+
+            
+            SET RATE = 0;
+			SET AMOUNT = 0;
+			SET SURCHARGE = 0;
+			SET EXCISE = 0;
+			SET NET = 0;
+            
+             /*CALCULATION FOR UNITS USED */
+            SET UNITS_USED = V_CURRENT_READING - V_PREVIOUS_READING;
+            
+            /*RATE CALCUTATION */
+			IF V_CUSTOMER_TYPE = 'A' THEN
+				SET RATE = 1 ;
+			ELSEIF V_CUSTOMER_TYPE = 'I' THEN
+				SET RATE = 1.25;
+			ELSEIF V_CUSTOMER_TYPE = 'C' THEN
+				SET RATE = 1.50;
+			ELSEIF V_CUSTOMER_TYPE = 'R' THEN
+				SET RATE = 1.30;
+            ELSE 
+				SET RATE = 1;
+			END IF;  
+            
+             /* CALCUTATION  FOR AMOUNT*/
+			SET AMOUNT = RATE * UNITS_USED;
+            
+             /* CALCUTATION OF SURCHAGE */
+            IF V_LAST_BILL_PAYMENT = 'Y' THEN
+				IF V_METER_TYPE = 'T' THEN 
+					SET SURCHARGE  = 0.05 * AMOUNT;
+				ELSE 
+					SET SURCHARGE = 0.10 * AMOUNT;
+				END IF;
+            ELSE 
+				SET SURCHARGE = 0 ;
+            END IF;
+            
+            /*CALCULATION FOR EXCISE*/
+            SET EXCISE = 0.30 * (AMOUNT + SURCHARGE);
+            
+            /*CALCULATION OF NET*/
+            SET NET = AMOUNT + SURCHARGE + EXCISE ;
+            
+            INSERT INTO BILLTABL 
+			(METER_NO, UNITS_USED, RATE, AMOUNT, SURCHARGE, EXCISE, NET)
+			VALUES 
+			(V_METER_NO, UNITS_USED, RATE, AMOUNT, SURCHARGE, EXCISE, NET);
+                
+            INSERT INTO BILLT ( TOTAL_AMOUNT, SURCHARGE, EXCISE, NET)
+            VALUES( AMOUNT, SURCHARGE, EXCISE, NET);
+            
+	END LOOP CURSOR_C1_LOOP;
+	CLOSE C1;
+END; //
+DELIMITER ;
+------------------------------------------------------------------------------------
+mysql> CALL BILL_PROCED();
+Query OK, 0 rows affected (0.303 sec)
+
+-----------------------------------------------------------------------------------------
+mysql> SELECT * FROM BILLTABL;
++----------+------------+------+--------+-----------+---------+---------+
+| METER_NO | UNITS_USED | RATE | AMOUNT | SURCHARGE | EXCISE  | NET     |
++----------+------------+------+--------+-----------+---------+---------+
+| 1001     |         25 |    1 |     25 |         0 |     7.5 |    32.5 |
+| 1002     |        110 | 1.25 |  137.5 |     6.875 | 43.3125 | 187.688 |
+| 1003     |         60 |  1.5 |     90 |       4.5 |   28.35 |  122.85 |
+| 1004     |         40 |  1.3 |     52 |       5.2 |   17.16 |   74.36 |
+| 1005     |         56 |  1.5 |     84 |         0 |    25.2 |   109.2 |
++----------+------------+------+--------+-----------+---------+---------+
+5 rows in set (0.007 sec)
+-------------------------------------------------------------------------------------------------
+mysql> SELECT * FROM BILLT;
++--------------+-----------+---------+---------+
+| TOTAL_AMOUNT | SURCHARGE | EXCISE  | NET     |
++--------------+-----------+---------+---------+
+|           25 |         0 |     7.5 |    32.5 |
+|        137.5 |     6.875 | 43.3125 | 187.688 |
+|           90 |       4.5 |   28.35 |  122.85 |
+|           52 |       5.2 |   17.16 |   74.36 |
+|           84 |         0 |    25.2 |   109.2 |
++--------------+-----------+---------+---------+
+5 rows in set (0.006 sec)
