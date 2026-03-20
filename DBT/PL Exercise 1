@@ -1,0 +1,194 @@
+1. Write a program that computes the perimeter and the area of a rectangle. Define 
+your own values for the length and width. (Assuming that L and W are the length 
+and width of the rectangle, Perimeter = 2*(L+W) and Area = L*W.    
+
+CREATE TABLE TEMPP
+(
+FIRST FLOAT,
+SECOND FLOAT
+);
+
+
+DELIMITER //
+CREATE PROCEDURE PA1()
+BEGIN 
+DECLARE L FLOAT  DEFAULT 24;
+DECLARE W FLOAT  DEFAULT 32;
+DECLARE PER FLOAT ;
+DECLARE AREA FLOAT;
+SET PER = 2 * ( L + W);
+SET AREA = L * W;
+INSERT INTO TEMPP VALUES(PER, AREA);
+END; //
+DELIMITER ;
+
+CALL PA1();
+
+SELECT * FROM TEMPP;
+
+mysql> SELECT * FROM TEMPP;
++-------+--------+
+| FIRST | SECOND |
++-------+--------+
+|   112 |    768 |
++-------+--------+
+1 row in set (0.010 sec)
+
+
+------------------------------------------------------------------------------------------------
+2. Write a program that declares an integer variable called num, assigns a value to it, 
+and computes and inserts into the tempp table the value of the variable itself, its 
+square, and its cube.     
+
+DELIMITER //
+CREATE PROCEDURE PA2()
+BEGIN 
+	DECLARE NUM INT ;
+    DECLARE SQU INT;
+    DECLARE CUB INT;
+    SET NUM = 10;
+    SET SQU = NUM * NUM;
+    SET CUB = NUM * NUM * NUM;
+    INSERT INTO TEMPP VALUES (SQU , CUB);
+END; //
+DELIMITER ;  
+
+CALL PA2();
+
+
+
+mysql> SELECT * FROM TEMPP;
++-------+--------+
+| FIRST | SECOND |
++-------+--------+
+|   100 |   1000 |
++-------+--------+
+
+
+------------------------------------------------------------------------------------------------
+3. Convert a temperature in Fahrenheit (F) to its equivalent in Celsius (C) and vice 
+versa. The required formulae are:-  C= (F-32)*5/9    
+F= 9/5*C + 32    
+
+
+DELIMITER //
+CREATE PROCEDURE PA3(C FLOAT , F FLOAT )
+BEGIN
+	DECLARE FAH FLOAT;
+    DECLARE CAL FLOAT;
+    SET CAL = (F - 32)*5/9;
+    SET FAH = 9/5 * C + 32;
+    INSERT INTO TEMPP VALUES(FAH ,CAL);
+END ; //
+DELIMITER ;  
+
+mysql> CALL PA3(34.3,98.34);
+Query OK, 1 row affected (0.105 sec)
+
+mysql> SELECT * FROM TEMPP;
++-------+---------+
+| FIRST | SECOND  |
++-------+---------+
+|   100 |    1000 |
+| 93.74 | 36.8556 |
++-------+---------+
+2 rows in set (0.008 sec)
+
+--------------------------------------------------------------------------------------------
+4. Convert a number of inches into yards, feet, and inches. For example, 124 inches 
+equals 3 yards, 1 foot, and 4 inches.    
+
+
+DELIMITER //
+CREATE PROCEDURE PA4()
+BEGIN 
+	DECLARE INC INT DEFAULT 124;
+    DECLARE YARDS INT;
+    DECLARE FOOT INT;
+    DECLARE INCE INT;
+    DECLARE REM INT;
+    
+    SET YARDS = INC / 36;
+    SET REM = INC % 36;
+    SET FOOT = REM / 12;
+    SET INCE = REM % 12;
+    
+    SELECT YARDS , FOOT , INCE ;
+END; //
+DELIMITER ;    
+
+
+
+mysql> CALL PA4();
++-------+------+------+
+| YARDS | FOOT | INCE |
++-------+------+------+
+|     3 |    1 |    4 |
++-------+------+------+
+1 row in set (0.118 sec)
+
+Query OK, 0 rows affected (0.166 sec)
+
+-------------------------------------------------------------------------------------------
+5. Write a program that enables a user to input an integer. The program should then 
+state whether the integer is evenly divisible by 5.    
+
+
+DELIMITER //
+CREATE PROCEDURE PCA5(X INT)
+BEGIN 
+	IF X%5 = 0 THEN 
+		INSERT INTO TEMC VALUES (X, 'IS DIVISIBLE BY 5');
+    ELSE 
+		INSERT INTO TEMC VALUES(X, 'IS NOT DIVISIBLE BY 5');
+    END IF;    
+END; //
+DELIMITER ;
+
+
+mysql> CALL PCA5(6);
+Query OK, 1 row affected (0.099 sec)
+
+mysql> CALL PCA5(20);
+Query OK, 1 row affected (0.198 sec)
+
+mysql> SELECT * FROM TEMC;
++-------+-----------------------+
+| FIRST | SECOND                |
++-------+-----------------------+
+|     6 | IS NOT DIVISIBLE BY 5 |
+|    20 | IS DIVISIBLE BY 5     |
++-------+-----------------------+
+2 rows in set (0.006 sec)
+
+
+--------------------------------------------------------------
+6. Your block should read in two real numbers and tell whether the product of the two 
+numbers is equal to or greater than 100. 
+
+
+DELIMITER //
+CREATE PROCEDURE PA6(X INT, Y INT )
+BEGIN 
+	DECLARE TEMP INT;
+	SET TEMP = X * Y;
+	IF TEMP> 100 THEN 
+		INSERT INTO TE VALUES (X ,Y, 'PRODUCT IS GREATER THAN 100');
+    ELSEIF TEMP = 100 THEN
+		INSERT INTO TE VALUES (X ,Y, 'PRODUCT IS EQUAL TO 100');
+    ELSE 
+		INSERT INTO TE VALUES(X, Y, 'PRODUCT IS LESS THEN 100');
+    END IF;    
+END; //
+DELIMITER ;
+
+mysql> CALL PA6(12,13);
+Query OK, 1 row affected (0.116 sec)
+
+mysql> SELECT * FROM TE;
++-------+--------+-----------------------------+
+| FIRST | SECOND | VALUE                       |
++-------+--------+-----------------------------+
+|    12 |     13 | PRODUCT IS GREATER THAN 100 |
++-------+--------+-----------------------------+
+1 row in set (0.007 sec)
