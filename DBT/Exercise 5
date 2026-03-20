@@ -1,0 +1,195 @@
+1. Display the Supplier name and the Quantity sold. 
+
+mysql> select SNAME , SUM(QTY) FROM SUPPLIERS , SUPPLIER_PARTS_PROJECT
+    -> WHERE SUPPLIERS.`S#` = SUPPLIER_PARTS_PROJECT.`S#`
+    -> GROUP BY SNAME
+    -> ORDER BY 1;
++-------+----------+
+| SNAME | SUM(QTY) |
++-------+----------+
+| Chris |      100 |
+| Harry |      100 |
+| Jay   |    10000 |
+| Jaya  |      100 |
+| Jhon  |     3700 |
+| john  |     3700 |
+| Kiran |      100 |
+| Paul  |     1000 |
++-------+----------+
+8 rows in set (0.011 sec)
+
+---------------------------------------------------------------------------
+2. Display the Part name and Quantity sold.   
+
+mysql> select PNAME , SUM(QTY) FROM PARTS , SUPPLIER_PARTS_PROJECT
+    -> WHERE PARTS.`P#` = SUPPLIER_PARTS_PROJECT.`P#`
+    -> GROUP BY PNAME
+    -> ORDER BY 1;
++----------+----------+
+| PNAME    | SUM(QTY) |
++----------+----------+
+| Battery  |     3700 |
+| Brake    |      800 |
+| Car Tyre |     3200 |
+| Glass    |      600 |
+| Mirror   |      700 |
+| Screw    |      700 |
++----------+----------+
+6 rows in set (0.015 sec)
+
+----------------------------------------------------------------------
+3. Display the Project name and Quantity sold.   
+
+mysql> select JNAME , SUM(QTY) FROM PROJECTS , SUPPLIER_PARTS_PROJECT
+    -> WHERE PROJECTS.`J#` = SUPPLIER_PARTS_PROJECT.`J#`
+    -> GROUP BY JNAME;
++-----------+----------+
+| JNAME     | SUM(QTY) |
++-----------+----------+
+| Car       |     6800 |
+| Network   |      600 |
+| Generator |     1600 |
+| Windows   |     3700 |
+| Server    |     3100 |
++-----------+----------+
+5 rows in set (0.099 sec)
+-----------------------------------------------------------------
+4. Display the Supplier name, Part name, Project name and Quantity sold.   
+
+mysql> select SNAME , PNAME, JNAME , SUM(QTY) FROM SUPPLIERS , PARTS, PROJECTS , SUPPLIER_PARTS_PROJECT
+    -> WHERE PROJECTS.`J#` = SUPPLIER_PARTS_PROJECT.`J#`
+    -> AND
+    -> PARTS.`P#` = SUPPLIER_PARTS_PROJECT.`P#`
+    -> AND
+    -> SUPPLIERS.`S#` = SUPPLIER_PARTS_PROJECT.`S#`
+    -> GROUP BY SNAME, PNAME , JNAME ;
++-------+----------+-----------+----------+
+| SNAME | PNAME    | JNAME     | SUM(QTY) |
++-------+----------+-----------+----------+
+| Chris | Mirror   | Windows   |      100 |
+| Jaya  | Mirror   | Windows   |      100 |
+| Jay   | Mirror   | Car       |      600 |
+| john  | Battery  | Server    |     3100 |
+| Jhon  | Battery  | Server    |     3100 |
+| Paul  | Screw    | Generator |      300 |
+| john  | Glass    | Generator |      600 |
+| Jhon  | Glass    | Generator |      600 |
+| Paul  | Brake    | Generator |      700 |
+| Jay   | Car Tyre | Windows   |     3200 |
++-------+----------+-----------+----------+
+10 rows in set (0.016 sec)
+---------------------------------------------------------------------------
+5. Display the Supplier name, Supplying Parts to a Project in the same City.
+
+mysql> SELECT SNAME , JNAME
+    -> FROM SUPPLIERS , PROJECTS
+    -> WHERE SUPPLIERS.CITY = PROJECTS.CITY;
++-------+-----------+
+| SNAME | JNAME     |
++-------+-----------+
+| Jay   | Server    |
+| Jay   | Printer   |
+| Jay   | LCD       |
+| Jhon  | Generator |
+| Jaya  | Server    |
+| Jaya  | Printer   |
+| Jaya  | LCD       |
+| Chris | Windows   |
++-------+-----------+
+8 rows in set (0.009 sec)
+
+--------------------------------------------------------------------------------
+6. Display the Part name that is ‘Red’ is color, and the Quantity sold.   
+
+
+mysql> select PNAME , SUM(QTY) FROM PARTS , SUPPLIER_PARTS_PROJECT
+    -> WHERE PARTS.`P#` = SUPPLIER_PARTS_PROJECT.`P#`
+    -> AND
+    -> PARTS.COLOR = 'Red'
+    -> GROUP BY PNAME;
+Empty set (0.013 sec)
+
+--------------------------------------------------------------------------------
+7. Display all the Quantity sold by Suppliers with the Status = 20.   
+
+mysql> select SNAME , SUM(QTY) FROM SUPPLIERS , SUPPLIER_PARTS_PROJECT
+    -> WHERE SUPPLIERS.`S#` = SUPPLIER_PARTS_PROJECT.`S#`
+    -> AND
+    -> SUPPLIERS.STATUS = 20
+    -> GROUP BY SNAME;
++-------+----------+
+| SNAME | SUM(QTY) |
++-------+----------+
+| Paul  |     1000 |
++-------+----------+
+1 row in set (0.010 sec)
+
+----------------------------------------------------------------------------------
+8. Display all the Parts and Quantity with a Weight > 14.   
+
+mysql> select PNAME , SUM(QTY) FROM PARTS , SUPPLIER_PARTS_PROJECT
+    -> WHERE PARTS.`P#` = SUPPLIER_PARTS_PROJECT.`P#`
+    -> AND
+    -> PARTS.WEIGHT > 14
+    -> GROUP BY PNAME;
++---------+----------+
+| PNAME   | SUM(QTY) |
++---------+----------+
+| Battery |     3700 |
++---------+----------+
+1 row in set (0.044 sec)
+
+--------------------------------------------------------------------------------------
+9. Display all the Project names and City, which has bought more than 500 Parts.   
+
+mysql> select JNAME , CITY FROM PROJECTS , SUPPLIER_PARTS_PROJECT
+    -> WHERE PROJECTS.`J#` = SUPPLIER_PARTS_PROJECT.`J#`
+    -> AND
+    -> QTY > 500
+    -> ORDER BY 1;
++-----------+----------+
+| JNAME     | CITY     |
++-----------+----------+
+| Car       | London   |
+| Generator | Delhi    |
+| Generator | Delhi    |
+| Network   | USA      |
+| Server    | Mumbai   |
+| Windows   | New York |
++-----------+----------+
+6 rows in set (0.013 sec)
+
+--------------------------------------------------------------------------------
+10. Display all the Part names and Quantity sold that have a Weight less than 15.
+
+mysql> select PNAME , SUM(QTY) FROM PARTS , SUPPLIER_PARTS_PROJECT
+    -> WHERE PARTS.`P#` = SUPPLIER_PARTS_PROJECT.`P#`
+    -> AND
+    -> PARTS.WEIGHT <15
+    -> GROUP BY PNAME;
++----------+----------+
+| PNAME    | SUM(QTY) |
++----------+----------+
+| Mirror   |      700 |
+| Screw    |      700 |
+| Glass    |      600 |
+| Brake    |      800 |
+| Car Tyre |     3200 |
++----------+----------+
+5 rows in set (0.010 sec)
+
+--------------------------------------------------------------------------------------
+11. Display all the Employee names and the name of their Managers.   
+
+mysql> SELECT E1.ENAME EMPNAME , E2.ENAME MANAGER
+    -> FROM EMPLOOYEE E1 , EMPLOOYEE E2
+    -> WHERE E1.MAN = E2.EMPNO;
++---------+---------+
+| EMPNAME | MANAGER |
++---------+---------+
+| HARSH   | GIRISH  |
+| JAY     | GARRY   |
+| GARRY   | ROY     |
+| GIRISH  | ROY     |
++---------+---------+
+4 rows in set (0.014 sec)
