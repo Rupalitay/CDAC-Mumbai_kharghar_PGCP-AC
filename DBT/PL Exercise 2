@@ -1,0 +1,132 @@
+1. Select from any table a number and determine whether it is within a given range (for 
+example, between 1 and 10).      
+
+DELIMITER //
+CREATE PROCEDURE PCA2()
+BEGIN
+	DECLARE X INT DEFAULT 7;
+    SELECT DEPTNO INTO X
+    FROM SEMP
+    WHERE EMPNAME = 'SUNIL';
+    IF X BETWEEN 1 AND 10 THEN 
+		INSERT INTO TEMC VALUES(X, 'X IS IN BETWEEN 1 TO 10');
+    ELSE
+		INSERT INTO TEMC VALUES(x,'X IS NOT BETWEEN 1 TO 10');
+    END IF;    
+END; //
+DELIMITER ;
+
+mysql> call PCA2();
+Query OK, 1 row affected (0.057 sec)
+
+mysql> SELECT * FROM TEMC;
++-------+-------------------------+
+| FIRST | SECOND                  |
++-------+-------------------------+
+|    10 | X IS IN BETWEEN 1 TO 10 |
++-------+-------------------------+
+1 row in set (0.007 sec)
+
+----------------------------------------------------------------------------------------
+2. Select from any table three positive integers representing the sides of a triangle, and 
+determine whether they form a valid triangle. Hint: In a triangle, the sum of any two 
+sides must always be greater than the third side.      
+
+delimiter //
+CREATE PROCEDURE PA22()
+BEGIN
+	DECLARE X INT ;
+    DECLARE Y INT;
+    DECLARE Z INT;
+    SELECT FIRST , SEC , THIRD 
+    INTO X, Y, Z
+    FROM T3INT
+    LIMIT 1;
+    IF  X+Y > Z AND Y+Z>X AND Z+X>Y 
+    THEN 
+		INSERT INTO TEMC VALUES(1,'VALID TRIANGLE');
+    ELSE 
+		INSERT INTO TEMC VALUES(2,'NOT A TRIANGLE');
+    END IF;
+END; //
+DELIMITER ;
+
+mysql> call PA22();
+Query OK, 1 row affected (0.075 sec)
+
+mysql> SELECT * FROM TEMC;
++-------+----------------+
+| FIRST | SECOND         |
++-------+----------------+
+|     1 | VALID TRIANGLE |
++-------+----------------+
+1 row in set (0.009 sec)
+
+------------------------------------------------------------------------------------------
+3. Check if a given a year is a leap year. The condition is:- year should be (divisible by 4 
+and not divisible by 100) or (divisible by 4 and divisible by 400.). The year should be 
+Selected from some table.    
+
+DELIMITER //
+CREATE PROCEDURE PA23()
+BEGIN
+	DECLARE X INT ;
+    SELECT FIRST INTO X
+    FROM T3INT
+    LIMIT 1  OFFSET 5;
+    
+    IF  (X % 4 = 0 AND X % 100 = 0) OR (X % 4 = 0 AND X % 400 = 0)
+    THEN 
+		INSERT INTO TEMC VALUES(X,'LEAP YEAR');
+    ELSE 
+		INSERT INTO TEMC VALUES(X,'NOT LEAP YEAR');
+    END IF;
+END; //
+DELIMITER ;
+
+mysql> CALL PA23();
+Query OK, 1 row affected (0.066 sec)
+
+mysql> SELECT * FROM TEMC;
++-------+---------------+
+| FIRST | SECOND        |
++-------+---------------+
+|  2020 | NOT LEAP YEAR |
++-------+---------------+
+1 row in set (0.007 sec)
+
+--------------------------------------------------------------------------------------------
+4. Write a program that Selects from any table two character strings.  Your program should 
+then determine if one character string exists inside another character string.   
+
+DELIMITER //
+CREATE PROCEDURE PC24()
+BEGIN
+	DECLARE X CHAR (40) ;
+    DECLARE Y CHAR (40);
+    SELECT SECOND INTO X
+    FROM TEMC
+    LIMIT 1 ;
+    SELECT SECOND INTO Y
+    FROM TEMC
+    LIMIT 1 OFFSET 1 ;
+    
+    IF  X LIKE (CONCAT('%' ,Y,'%'))
+    THEN 
+		INSERT INTO TEMCC VALUES(X,Y,'STRING EXISTS');
+    ELSE 
+		INSERT INTO TEMCC VALUES(X,Y,'STRING NOT EXISTS ');
+    END IF;
+END; //
+DELIMITER ;
+
+mysql> CALL PC24();
+Query OK, 1 row affected (0.096 sec)
+
+mysql> SELECT * FROM TEMCC;
++---------------+--------+---------------+
+| FIRST         | SECOND | THIRD         |
++---------------+--------+---------------+
+| NOT LEAP YEAR | LEAP   | STRING EXISTS |
++---------------+--------+---------------+
+1 row in set (0.008 sec)
