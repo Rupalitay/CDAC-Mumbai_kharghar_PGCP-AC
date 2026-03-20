@@ -10,10 +10,38 @@ Your stored procedure should accept the values of p, r and y as parameters and i
 the Interest and Total amount into tempp table.       
 
 
+DELIMITER //
+CREATE PROCEDURE COMP_INTR(P FLOAT , R FLOAT , Y INT )
+BEGIN
+	DECLARE I FLOAT;
+    DECLARE AMOUNT FLOAT;
+    
+    /* CALCULATE COUMPOUNDS INTERST */  
+    SET I = P * POWER((1+R),Y) - P;
+    
+    /*CALCULATE TOTAL AMOUNT */
+    SET AMOUNT = P + I;
+    
+    INSERT INTO TEMPP VALUES(I, AMOUNT);
+END; //
+DELIMITER ;
 
+
+
+mysql> CALL COMP_INTR(30000.30,3.50,3);
+Query OK, 1 row affected (0.099 sec)
+
+mysql> SELECT * FROM TEMPP;
++---------+---------+
+| FIRST   | SECOND  |
++---------+---------+
+| 2703780 | 2733780 |
++---------+---------+
+1 row in set (0.007 sec)
 
 ---------------------------------------------------------------------------------------
 2. Create a stored function by the name of Age_calc.  Your stored function should 
 accept the date of birth of a person as a parameter.  The stored function should 
 calculate the age of the person in years. The stored function should return the age 
 in years.    
+
