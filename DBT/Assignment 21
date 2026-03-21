@@ -1,0 +1,37 @@
+1) Give Amit the right to change the ratings of the customers. 
+
+mysql> grant select on kharghar.ratings to amit@localhost;
+Query OK, 0 rows affected (0.110 sec)
+
+---------------------------------------------------------------------------------
+2) Give Manoj the right to give other users the right to query the Orders table. 
+
+mysql> GRANT SELECT
+    -> ON kharghar.ORDERS
+    -> TO 'Manoj'@'localhost';
+Query OK, 0 rows affected (0.065 sec)
+
+-----------------------------------------------------------------------
+3) Take the INSERT privilege on Salespeople away from Ajita. 
+
+mysql> revoke insert
+    -> ON kharghar.salepeople
+    -> from 'Ajita'@'localhost';
+Query OK, 0 rows affected (0.055 sec)
+
+--------------------------------------------------------------------------------------
+4) Grant Abhijeet the right to insert or update the Customers table while keeping her 
+possible rating values in the range of 100 to 500. 
+
+mysql> GRANT insert , update
+    -> ON kharghar.Customers
+    -> TO 'Abhijeet'@'localhost';
+Query OK, 0 rows affected (0.76 sec)
+-------------------------------------------------------------------------------
+5) Allow Vikram to query the Customers table, but restrict his access to those 
+customers whose rating is the lowest.
+
+mysql> GRANT SELECT
+    -> ON kharghar.customers
+    -> TO 'vikram'@'localhost';
+Query OK, 0 rows affected (0.095 sec)
