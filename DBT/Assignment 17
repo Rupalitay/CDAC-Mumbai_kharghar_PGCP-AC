@@ -1,0 +1,48 @@
+1) Create the Orders table so that all onum values as well as all combinations of 
+cnum and snum are different from one another, and so that NULL values are 
+excluded from the date field
+CREATE TABLE ORDERS
+    -> (
+    -> ONUM INT PRIMARY KEY,
+    -> AMT FLOAT(7,2),
+    -> ODATE DATE NOT NULL,
+    -> CNUM INT(4),
+    -> SNUM INT(4),
+    ->
+    -> UNIQUE (CNUM, SNUM)
+    -> );
+Query OK, 0 rows affected, 3 warnings (1.564 sec)
+
+--------------------------------------------------------------------------------. 
+2) Create the Salespeople table so that the default commission is 10% with no 
+NULLS permitted, snum is the primary key, and all names fall alphabetically 
+between A and M, inclusive (assume all names will be uppercase). 
+
+mysql> create table SALEPEOPLES
+    -> (
+    -> SNUM INT PRIMARY KEY,
+    -> SNAME VARCHAR(10) ,
+    -> CITY VARCHAR(10),
+    -> COMM FLOAT(3,2)NOT NULL DEFAULT 0.10,
+    -> CHECK(SNAME = UPPER(SNAME))
+    -> ,
+    -> CHECK(SNAME REGEXP '^[A-M]+$')
+    -> );
+Query OK, 0 rows affected, 1 warning (0.379 sec)
+
+--------------------------------------------------------------------------------------
+3) Create the Orders table, making sure that the onum is greater than the cnum, and 
+the cnum is greater that the snum. Allow no NULLS in any of these three fields. 
+
+mysql> create table ORDER_TABLE
+    -> (
+    -> ONUM INT PRIMARY KEY,
+    -> AMT FLOAT(7,2),
+    -> ODATE DATE NOT NULL,
+    -> CNUM INT(4) NOT NULL,
+    -> SNUM INT(4) NOT NULL,
+    -> UNIQUE (CNUM, SNUM),
+    -> CHECK(ONUM > CNUM AND CNUM > SNUM)
+    -> );
+Query OK, 0 rows affected, 3 warnings (0.366 sec)
+
