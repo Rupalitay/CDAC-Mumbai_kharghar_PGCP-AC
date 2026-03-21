@@ -1,0 +1,133 @@
+1. Display all the Suppliers with the same Status as the supplier, ‘Kiran’.
+
+mysql>  SELECT SNAME FROM SUPPLIERS
+    -> WHERE STATUS IN (SELECT STATUS FROM SUPPLIERS
+    -> WHERE SNAME = 'Kiran');
++-------+
+| SNAME |
++-------+
+| Jay   |
+| Kiran |
+| Harry |
++-------+
+3 rows in set (1.303 sec)
+
+-------------------------------------------------------------------------------
+2. Display all the Employees in the same department as the employee ‘ALI’.  
+
+mysql> SELECT EMPNAME FROM SEMP
+    -> WHERE DEPTNO IN
+    -> (SELECT DEPTNO FROM SEMP
+    -> WHERE EMPNAME = 'ALI');
++---------+
+| EMPNAME |
++---------+
+| SUNIL   |
+| ALI     |
++---------+
+2 rows in set (0.015 sec)
+
+---------------------------------------------------------------------------
+3. Display all the Parts which have more Weight than all the SILVER parts.   
+
+mysql>  SELECT PNAME FROM PARTS
+    -> WHERE WEIGHT >
+    -> (SELECT WEIGHT FROM PARTS WHERE COLOR = 'Silver');
++----------+
+| PNAME    |
++----------+
+| Mirror   |
+| Battery  |
+| Glass    |
+| Disc     |
+| Car Tyre |
+| Engine   |
+| Fan      |
++----------+
+7 rows in set (0.063 sec)
+
+
+---------------------------------------------------------------------------
+4. Display all the Projects going on in the same city as the project ‘LCD’.
+
+mysql>  SELECT JNAME FROM PROJECTS
+    -> WHERE CITY IN
+    -> (SELECT CITY FROM PROJECTS
+    -> WHERE JNAME = 'LCD');
++---------+
+| JNAME   |
++---------+
+| LCD     |
+| Printer |
+| Server  |
++---------+
+3 rows in set (0.013 sec)
+
+-------------------------------------------------------------------------------
+5. Display all the Parts with Weight less than all the Green parts.   
+
+mysql>  SELECT PNAME FROM PARTS
+    -> WHERE WEIGHT <
+    ->  (SELECT WEIGHT FROM PARTS
+    -> WHERE COLOR = 'Green');
+Empty set (0.009 sec)
+
+---------------------------------------------------------------------------------
+6. Display the name of the Supplier who has sold the maximum Quantity (in one 
+sale).   
+
+mysql> SELECT SNAME , MAX(QTY) FROM SUPPLIERS
+    -> JOIN supplier_parts_project S
+    -> WHERE S.`S#` = SUPPLIERS.`S#`
+    -> GROUP BY SNAME
+    -> ORDER BY COUNT(*) DESC  LIMIT 1;
++-------+----------+
+| SNAME | MAX(QTY) |
++-------+----------+
+| Jay   | 6200     |
++-------+----------+
+1 row in set (0.012 sec)
+
+------------------------------------------------------------------------------
+7. Display the name of the Employee with the minimum Salary.   
+
+mysql>  SELECT ENAME FROM emplooyee
+    -> WHERE SAL =
+    -> (SELECT MIN(SAL) FROM EMPLOOYEE);
++--------+
+| ENAME  |
++--------+
+| GIRISH |
++--------+
+1 row in set (0.161 sec)
+
+----------------------------------------------------------------------------------
+8. Display the name of the Supplier who has sold the maximum overall Quantity (sum 
+of Sales).   
+
+mysql> SELECT SNAME , SUM(QTY) FROM SUPPLIERS
+    -> JOIN supplier_parts_project S
+    -> WHERE S.`S#` = SUPPLIERS.`S#`
+    -> GROUP BY SNAME
+    -> ORDER BY COUNT(*) DESC LIMIT 1;
++-------+----------+
+| SNAME | SUM(QTY) |
++-------+----------+
+| Jay   |    10000 |
++-------+----------+
+1 row in set (0.011 sec)
+
+
+--------------------------------------------------------------------------------------------
+9. Display the name of the Department with the maximum number of Employees.   
+
+mysql> SELECT DEPTNAME FROM SDEPT
+    -> JOIN SEMP ON SEMP.DEPTNO = SDEPT.DEPTNO
+    -> GROUP BY DEPTNAME
+    -> ORDER BY COUNT(*) DESC LIMIT 1 ;
++-------------+
+| DEPTNAME    |
++-------------+
+| Development |
++-------------+
+1 row in set (0.103 sec)
