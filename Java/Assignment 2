@@ -223,7 +223,7 @@ class Atm{
     }
 
     void withdrawMoney(double withdraw){
-        if(withdraw <= balance){
+        if(withdraw >= balance){
             System.out.println("---Balance Insufficient---");
         }
         
@@ -329,7 +329,7 @@ Enter the choice :
 
 ---Withdraw Money---
 1000 
----Balance Insufficient---
+
 -----------Menu----------
 Enter 1 to Check Balance.
 Enter 2 to Deposit Money.
@@ -339,7 +339,7 @@ Enter the choice :
 1
 
 ---Check Balance---
-Current Balance : 10500.87
+Current Balance : 9500.87
 -----------Menu----------
 Enter 1 to Check Balance.
 Enter 2 to Deposit Money.
