@@ -1,0 +1,420 @@
+1.
+import java.util.Scanner;
+
+class Student{
+    int rollNo;
+    String name, phoneNo, email;
+    int sub1, sub2, sub3, sub4, sub5, sub6;
+    double total , avg;
+
+    Student(){
+
+    }
+
+    Student(int rollNo, String name, String phoneNo, String email, int sub1,int  sub2,int sub3,int sub4,int sub5,int sub6 ){
+        this.rollNo = rollNo;
+        this.name = name;
+        this.phoneNo = phoneNo;
+        this.email = email;
+        this.sub1 = sub1;
+        this.sub2 = sub2;
+        this.sub3 = sub3;
+        this.sub4 = sub4;
+        this.sub5 = sub5;
+        this.sub6 = sub6;
+    }
+
+    double calculatetotal(){
+        total = this.sub1 + this.sub2 + this.sub3 + this.sub4 + this.sub5 +this.sub6;
+        return total;
+    }
+    double calculateAvg(){
+        avg = total / 6 ;
+        return avg;
+    }
+
+}
+class CollegeERP{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        
+        int noOfStudents;
+
+        System.out.println("Enter Number of Student : ");
+        noOfStudents = sc.nextInt();
+
+        Student stud[] = new Student[noOfStudents];//will create the array of Student class with reference stud
+
+        for(int i = 0; i<noOfStudents ; i++){
+            System.out.println("Enter Student "+(i+1)+" details: ");
+            System.out.println("Enter Rollno : ");
+            int rollNo = sc.nextInt();
+            sc.nextLine();
+            System.out.println("Enter Name : ");
+            String name = sc.nextLine();
+            System.out.println("Enter Phone Number : ");
+            String phoneNo = sc.nextLine();
+            System.out.println("Enter Email Id : ");
+            String email = sc.nextLine();
+            System.out.println("Enter sub1 marks : ");
+            int sub1 = sc.nextInt();
+            System.out.println("Enter sub2 marks : ");
+            int sub2 = sc.nextInt();
+            System.out.println("Enter sub3 marks : ");
+            int sub3 = sc.nextInt();
+            System.out.println("Enter sub4 marks : ");
+            int sub4 = sc.nextInt();
+            System.out.println("Enter sub5 marks : ");
+            int sub5 = sc.nextInt();
+            System.out.println("Enter sub6 marks : ");
+            int sub6 = sc.nextInt();
+           
+            stud[i] = new Student(rollNo ,name , phoneNo , email ,sub1, sub2, sub3, sub4, sub5, sub6);
+        }
+
+        System.out.println("--------------------------------------------------------Student Report---------------------------------------------------");
+
+        System.out.printf("%-10s %-20s %-12s %-30s %-5s %-5s %-5s %-5s %-5s %-5s %-5s %-5s ",
+                        "RollNo","Name","Phone No","Email Id","Sub1","Sub2","Sbu3","Sub4","Sub5","Sub6","Total","Avg" );
+
+        for(int i = 0 ; i<noOfStudents ;i++){
+            System.out.printf("\n%-10s %-20s %-12s %-30s %-5s %-5s %-5s %-5s %-5s %-5s %-5.2f %-5.2f ",
+                                                                stud[i].rollNo,
+                                                                stud[i].name,
+                                                                stud[i].phoneNo,
+                                                                stud[i].email,
+                                                                stud[i].sub1,
+                                                                stud[i].sub2,
+                                                                stud[i].sub3,
+                                                                stud[i].sub4,
+                                                                stud[i].sub5,
+                                                                stud[i].sub6,
+                                                                stud[i].calculatetotal(),
+                                                                stud[i].calculateAvg() );
+        }
+         System.out.println();
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+
+        sc.close();
+    }
+}
+
+-----------------------------------------------------------------------------------------
+Output:
+
+--------------------------------------------------------Student Report---------------------------------------------------
+RollNo     Name                 Phone No     Email Id                       Sub1  Sub2  Sbu3  Sub4  Sub5  Sub6  Total Avg   
+4          Garry                6997657994   harry34@gamil.com              66    75    76    67    67    56    407.00 67.83
+5          harry Smith          7967788789   harrySmith343@gamil.com        86    76    87    56    67    65    437.00 72.83
+-----------------------------------------------------------------------------------------------------------------------------
+2.
+
+import java.util.Scanner;
+class Vehicle{
+    String brand;
+    int speed;
+    String fuelType;
+    double mileage;
+
+    static {
+        System.out.println("=== Vehicle Management System Initialized ===\n");
+    }
+
+    
+    {
+        System.out.println("[LOG] Vehicle object created");
+    }
+
+    Vehicle(){
+
+    }
+    Vehicle(String brand, int speed,String fuelType,double mileage){
+        this.brand = brand;
+        this.speed = speed;
+        this.fuelType = fuelType;
+        this.mileage = mileage;
+    }
+
+    void updateSpeed(int newSpeed) {
+        speed = newSpeed;
+    }
+
+    void displayDetails(){
+        System.out.println("Brand : " + this.brand);
+        System.out.println("Speed : " + this.speed+"Km/hr");
+        System.out.println("Fuel Type : " + this.fuelType);
+        System.out.println("Mileage : " + this.mileage+"Km/hr");
+}
+
+}
+class Car extends Vehicle{
+    int noOfdoors;
+    Car(){
+
+    }
+    Car(String brand, int speed,String fuelType,double mileage,int noOfdoors){
+        super(brand,speed, fuelType, mileage);
+        this.noOfdoors = noOfdoors;
+    }
+    void displayDetails(){
+        super.displayDetails();
+        System.out.println("No of Doors : " + this.noOfdoors);
+    }
+}
+class Bike extends Vehicle{
+    boolean hasGear;
+    Bike(){
+
+    }
+    Bike(String brand, int speed,String fuelType,double mileage,boolean hasGear){
+        super(brand,speed, fuelType, mileage);
+        super.updateSpeed(56);
+        this.hasGear = hasGear;
+    }
+
+    void displayDetails(){
+        super.displayDetails();
+        System.out.println("Has Gear : " + this.hasGear);
+    }
+}
+
+class FleetManagementSystem{
+    public static void main(String args[]){
+        Bike b = new Bike("Honda",80,"Petrol",30.3,true);
+        b.displayDetails();
+        System.out.println();
+        Car c = new Car("Tata",100,"Diesel",10.3,4);
+        c.displayDetails();
+    }
+}
+---------------------------------------------------------------------------------------------------------------------------------
+Output:
+
+PS C:\Users\rupal\OneDrive\Documents\Java\A3> javac FleetManagementSystem.java
+PS C:\Users\rupal\OneDrive\Documents\Java\A3> java FleetManagementSystem
+=== Vehicle Management System Initialized ===
+
+[LOG] Vehicle object created
+Brand : Honda
+Speed : 56Km/hr
+Fuel Type : Petrol
+Mileage : 30.3Km/hr
+Has Gear : true
+
+[LOG] Vehicle object created
+Brand : Tata
+Speed : 100Km/hr
+Fuel Type : Diesel
+Mileage : 10.3Km/hr
+No of Doors : 4
+-----------------------------------------------------------------------------------
+3.
+import java.util.Scanner;
+
+class BankAccount{
+    int accountNo;
+    String holderName;
+    double balance;
+    String mode = "Cash";
+
+    BankAccount(){}
+
+    BankAccount(int accountNo, String holderName, double balance){
+        this.accountNo = accountNo;
+        this.holderName = holderName;
+        this.balance = balance;
+    }
+
+    void depositMoney(double deposit){
+        if(deposit <= 0){
+            System.out.println("---Invalid Deposit Amount---");
+        }
+        else{
+                this.balance += deposit; 
+        }
+
+    }
+    
+    void depositMoney(double deposit, String mode){
+        this.mode = mode;
+        if(deposit <= 0){
+            System.out.println("---Invalid Deposit Amount---");
+        }
+        else{
+                this.balance += deposit; 
+        }
+
+    }
+
+
+    void withdrawMoney(double withdraw){
+        if(withdraw >= balance || withdraw == 0){
+            System.out.println("---Balance Insufficient---");
+        }
+        
+        else{
+            this.balance -= withdraw;
+        }
+    }
+
+      void displayDetails(){
+        System.out.println("Account Number : " + accountNo);
+        System.out.println("Account Holder Name : " + holderName);
+        System.out.println("Balance in Account : " + balance);
+        System.out.println();
+    } 
+}
+class BankingSystem{
+    public static void main(String arg[]){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Numbers of Acounts : ");
+        int noOfAccounts = sc.nextInt();
+
+        BankAccount b[] = new BankAccount[noOfAccounts];
+         for(int i = 0; i<noOfAccounts ; i++){
+            System.out.println("Enter Account "+(i+1)+" details: ");
+            System.out.println("Enter AcountNo : ");
+            int accountNo = sc.nextInt();
+            sc.nextLine();
+            System.out.println("Enter Name : ");
+            String name = sc.nextLine();
+            System.out.println("Enter Balance : ");
+            double balance = sc.nextDouble();
+        
+            b[i] = new BankAccount(accountNo, name, balance);
+            int choice = 0; 
+
+            do{
+                
+                System.out.println("\nEnter 1. to deposit in cash");
+                System.out.println("Enter 2. to deposit in Online");
+                System.out.println("Enter 3. to withdraw in cash");
+                System.out.println("Enter choice");
+                choice = sc.nextInt();
+
+                switch(choice){
+                    case 1: System.out.println("\nEnter Money to deposit in cash: ");
+                            double cash = sc.nextDouble();
+                            b[i].depositMoney(cash);
+                            break;
+
+                    case 2: System.out.println("\nEnter Money to deposit in Online: ");
+                            double Online = sc.nextDouble();
+                            b[i].depositMoney(Online,"Online");
+                            break;
+
+                    case 3: System.out.println("Enter Money to withdraw in cash: ");
+                            double withdraw = sc.nextDouble();
+                            b[i].withdrawMoney(withdraw);
+                            break;
+
+                    case 4: System.out.println("---Exiting------ ");break;
+
+                    default : System.out.println("Invalid choice......"); break;
+                }
+
+               
+            }while(choice != 4);
+        
+        }
+
+        for(int i = 0; i<noOfAccounts ; i++){ 
+                 b[i].displayDetails();
+        }
+
+    }
+}
+---------------------------------------------------------------------------------------
+Output:
+
+PS C:\Users\rupal\OneDrive\Documents\Java\A3> javac BankingSystem.java
+PS C:\Users\rupal\OneDrive\Documents\Java\A3> java BankingSystem      
+Enter Numbers of Acounts : 
+2
+Enter Account 1 details: 
+Enter AcountNo :
+56893
+Enter Name : 
+Harry Smith
+Enter Balance : 
+50000
+
+Enter 1. to deposit in cash
+Enter 2. to deposit in Online
+Enter 3. to withdraw in cash
+Enter choice
+2
+
+Enter Money to deposit in Online:
+6000
+
+Enter 1. to deposit in cash
+Enter 2. to deposit in Online
+Enter 3. to withdraw in cash
+Enter choice
+3
+Enter Money to withdraw in cash: 
+5000
+
+Enter 1. to deposit in cash
+Enter 2. to deposit in Online
+Enter 3. to withdraw in cash
+Enter choice
+4
+---Exiting------ 
+Enter Account 2 details:
+Enter AcountNo :
+456442
+Enter Name : 
+Garry Evens
+Enter Balance : 
+40000
+
+Enter 1. to deposit in cash
+Enter 2. to deposit in Online
+Enter 3. to withdraw in cash
+Enter choice
+2
+
+Enter Money to deposit in Online:
+4000
+
+Enter 1. to deposit in cash
+Enter 2. to deposit in Online
+Enter 3. to withdraw in cash
+Enter choice
+1
+
+Enter Money to deposit in cash:
+7000
+
+Enter 1. to deposit in cash
+Enter 2. to deposit in Online
+Enter 3. to withdraw in cash
+Enter choice
+3
+Enter Money to withdraw in cash: 
+40986
+
+Enter 1. to deposit in cash
+Enter 2. to deposit in Online
+Enter 3. to withdraw in cash
+Enter choice
+4
+---Exiting------ 
+Account Number : 56893
+Account Holder Name : Harry Smith
+Balance in Account : 51000.0
+
+Account Number : 456442
+Account Holder Name : Garry Evens
+Balance in Account : 10014.0
+
+------------------------------------------------------------------------------------
+4.
+
+-------------------------------------------------------------------------------------------
+Output:
+
+
+------------------------------------------------------------------------------------------
