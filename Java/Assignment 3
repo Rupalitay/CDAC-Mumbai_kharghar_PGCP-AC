@@ -413,6 +413,671 @@ Balance in Account : 10014.0
 ------------------------------------------------------------------------------------
 4.
 
+import java.util.Scanner;
+
+class ContactDetails{
+    String mobNo;
+    String address;
+    String email;
+
+    ContactDetails(String mobNo, String address, String email ){
+        this.mobNo = mobNo;
+        this.address = address;
+        this.email = email;
+    }
+}
+class Patient{
+    int patientId;
+    String patientName;
+    int age;
+    String diease;
+    String ageG60 = "NO";
+    static int count = 0 ;
+
+    ContactDetails contactDetails;
+
+    Patient(){
+        count++;
+    } 
+
+    Patient(int patientId,String patientName,int age,String diease, ContactDetails contactDetails){
+        count++;
+        this.patientId = patientId;
+        this.patientName = patientName;
+        this.age = age;
+        this.diease = diease;
+        if(age >= 60){
+            ageG60 = "Yes";
+        }
+
+        this.contactDetails = contactDetails;
+        
+    }
+
+    void printDetails(){
+        System.out.println("Patient Id : " + this.patientId);
+        System.out.println("Patient Name : " + this.patientName);
+        System.out.println("Age : " + this.age);
+        System.out.println("Age greater than 60 : " + this.ageG60);
+
+        System.out.println("Email id : " + contactDetails.email);
+        System.out.println("Address : " + contactDetails.address);
+        System.out.println("Moblie no : " + contactDetails.mobNo);    
+        System.out.println();  
+    }
+
+}
+
+class HospitalManagementSystem{
+    public static void main(String args[]){
+        ContactDetails cd = new ContactDetails("8946134656","England","harrysmth23@gmail.com"); 
+        Patient p = new Patient(1001,"Harry Smith",56,"Diabetes Mellitus",cd);
+        p.printDetails();
+
+        ContactDetails cd1 = new ContactDetails("4896159464","England","yohagadeg@gmail.com"); 
+        Patient p1 = new Patient(1051,"Thomas Stark",30,"Anxiety Disorder",cd1);
+        p1.printDetails();
+
+        ContactDetails cd2 = new ContactDetails("8994649665","London","harrysmth23@gmail.com"); 
+        Patient p2 = new Patient(1008,"Harry Evens",65,"Coronary Artery Disease",cd2);
+        p2.printDetails();
+
+         System.out.println("Total Number of Patients : " + p2.count);  
+
+    }
+}
+
+-------------------------------------------------------------------------------------------
+Output:
+
+PS C:\Users\rupal\OneDrive\Documents\Java\A3> javac HospitalManagementSystem.java
+PS C:\Users\rupal\OneDrive\Documents\Java\A3> java HospitalManagementSystem      
+Patient Id : 1001
+Patient Name : Harry Smith
+Age : 56
+Age greater than 60 : NO
+Email id : harrysmth23@gmail.com
+Address : England
+Moblie no : 8946134656
+
+Patient Id : 1051
+Patient Name : Thomas Stark
+Age : 30
+Age greater than 60 : NO
+Email id : yohagadeg@gmail.com
+Address : England
+Moblie no : 4896159464
+
+Patient Id : 1008
+Patient Name : Harry Evens
+Age : 65
+Age greater than 60 : Yes
+Email id : harrysmth23@gmail.com
+Address : London
+Moblie no : 8994649665
+
+Total Number of Patients : 3
+
+------------------------------------------------------------------------------------------
+5.
+class Product{
+    int productId;
+    String name;
+    double price;
+    int quantity;
+    double total;
+
+    Product(){
+         productId = 0;
+         name = "";
+         price = 0.0;
+         quantity = 0;
+
+    }
+
+    Product(int productId, String name,double price,int quantity){
+        this.productId = productId;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    void priceUpdate(int updatedprice){
+        if(updatedprice <= 0){
+            System.out.println("Invalid update value");
+        }
+        else{
+            price = updatedprice;
+            System.out.println("Price updated");
+        }
+    }
+
+    void priceUpdate(double discount, boolean ifdiscount){
+        if(ifdiscount){
+            price -=  price * discount/100;
+            System.out.println("Price updated with discount");
+        }
+    }
+
+    void updateStock(int quantity){
+        this.quantity = quantity;
+        System.out.println("Quantity updated");
+    }
+
+    double stockValue(){
+        return price * quantity; 
+    }
+
+    void printDetails(){
+        System.out.println("Product Id : " +this.productId);
+        System.out.println("Product Name : " +this.name);
+        System.out.println("Price : " +this.price);
+        System.out.println("Quantity : " +this.price);
+    }
+}
+
+class ProductInventorySystem{
+    public static void main(String args[]){
+        System.out.println();
+        Product p = new Product(102,"TV",10000,2);
+        p.priceUpdate(7890);
+        p.updateStock(19);
+        p.printDetails();
+        System.out.println("Stock Value :  " + p.stockValue());
+        System.out.println();
+
+        Product p1 = new Product(1003,"Laptop",70000,6);
+        p1.priceUpdate(20,true);
+        p1.updateStock(10);
+        p1.printDetails();
+        System.out.println("Stock Value :  " + p1.stockValue());
+        System.out.println();
+
+        Product p2 = new Product(103,"Mobile Phone",7000,20);
+        p2.priceUpdate(30,true);
+        p2.updateStock(45);
+        p2.printDetails();
+        System.out.println("Stock Value :  " + p2.stockValue());
+
+    }
+}
+-------------------------------------------------------------------------------------------
+Output:
+
+PS C:\Users\rupal\OneDrive\Documents\Java\A3> javac ProductInventorySystem.java
+PS C:\Users\rupal\OneDrive\Documents\Java\A3> java ProductInventorySystem      
+
+Price updated
+Quantity updated
+Product Id : 102
+Product Name : TV
+Price : 7890.0
+Quantity : 7890.0
+Stock Value :  149910.0
+
+Price updated with discount
+Quantity updated
+Product Id : 1003
+Product Name : Laptop
+Price : 56000.0
+Quantity : 56000.0
+Stock Value :  560000.0
+
+Price updated with discount
+Quantity updated
+Product Id : 103
+Product Name : Mobile Phone
+Price : 4900.0
+Quantity : 4900.0
+Stock Value :  220500.0
+------------------------------------------------------------------------------------------
+6.
+class Library{
+    int bookId;
+    String title;
+    String author;
+    boolean status;
+    static int totalBooks;
+
+    Library(){
+
+    }
+    Library(int bookId,String title,String author ){
+        this.bookId = bookId;
+        this.title = title;
+        this.author = author;
+        this.status = true;
+        totalBooks++;
+    }
+
+    Library(int bookId,String title,String author,boolean status ){
+        this.bookId = bookId;
+        this.title = title;
+        this.author = author;
+        this.status = status;
+        totalBooks++;
+    }
+
+
+    void issueBook(){
+        if(status == true){
+            status = false;
+            System.out.println("Book issued of Title : " +this.title);
+        }
+        else{
+            System.out.println("Book is Unavaliable of Title : " +this.title);
+        }
+
+    }
+
+    void returnBook(){
+        status = true;
+        System.out.println("Book Returned of Title : " +this.title);
+    }
+
+    void dispaly(){
+        System.out.println("Book Id " +this.bookId+ " Title " +this.title+ " By "+this.author+ " is"+((status == true) ? " Not": "")+" Avaliable " );
+    }
+
+}
+class LibraryManagementSystem{
+    public static void main(String args[]){
+        Library l = new Library(102 ,"C++","Bjarne Stroustrup");
+        Library l1 = new Library(103 ,"C","Dennis Ritchie");
+        Library l2 = new Library(105 ,"Data Structures","Narasimha Karumanchi",false);
+        Library l3 = new Library(106 ,"java","James Gosling",false);
+        Library l4 = new Library(109 ,"DataBase Management ","Abraham Silberschatz,");
+
+        l.issueBook();
+        l4.issueBook();
+        l3.returnBook();
+        l2.returnBook();
+
+        System.out.println("Total Number of Book  : " + l4.totalBooks);
+
+        l.dispaly();
+        l1.dispaly();
+        l2.dispaly();
+        l3.dispaly();
+        l4.dispaly();
+
+    }
+}
+-------------------------------------------------------------------------------------------
+Output:
+
+PS C:\Users\rupal\OneDrive\Documents\Java\A3> javac LibraryManagementSystem.java
+PS C:\Users\rupal\OneDrive\Documents\Java\A3> java LibraryManagementSystem      
+Book issued of Title : C++
+Book issued of Title : DataBase Management 
+Book Returned of Title : java
+Book Returned of Title : Data Structures
+Total Number of Book  : 5
+Book Id 102 Title C++ By Bjarne Stroustrup is Avaliable 
+Book Id 103 Title C By Dennis Ritchie is Not Avaliable 
+Book Id 105 Title Data Structures By Narasimha Karumanchi is Not Avaliable
+Book Id 106 Title java By James Gosling is Not Avaliable
+Book Id 109 Title DataBase Management  By Abraham Silberschatz, is Avaliable
+------------------------------------------------------------------------------------------
+7.
+
+class Employee{
+    int employeeID;
+    String name;
+    double salary;
+
+    static int totalEmployee;
+
+    Employee(){
+
+    }
+
+    Employee(int employeeID,String name,double salary){
+        this.employeeID = employeeID;
+        this.name = name;
+        this.salary = salary;
+        totalEmployee++;
+    }
+
+    double calculateSalary(double allowance) {
+        return salary + allowance;
+    }
+
+    double calculateSalary(double hra, double da) {
+        return salary + hra + da;
+    }
+
+    void displayDetails(){
+        System.out.println("\nEmployee ID : "+this.employeeID);
+        System.out.println("Employee Name : "+this.name);
+        System.out.println("Employee Salary : "+this.salary);
+    }
+
+}
+class EmployeeManagementSystem{
+    public static void main(String args[]){
+        Employee e = new Employee(210 , "Harry", 78009);
+        Employee e1 = new Employee(211 , "Garry", 80000);
+        Employee e2 = new Employee(213 , "Tarry", 5000);
+        Employee e3 = new Employee(215 , "Mary", 7800);
+
+        e1.calculateSalary(3000,30);
+        e3.calculateSalary(4000);
+        e2.calculateSalary(5000);
+
+        e.displayDetails();
+        e1.displayDetails();
+        e2.displayDetails();
+        e3.displayDetails();
+
+    }   
+}
+-------------------------------------------------------------------------------------------
+Output:
+
+PS C:\Users\rupal\OneDrive\Documents\Java\A3> javac EmployeeManagementSystem.java
+PS C:\Users\rupal\OneDrive\Documents\Java\A3> java EmployeeManagementSystem      
+
+Employee ID : 210
+Employee Name : Harry
+Employee Salary : 78009.0
+
+Employee ID : 211
+Employee Name : Garry
+Employee Salary : 80000.0
+
+Employee ID : 213
+Employee Name : Tarry
+Employee Salary : 5000.0
+
+Employee ID : 215
+Employee Name : Mary
+Employee Salary : 7800.0
+------------------------------------------------------------------------------------------
+8.
+import java.util.Scanner;
+class Order{
+    int orderId;
+    String customerName;
+    String []items;
+    double []prices;
+
+    static int totalOrders;
+
+    Order(){}
+
+    Order(int orderId,String customerName,String[] items,double[] prices){
+        this.orderId = orderId;
+        this.customerName = customerName;
+        this.items = items;
+        this.prices = prices;
+        totalOrders++;
+    }
+
+    double calculateBill(){
+        double total = 0;
+        for(int i =0 ; i< prices.length;i++){
+            total += prices[i] ;
+        }
+        return total;
+    }
+
+    double applyGST(double total){
+        return total+(total*0.18);
+    }
+
+    void displayBill(){
+        System.out.println("-------------------Final Bill-----------------------------");
+        System.out.println("Order Id : " +orderId);
+        System.out.println("Customer Name : " +customerName);
+
+        for(int i = 0 ; i< items.length ; i++){
+            System.out.println("Item : " +items[i]+" Prices : Rs. " +prices[i]);
+        }
+
+        double total = calculateBill();
+        double finalBill = applyGST(total);
+        System.out.println("Total : " +total);
+        System.out.println("Total Amount with 18% GST : " +finalBill);
+        System.out.println("---------------------------------------------------");
+
+    }
+
+}
+
+class OnlineOrderSystem{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter No of Orders : ");
+        int noOforder = sc.nextInt();
+        Order o[] = new Order[noOforder];
+        for(int i = 0 ; i<noOforder ; i++){
+            System.out.println("Enter Order Id , Customer Name : ");
+            int orderId = sc.nextInt();
+            sc.nextLine();
+            String name = sc.nextLine();
+            System.out.println("Enter no of items : ");
+            int noOfItems = sc.nextInt();
+            sc.nextLine();
+
+            String[] items = new String[noOfItems];
+            for(int j = 0 ; j< noOfItems; j++){
+                System.out.println("Enter item of "+(j+1)+": ");
+                items[j]=sc.nextLine();
+            }
+            double[] prices = new double[noOfItems];
+            for(int j = 0 ; j< noOfItems; j++){
+                System.out.println("Enter price of "+(j+1)+": ");
+                prices[j]=sc.nextDouble();
+            }
+            o[i] = new Order(orderId,name,items,prices);
+        }
+
+        for(int i = 0 ; i<noOforder ; i++){
+            o[i].displayBill();
+        }
+
+        sc.close();
+
+    }
+}
+
+-------------------------------------------------------------------------------------------
+Output:
+
+PS C:\Users\rupal\OneDrive\Documents\Java\A3> javac OnlineOrderSystem.java       
+PS C:\Users\rupal\OneDrive\Documents\Java\A3> java OnlineOrderSystem           
+Enter No of Orders : 
+2
+Enter Order Id , Customer Name : 
+102
+Garry Smith
+Enter no of items : 
+2
+Enter item of 1: 
+pen
+Enter item of 2: 
+moblie
+Enter price of 1: 
+200
+Enter price of 2: 
+20000
+Enter Order Id , Customer Name : 
+103
+Arun Gadge
+Enter no of items : 
+3
+Enter item of 1: 
+Laptop
+Enter item of 2: 
+Shoe
+Enter item of 3: 
+Induction
+Enter price of 1: 
+80000 
+Enter price of 2: 
+5000
+Enter price of 3: 
+7000
+-------------------Final Bill-----------------------------
+Order Id : 102
+Customer Name : Garry Smith
+Item : pen Prices : Rs. 200.0
+Item : moblie Prices : Rs. 20000.0
+Total : 20200.0
+Total Amount with 18% GST : 23836.0
+---------------------------------------------------
+-------------------Final Bill-----------------------------
+Order Id : 103
+Customer Name : Arun Gadge
+Item : Laptop Prices : Rs. 80000.0
+Item : Shoe Prices : Rs. 5000.0
+Item : Induction Prices : Rs. 7000.0
+Total : 92000.0
+Total Amount with 18% GST : 108560.0
+---------------------------------------------------
+------------------------------------------------------------------------------------------
+9.
+
+class Course{
+    int courseId;
+    String name;
+    double fees;
+    static int totalCourses; 
+
+    Course(){
+
+    }
+
+    Course(int courseId,String name,double fees){
+        this.courseId = courseId;
+        this.name = name;
+        this.fees = fees;
+        totalCourses++;
+    }
+
+    void printDetails(){
+        System.out.println("Course Id : " + this.courseId+" Course Name : " + this.name+" Course Fees : " + this.fees);  
+    }
+}
+
+class Student{
+    int studentId;
+    String studentName;
+    Course enrollCourses[] = new Course[4];
+    int count = 0;
+
+    Student(){
+
+    }
+
+    Student(int studentId , String studentName){
+        this.studentId = studentId;
+        this.studentName = studentName;
+    }
+
+    void enrollCourse(Course c){
+        if (count < enrollCourses.length){
+            enrollCourses[count++] = c;
+            System.out.println(studentName+" enrolled in "+c.name);
+        }
+        else{
+            System.out.println("Enrolling limit exceed");
+        }
+    }
+
+    void displayDetails(){
+        System.out.println("Student ID : " + studentId+" Student Name : " + studentName);
+
+        for(int i = 0 ; i < count ; i++){
+            enrollCourses[i].printDetails();
+        }
+    }
+}
+
+class CourseManagementSystem{
+    public static void main(String args[]){
+        Course c = new Course(101,"C++",10000);
+        Course c1 = new Course(102,"Java",15000);
+        Course c2 = new Course(103,"DBT",8000);
+        Course c3 = new Course(104,"DSA",12000);
+
+        System.out.println("Total Courses : " + c3.totalCourses);
+
+        Student s = new Student(1001, "Harry Smith");
+        Student s1 = new Student(1003, "Garry Smith");
+        Student s2 = new Student(1005, "Jay Smith");
+        Student s3 = new Student(1006, "John Smith");
+
+        s.enrollCourse(c);
+        s.enrollCourse(c1);
+        s.enrollCourse(c2);
+        System.out.println();
+
+        s1.enrollCourse(c1);
+        s1.enrollCourse(c3);
+        System.out.println();
+
+        s2.enrollCourse(c);
+        s2.enrollCourse(c2);
+        System.out.println();
+
+        s3.enrollCourse(c2);
+        System.out.println();
+
+        s.displayDetails();
+        System.out.println();
+
+        s1.displayDetails();
+        System.out.println();
+
+        s2.displayDetails();
+        System.out.println();
+
+        s3.displayDetails();
+        System.out.println();
+
+    }
+}
+
+
+-------------------------------------------------------------------------------------------
+Output:
+
+PS C:\Users\rupal\OneDrive\Documents\Java\A3> javac CourseManagementSystem.java
+PS C:\Users\rupal\OneDrive\Documents\Java\A3> java CourseManagementSystem      
+Total Courses : 4
+Harry Smith enrolled in C++
+Harry Smith enrolled in Java
+Harry Smith enrolled in DBT
+
+Garry Smith enrolled in Java
+Garry Smith enrolled in DSA
+
+Jay Smith enrolled in C++
+Jay Smith enrolled in DBT
+
+John Smith enrolled in DBT
+
+Student ID : 1001 Student Name : Harry Smith
+Course Id : 101 Course Name : C++ Course Fees : 10000.0
+Course Id : 102 Course Name : Java Course Fees : 15000.0
+Course Id : 103 Course Name : DBT Course Fees : 8000.0
+
+Student ID : 1003 Student Name : Garry Smith
+Course Id : 102 Course Name : Java Course Fees : 15000.0
+Course Id : 104 Course Name : DSA Course Fees : 12000.0
+
+Student ID : 1005 Student Name : Jay Smith
+Course Id : 101 Course Name : C++ Course Fees : 10000.0
+Course Id : 103 Course Name : DBT Course Fees : 8000.0
+
+Student ID : 1006 Student Name : John Smith
+Course Id : 103 Course Name : DBT Course Fees : 8000.0
+
+----------------------------------------------------------------------------------
+10.
+
 -------------------------------------------------------------------------------------------
 Output:
 
