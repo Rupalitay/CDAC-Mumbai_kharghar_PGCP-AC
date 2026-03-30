@@ -1078,8 +1078,100 @@ Course Id : 103 Course Name : DBT Course Fees : 8000.0
 ----------------------------------------------------------------------------------
 10.
 
+import java.util.Scanner;
+
+class Ticket{
+    static int ticketID = 1000;
+    String passengerName;
+    String source;
+    String destination;
+    double fare;
+    static double totalFare = 0;
+
+    Ticket(){}
+
+    Ticket(String passengerName,String source,String destination,double fare){
+        this.passengerName = passengerName;
+        this.source = source;
+        this.destination = destination;
+        this.fare = fare;
+        ticketID++;
+        totalFare += fare; 
+    }
+
+    void updateFare(double fare){
+        totalFare = totalFare - this.fare;
+        this.fare = fare;
+        totalFare += fare;  
+        
+    }
+
+    void displayDetails(){
+        System.out.println("Ticket ID : "+this.ticketID+"|| Passenger Name : "+this.passengerName+"|| Source : " +this.source+"|| Destination : "+this.destination+"|| Fare : "+this.fare);
+    }
+
+}
+
+class TransportTicketSystem{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter total no of booking");
+        int noOfBooking = sc.nextInt();
+        sc.nextLine();//to clear buffer
+
+        Ticket t[] = new Ticket[noOfBooking];
+
+        for(int i = 0; i < noOfBooking ; i++){
+            System.out.println("Enter Fare, Passenger Name, Source , Destination  : ");
+            
+            double fare = sc.nextDouble();
+            sc.nextLine();
+            String passengerName = sc.nextLine();
+            String source = sc.nextLine();
+            String destination = sc.nextLine();
+
+             t[i] = new Ticket(passengerName, source, destination, fare);
+        }
+         System.out.println("If you want to update the fare of Ticket tell How many booking fare needs to be updated1 : ");
+         int noBooking = sc.nextInt();
+        for(int i = 0 ; i < noBooking ; i++){
+            System.out.println("To change the fare enter the Booking no : ");
+            int bookingNo = sc.nextInt();
+             System.out.println("To change the fare enter fare : ");
+             double newfare = sc.nextDouble();
+            t[bookingNo -1].updateFare(newfare);
+        }
+
+        for(int i = 0 ; i < noOfBooking ; i++){
+            t[i].displayDetails();
+        }
+
+        System.out.println("\nTotal Fare : " + Ticket.totalFare);
+
+        sc.close();
+        
+    }   
+}
 -------------------------------------------------------------------------------------------
 Output:
 
+PS C:\Users\rupal\OneDrive\Documents\Java\A3> javac TransportTicketSystem.java
+PS C:\Users\rupal\OneDrive\Documents\Java\A3> java TransportTicketSystem      
+Enter total no of booking
+1
+Enter Fare, Passenger Name, Source , Destination  : 
+500.4
+Nikhil Prasad
+Pune
+Ujjain
+If you want to update the fare of Ticket tell How many booking fare needs to be updated1 : 
+1
+To change the fare enter the Booking no : 
+1
+To change the fare enter fare : 
+400.56
+Ticket ID : 1001|| Passenger Name : Nikhil Prasad|| Source : Pune|| Destination : Ujjain|| Fare : 400.56
+
+Total Fare : 400.56
 
 ------------------------------------------------------------------------------------------
