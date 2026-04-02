@@ -1,0 +1,187 @@
+1.
+class ElectronicsObjects{
+    int electId;
+    String name;
+    String brand;
+    double price;
+
+    ElectronicsObjects(){}
+
+    ElectronicsObjects(int electId,String name,String brand,double price){
+        this.electId = electId;
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+    }
+
+    void electDisplay(){
+        System.out.println("Electronics ID : "+this.electId+
+        ", Name : "+this.name+
+        ", Brand : " +this.brand+
+        ", Price : "+this.price);
+    }
+}
+
+class ClothingObjects{
+    int clothId;
+    String name;
+    String brand;
+    String size;
+    double price;
+
+    ClothingObjects(){}
+
+    ClothingObjects(int clothId,String name,String brand,String size,double price){
+        this.clothId = clothId;
+        this.name = name;
+        this.brand = brand;
+        this.size = size;
+        this.price = price;
+    }
+
+    void clothDisplay(){
+        System.out.println("Clothes ID : "+this.clothId+
+        ", Name : "+this.name+
+        ", Brand : "+this.brand+
+        ", Size : "+this.size+
+        ", Price : "+this.price);
+    }
+}
+class Inventory<T>{
+    T product;
+
+    void add(T pro){
+        this.product = pro;
+    }
+
+    T retrieve(){
+        return product;
+    }
+
+    void productDetails(){
+        System.out.println(this.product);
+    }
+
+    public String toString(){
+        return product.toString();
+    }
+}
+class Ecommerce{
+    public static void main(String args[]){
+        ElectronicsObjects e = new ElectronicsObjects(1001,"Laptop","HP",90000);
+        Inventory<ElectronicsObjects> eo = new Inventory<ElectronicsObjects>();
+        eo.add(e);
+        eo.retrieve();
+        eo.productDetails();
+        e.electDisplay();
+
+        ElectronicsObjects e1 = new ElectronicsObjects(1031,"Moblie","Samsung",90000);
+        Inventory<ElectronicsObjects> eo1= new Inventory<ElectronicsObjects>();
+        eo1.add(e);
+        eo1.retrieve();
+        eo1.productDetails();
+        e1.electDisplay();
+
+        ClothingObjects c = new ClothingObjects(102,"Shirt","Tokyo Talkies","M",5000);
+        Inventory<ClothingObjects> ic = new Inventory<ClothingObjects>();
+        ic.add(c);
+        ic.productDetails();
+        c.clothDisplay();
+        
+    }
+}
+
+--------------------------------------------------------------------------------------------------
+OUTPUT:
+
+PS C:\Users\rupal\OneDrive\Documents\Java\a5> javac Ecommerce.java
+PS C:\Users\rupal\OneDrive\Documents\Java\a5> java Ecommerce      
+ElectronicsObjects@28a418fc
+Electronics ID : 1001, Name : Laptop, Brand : HP, Price : 90000.0
+ElectronicsObjects@28a418fc
+Electronics ID : 1031, Name : Moblie, Brand : Samsung, Price : 90000.0
+ClothingObjects@404b9385
+Clothes ID : 102, Name : Shirt, Brand : Tokyo Talkies, Size : M, Price : 5000.0
+
+--------------------------------------------------------------------------------
+2.
+
+import java.util.*;
+
+class Generator<T>{
+
+    Generator(){}
+
+    void generateReport(T[] data){
+        System.out.println("---------Report-------");
+        for(T item : data){
+            System.out.println(item);
+        }
+        System.out.println("-----------------------");
+    }
+
+    void generateRep(List<T> data){
+        System.out.println("---------Report-------");
+        Iterator<T> it = data.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }  
+        System.out.println("-----------------------");
+    }
+
+    
+}
+class ReportGenerator{
+    public static void main(String args[]){
+        String name[] = {"Rahul" , "Arun","Karan","Kiran","Girish"};
+        Generator<String> gen = new Generator<String>() ;
+        System.out.println("Report of Employees Names: ");
+        gen.generateReport(name);
+
+        List<Integer> productId = Arrays.asList(1023,1246,1564,1054,1562,1021,1027);
+        Generator<Integer> gen1 = new Generator<Integer>() ;
+        System.out.println("Report of Products ID: ");
+        gen1.generateRep(productId);
+
+        Double saleFigure[] = {566.56,456.5,12.9,4564.556,451.90,564.58};
+        Generator<Double> gen2 = new Generator<Double>();
+        System.out.println("Report of Sale Figures: ");
+        gen2.generateReport(saleFigure); 
+
+    }
+}
+
+----------------------------------------------------------------------------
+Output:
+
+PS C:\Users\rupal\OneDrive\Documents\Java\a5> javac ReportGenerator.java
+PS C:\Users\rupal\OneDrive\Documents\Java\a5> java ReportGenerator      
+Report of Employees Names: 
+---------Report-------
+Rahul
+Arun
+Karan
+Kiran
+Girish
+-----------------------
+Report of Products ID: 
+---------Report-------
+1023
+1246
+1564
+1054
+1562
+1021
+1027
+-----------------------
+Report of Sale Figures: 
+---------Report-------
+566.56
+456.5
+12.9
+4564.556
+451.9
+564.58
+-----------------------
+--------------------------------------------------------------
+3.
