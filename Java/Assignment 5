@@ -185,3 +185,161 @@ Report of Sale Figures:
 -----------------------
 --------------------------------------------------------------
 3.
+import java.util.Arrays;
+import java.util.List;
+
+class FinanCal<T>{
+
+    public static <T extends Number> double calculateSum(List<T> obj ){
+        double res = 0;
+        for(Number item : obj){
+            res += item.doubleValue();//convert item to double;
+        }
+        return res;
+    }
+    public static <T extends Number> double calculateAvg(List<T> obj ){
+        if(obj.isEmpty()){
+            return 0;
+        }
+        double sum = calculateSum(obj);
+              
+        return sum / obj.size();
+    }
+}
+class FinancialCalculator{
+    public static void main(String args[]){
+        FinanCal <Integer> trans = new FinanCal<>();
+
+        List <Integer> transaction = Arrays.asList(5600,2000,230,520,4510,561);
+        Integer sumt = (int)trans.calculateSum(transaction);
+        System.out.println("Sum of transaction is : "+ sumt);
+
+        double avg = (double)trans.calculateAvg(transaction);
+        System.out.printf("Average of transaction is : %.2f",avg);
+
+
+        List<Double> salary = Arrays.asList(20000.56,5000.45,80000.56,40000.45,20566.56);
+        System.out.println("Sum of Salary Data is : "+FinanCal.calculateSum(salary) );
+        System.out.println("Average of Salary Data is : "+FinanCal.calculateAvg(salary) );
+    
+    }
+}
+
+--------------------------------------------------------------------------
+Output:
+PS C:\Users\rupal\OneDrive\Documents\Java\a5> javac FinancialCalculator.java
+PS C:\Users\rupal\OneDrive\Documents\Java\a5> java FinancialCalculator      
+Sum of transaction is : 13421
+Average of transaction is : 2236.83
+Sum of Salary Data is : 165568.58000000002
+Average of Salary Data is : 33113.716
+--------------------------------------------------------------------
+4.
+import java.util.*;
+class Payment{
+    int paymentId;
+    double amount;
+
+    Payment(){}
+
+    Payment(int paymentId,double amount){
+        this.paymentId = paymentId;
+        this.amount = amount;
+    }
+    void displayPayment(){
+        System.out.println("Payment Id : "+this.paymentId+", Amount : "+this.amount);
+    }
+}
+
+class CreditCardPayment extends Payment{
+    String cardNo;
+    int cvv;
+
+    CreditCardPayment(){}
+
+    CreditCardPayment(int paymentId,double amount,String cardNo,int cvv){
+        super(paymentId, amount);
+        this.cardNo = cardNo;
+        this.cvv = cvv;
+    }
+    void displayPayment(){
+        System.out.println("Payment Id : "+this.paymentId+
+                            ", Amount : "+this.amount+
+                            ", CardNumber : "+this.cardNo+
+                            ",CVV : "+this.cvv);
+    }
+}
+
+class UPIPayment extends Payment{
+    String upiId;
+
+    UPIPayment(){}
+
+    UPIPayment(int paymentId,double amount,String upiId){
+        super(paymentId, amount);
+        this.upiId = upiId;
+    }
+    void displayPayment(){
+        System.out.println("Payment Id : "+this.paymentId+
+                            ", Amount : "+this.amount+
+                            ", UPI Id : "+this.upiId);
+    }
+}
+
+class PaymentDetails <T extends Payment>{
+    public static void displayAllDetails(List<? extends Payment> list){
+        for(Payment p : list){
+            p.displayPayment();
+        }
+    }
+}
+
+class PaymentProcessing{
+    public static void main(String args[]){
+        ArrayList<UPIPayment> upilist = new ArrayList<>();
+
+        UPIPayment upi1 = new UPIPayment(1002,5000.00,"aix@axis.bank"); 
+        UPIPayment upi2 = new UPIPayment(1005,10800.00,"xou456@sbi.bank");
+
+        upilist.add(upi1);
+        upilist.add(upi2);
+        upilist.add(new UPIPayment(1013,152.00,"haya46@sbi.bank"));
+        upilist.add(new UPIPayment(1065,1426.00,"arry8346@hdfc.bank"));
+
+        System.out.println("--------------------List of UPI Payment------------------------");
+        PaymentDetails.displayAllDetails(upilist);
+        System.out.println("-----------------------------------------------------------");
+
+        ArrayList<CreditCardPayment> cardlist = new ArrayList<>();
+
+        CreditCardPayment card1 = new CreditCardPayment(1008,55000.00,"4886 5679 5785",146); 
+        CreditCardPayment card2 = new CreditCardPayment(1084,7568.00,"8899 6778 5675",467);
+
+        cardlist.add(card1);
+        cardlist.add(card2);
+        cardlist.add(new CreditCardPayment(1056,715.00,"4686 5897 4568" , 125));
+        cardlist.add(new CreditCardPayment(1041,5856.00,"4565 5671 2478",584));
+
+        System.out.println("--------------------List of Credit Card Payment------------------------");
+        PaymentDetails.displayAllDetails(cardlist);
+        System.out.println("-----------------------------------------------------------");
+    
+    }
+}
+------------------------------------------------------------------------
+OUTPUT:
+
+PS C:\Users\rupal\OneDrive\Documents\Java\a5> javac PaymentProcessing.java
+PS C:\Users\rupal\OneDrive\Documents\Java\a5> java PaymentProcessing      
+--------------------List of UPI Payment------------------------
+Payment Id : 1002, Amount : 5000.0, UPI Id : aix@axis.bank
+Payment Id : 1005, Amount : 10800.0, UPI Id : xou456@sbi.bank
+Payment Id : 1013, Amount : 152.0, UPI Id : haya46@sbi.bank
+Payment Id : 1065, Amount : 1426.0, UPI Id : arry8346@hdfc.bank
+-----------------------------------------------------------
+--------------------List of Credit Card Payment------------------------
+Payment Id : 1008, Amount : 55000.0, CardNumber : 4886 5679 5785,CVV : 146
+Payment Id : 1084, Amount : 7568.0, CardNumber : 8899 6778 5675,CVV : 467
+Payment Id : 1056, Amount : 715.0, CardNumber : 4686 5897 4568,CVV : 125
+Payment Id : 1041, Amount : 5856.0, CardNumber : 4565 5671 2478,CVV : 584
+-----------------------------------------------------------
