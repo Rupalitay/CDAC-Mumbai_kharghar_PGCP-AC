@@ -1,0 +1,302 @@
+import java.util.Scanner;
+
+interface Payment{
+    void pay(double amount);
+    void refund(double amount);
+}
+
+class UPIPayment implements Payment{
+    String upiId;
+
+    UPIPayment(String upiId){
+        this.upiId = upiId;
+    }
+
+    public void pay(double amount){
+        System.out.println("Payment through UPI Id  "+upiId+" of "+amount);
+
+    }
+
+    public void refund(double amount){
+        System.out.println("Refund through UPI Id "+upiId+" of "+amount);
+    }
+}
+
+class CardPayment implements Payment{
+    String cardNo;
+
+    CardPayment(String cardNo){
+        this.cardNo = cardNo;
+    }
+    public void pay(double amount){
+        System.out.println("Payment through Card Number "+cardNo+" of "+amount);
+    }
+
+    public void refund(double amount){
+        System.out.println("Refund through Card Number "+cardNo+" of "+amount);
+    }
+}
+
+class Product{
+    int productId;
+    String productName;
+    String price;
+    static int count = 0;
+
+    Product (){}
+
+    Product (  int productId,String productName,String price){
+        this.productId = productId;
+        this.productName = productName;
+        this.price = price;
+        count++;
+    }
+
+    double getPrice(){
+        try{
+        return Double.parseDouble(price);
+        }catch(NumberFormatException e){
+            System.out.println("--Invalid price Format --");
+            return 0.0;
+        }
+    }
+
+    int getProductCount() throws Exception {
+        if(count<= 0) {
+            throw new Exception("Product count is 0 ");
+        }
+        return count;
+    }
+}
+
+class Order{
+    String customerName;
+    Product product[];
+
+    Order(){}
+    Order(String customerName, Product[] product){
+        this.customerName = customerName;
+        this.product = product;
+    }
+
+    double calculatetotal(){
+        double total = 0;
+        for(Product pro : product){
+            total += pro.getPrice();
+
+        }
+        return total;
+    }
+
+    double calculatetotal( double discountPercentage){
+        double total;
+        total = this.calculatetotal();
+
+        double discountAmount = total- total*discountPercentage/100;
+        return discountAmount;
+    }
+    
+    String generateBill(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("------------Bill--------------\n");
+        sb.append("----------Order Detail---------\n");
+        sb.append("Customer : ").append(customerName).append("\n\n");
+
+        sb.append("Products : \n");
+        for(Product pr : product){
+        sb.append("Product Id : ").append(pr.productId).append("\n");
+        sb.append("Product Name : ").append(pr.productName).append("\n");
+        sb.append("Price : Rs. ").append(pr.price).append("\n");
+
+        }   
+
+        sb.append("\n Total Amount : Rs. " ).append(String.format("%.2f",calculatetotal()));
+        sb.append("\n Total Amount  with 20% discount : Rs. ").append(String.format("%.2f",calculatetotal(20))).append("\n");
+
+        sb.append("--------------------------------------\n");
+
+        return sb.toString();
+
+    }
+
+}
+
+class OnlineShoppingSystem{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter the no of orders : ");
+        int orders = sc.nextInt();
+        sc.nextLine();
+        Order ord[] = new Order[orders];
+        for(int i = 0 ; i<orders; i++){
+            System.out.println("Enter the costomer Name: ");
+            String name = sc.nextLine();
+
+            System.out.println("Enter no of Products : ");
+            int products = sc.nextInt();
+
+            Product pro[] = new Product[products];
+
+            for(int j = 0 ; j<products ; j++){
+            System.out.println("Enter Product Id , product Name , price : ");
+            int productId = sc.nextInt();
+            sc.nextLine();//to clear buffer
+            String productName = sc.nextLine();
+            String price = sc.nextLine();
+
+            pro[j] = new Product(productId, productName,price);
+            }
+            ord[i] = new Order(name, pro);
+
+            double totalAmount = ord[i].calculatetotal();
+            double totalAmountWithDiscount = ord[i].calculatetotal(20);
+
+            String bill = ord[i].generateBill();
+            System.out.println(bill);
+
+            System.out.println("--------Payment Mode------");
+            System.out.println("1. Payment through Credit Card.");
+            System.out.println("2. Payment through UPI.");
+
+
+            int choice = 0;
+            while(true){
+                try{
+                    System.out.println("Enter Payment Mode 1: CreditCard or 2: UPI");
+                     choice = sc.nextInt();
+                    if(choice != 1 && choice != 2 ){
+                        throw new Exception();
+                    }
+                    break;
+                    
+                } 
+                catch(Exception e){
+                    System.out.println("--Invalid Payment option---");
+
+                }
+
+            }
+
+            System.out.println("Selected choice is "+ choice);
+            sc.nextLine();//to clear buffer
+
+            if(choice == 1 ){
+                System.out.println("Enter the Card No : ");
+                String cardNo = sc.nextLine();
+                CardPayment cd = new CardPayment(cardNo);
+                cd.pay(totalAmountWithDiscount);
+                System.out.println("Payment Sucessfull with Credit card");
+            }
+            else if(choice == 2 ){
+                System.out.println("Enter the UPI Id : ");
+                String upiId = sc.nextLine();
+                UPIPayment upi = new UPIPayment(upiId);
+                upi.refund(totalAmountWithDiscount);
+                System.out.println("Payment Sucessfull with UPI");
+
+            }
+
+            System.out.println("Enter True for Yes if you want refund: ");
+            boolean refund = sc.nextBoolean();
+
+            if(refund == true){
+                System.out.println("--------Refund Mode------");
+                System.out.println("1. Refund through Credit Card.");
+                System.out.println("2. Refund through UPI.");
+
+
+                int choice1 = 0;
+                while(true){
+                    try{
+                        System.out.println("Enter Refund Mode 1: CreditCard or 2: UPI");
+                        choice1 = sc.nextInt();
+                        if(choice1 != 1 && choice1 != 2 ){
+                            throw new Exception();
+                        }
+                        break;
+                        
+                    } 
+                    catch(Exception e){
+                        System.out.println("--Invalid Payment option---");
+
+                    }
+
+                }
+
+                System.out.println("Selected choice is "+ choice1);
+                sc.nextLine();//to clear buffer
+
+                if(choice1 == 1 ){
+                    System.out.println("Enter the Card No : ");
+                    String cardNo = sc.nextLine();
+                    CardPayment cd = new CardPayment(cardNo);
+                    cd.refund(totalAmountWithDiscount);
+                    System.out.println("Refund Sucessfull with Credit card");
+                }
+                else if(choice1 == 2 ){
+                    System.out.println("Enter the UPI Id : ");
+                    String upiId = sc.nextLine();
+                    UPIPayment upi = new UPIPayment(upiId);
+                    upi.refund(totalAmountWithDiscount);
+                    System.out.println("Refund Sucessfull with UPI");
+
+                }
+            }
+            
+            
+        }
+
+    }
+}
+
+------------------------------------------------------------------
+Output:-
+
+PS C:\Users\rupal\OneDrive\Documents\Java\a4> javac OnlineShoppingSystem.java
+PS C:\Users\rupal\OneDrive\Documents\Java\a4> java OnlineShoppingSystem      
+Enter the no of orders : 
+1
+Enter the costomer Name: 
+Gargi Padole
+Enter no of Products : 
+2
+Enter Product Id , product Name , price : 
+1256
+Laptop
+94656.56
+Enter Product Id , product Name , price : 
+1576
+Refrigerator
+56235.44 
+------------Bill--------------
+----------Order Detail---------
+Customer : Gargi Padole
+
+Products : 
+Product Id : 1256
+Product Name : Laptop
+Price : Rs. 94656.56
+Product Id : 1576
+Product Name : Refrigerator
+Price : Rs. 56235.44
+
+ Total Amount : Rs. 150892.00
+ Total Amount  with 20% discount : Rs. 120713.60
+--------------------------------------
+
+--------Payment Mode------
+1. Payment through Credit Card.
+2. Payment through UPI.
+Enter Payment Mode 1: CreditCard or 2: UPI
+2
+Selected choice is 2
+Enter the UPI Id : 
+yiioo@sbi.bank
+Refund through UPI Id yiioo@sbi.bank of 120713.6
+Payment Sucessfull with UPI
+Enter True for Yes  if you want refund: 
+false
+-------------------------------------------------------------------------
+2
+
