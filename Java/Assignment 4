@@ -299,4 +299,302 @@ Enter True for Yes  if you want refund:
 false
 -------------------------------------------------------------------------
 2
+import java.util.Scanner;
 
+interface BankService{
+    void deposit(double amount);
+    void withdraw(double amount);
+    String generateSummary();
+}
+
+class Account{
+    int accountNumber;
+    String accountHolderName;
+    String balance;
+    
+    Account(){}
+
+    Account(  int accountNumber,String accountHolderName, String balance){
+            this.accountNumber = accountNumber;
+            this.accountHolderName = accountHolderName;
+            this.balance = balance;
+    }
+
+    double getDoubleBalance(String balance){
+        try{
+        return Double.parseDouble(balance); 
+        }catch(NumberFormatException e){
+            System.out.println("--Invalid Numeric Input--");
+            return 0.0;
+        }
+
+    }
+
+    void displayAccountDetails(){
+        System.out.println("Account Number : "+this.accountNumber+
+                            "Account Holder Name : "+this.accountHolderName+
+                            "Balance : "+balance);
+    }
+}
+
+class SavingAccount extends Account implements BankService{
+    double interestRate;
+    SavingAccount(  int accountNumber,String accountHolderName, String balance,double interestRate){
+            super(accountNumber,accountHolderName,balance);
+            this.interestRate = interestRate;
+    }
+
+     double calculateInterest() {
+        double interest = getDoubleBalance( balance) * interestRate / 100;
+        return interest;
+     }
+
+     public void deposit(double amount){
+        double bal = Double.parseDouble(balance);
+        try{
+            if(amount < 0){
+                throw new Exception();
+            }
+            bal  += amount; 
+            balance = String.valueOf(bal);
+            System.out.println("RS. "+amount+" is Deposited");
+            System.out.println("Updated balance is RS. "+ balance );
+            
+        }catch (NumberFormatException e) {
+            System.out.println("Invalid balance format!");
+        } 
+        catch(Exception e){
+            System.out.println("Amount to deposit is Negative");
+        }
+     }
+
+    public void withdraw(double amount){
+        double bal = Double.parseDouble(balance);
+           try{
+            if(amount < 0){
+                throw new Exception();
+            }
+            if(amount > bal ){
+                throw new Exception("Withdrawal greater than or equal to  Balance");
+            }
+            bal  -= amount; 
+            balance = String.valueOf(bal);
+            System.out.println("RS. "+amount+" is Withdrawn");
+            System.out.println("Updated balance is RS. "+ bal );
+            
+        }catch (NumberFormatException e) {
+            System.out.println("Invalid balance format!");
+        } 
+        catch(Exception e){
+            System.out.println("Amount to deposit is Negative");
+        }
+     
+     }
+
+    public String generateSummary() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("\n------ Savings Account Summary ------\n");
+        sb.append("Account Number : ").append(accountNumber).append("\n");
+        sb.append("Account Holder : ").append(accountHolderName).append("\n");
+        sb.append("Balance : ").append(balance).append("\n");
+        sb.append("Interest : ").append(calculateInterest()).append("\n");
+
+        return sb.toString();
+    }
+
+     void displayAccountDetails(){
+        super.displayAccountDetails();
+        System.out.println("Interest : "+calculateInterest());
+    }
+
+
+}
+
+class CurrentAccount extends Account implements BankService{
+    double overDraftLimit;
+    CurrentAccount(  int accountNumber,String accountHolderName, String balance,double overDraftLimit){
+            super(accountNumber,accountHolderName,balance);
+            this.overDraftLimit = overDraftLimit;
+    }
+
+    public void deposit(double amount){
+        double bal = Double.parseDouble(balance);
+        try{
+            if(amount < 0){
+                throw new Exception();
+            }
+            bal  += amount; 
+            balance = String.valueOf(bal);
+            System.out.println("RS. "+amount+" is Deposited");
+            System.out.println("Updated balance is RS. "+ balance );
+            
+        }catch (NumberFormatException e) {
+            System.out.println("Invalid balance format!");
+        }
+        catch(Exception e){
+            System.out.println("Amount to deposit is Negative");
+        }
+     }
+
+    public void withdraw(double amount){
+        double bal = Double.parseDouble(balance);
+           try{
+            if(amount < 0){
+                throw new Exception();
+            }
+            if(amount > bal + overDraftLimit){
+                throw new Exception("Withdrawal greater than or equal to  Balance");
+            }
+
+            bal  -= amount; 
+            balance = String.valueOf(bal);
+            System.out.println("RS. "+amount+" is Withdrawn");
+            System.out.println("Updated balance is RS. "+ balance );
+            
+        }catch (NumberFormatException e) {
+            System.out.println("Invalid balance format!");
+        }
+        catch(Exception e){
+            System.out.println("Amount to deposit is Negative");
+        }
+     
+     }
+
+    public String generateSummary() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("\n------ Current Account Summary ------\n");
+        sb.append("Account Number : ").append(accountNumber).append("\n");
+        sb.append("Account Holder : ").append(accountHolderName).append("\n");
+        sb.append("Balance : ").append(balance).append("\n");
+        sb.append("Overdraft Limit : ").append(overDraftLimit).append("\n");
+
+        return sb.toString();
+    }
+    
+     void displayAccountDetails(){
+        super.displayAccountDetails();
+        System.out.println("OverDraftLimit : "+overDraftLimit);
+    }
+
+     
+}
+class SmartBankingSystem{
+    public static void toDepositAndWithdraw(Scanner sc , BankService acc){
+        System.out.println("\n------Menu-------");
+        System.out.println("Enter 1. to deposit ");
+        System.out.println("Enter 2. to withdraw");
+        System.out.println("Enter 3. to Exit");
+
+        System.out.println("\nEnter choice");
+        int choice = sc.nextInt();
+        
+        do{
+            switch(choice){
+                case 1 : {  System.out.println("Enter deposit amount : ");
+                            double amount = sc.nextDouble();
+                            acc.deposit(amount);
+                            break;
+                            }
+                case 2 : {  System.out.println("Enter amount to withdraw : ");
+                            double amount = sc.nextDouble();
+                            acc.withdraw(amount);
+                            break;
+                            }   
+                   
+            }
+            System.out.println("\nEnter choice to 1.deposit,2.withdraw again 3.Exit. ");
+            choice = sc.nextInt();   
+
+        }while(choice !=3);
+        
+    }
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter Account Number , Account Holder Name , Balance : ");
+        int accountNumber = sc.nextInt();
+        sc.nextLine();
+        String accountHolderName = sc.nextLine();
+        String balance = sc.nextLine();
+
+        System.out.println("--------Accouut Type------");
+        System.out.println("1. Saving Account.");
+        System.out.println("2. Current Account.");
+
+        BankService acc = null;
+
+        System.out.println("\nEnter the choice : ");
+
+        int choice = sc.nextInt();
+        switch(choice){
+            case 1 : {System.out.println("--- Saving Account ---");
+                        System.out.println("Enter the interest Rate");
+                        double interestRate = sc.nextDouble();
+                        acc = new SavingAccount(accountNumber, accountHolderName,balance,interestRate);
+                        break;
+                        } 
+
+            case 2 : {System.out.println("--- Current Account ---");
+                        System.out.println("Enter the Over Draft Limit");
+                        double overDraftLimit = sc.nextDouble();
+                        acc = new CurrentAccount(accountNumber, accountHolderName,balance,overDraftLimit);
+                        break;
+                        } 
+        }
+        toDepositAndWithdraw(sc,acc );
+        System.out.println(acc.generateSummary());   
+
+        sc.close();                   
+
+    }
+}
+
+----------------------------------------------------------------
+Output:-
+PS C:\Users\rupal\OneDrive\Documents\Java\a4> javac SmartBankingSystem.java
+PS C:\Users\rupal\OneDrive\Documents\Java\a4> java SmartBankingSystem      
+Enter Account Number , Account Holder Name , Balance : 
+564212
+harish
+547854
+--------Accouut Type------
+1. Saving Account.
+2. Current Account.
+
+Enter the choice : 
+1 
+--- Saving Account ---
+Enter the interest Rate
+8
+
+------Menu-------
+Enter 1. to deposit 
+Enter 2. to withdraw
+Enter 3. to Exit
+
+Enter choice
+1
+Enter deposit amount : 
+4565 
+RS. 4565.0 is Deposited
+Updated balance is RS. 552419.0
+
+Enter choice to 1.deposit,2.withdraw again 3.Exit. 
+2
+Enter amount to withdraw : 
+8456 
+RS. 8456.0 is Withdrawn
+Updated balance is RS. 543963.0
+
+Enter choice to 1.deposit,2.withdraw again 3.Exit. 
+3
+
+------ Savings Account Summary ------
+Account Number : 564212
+Account Holder : harish
+Balance : 543963.0
+Interest : 43517.04
+
+------------------------------------------------------
