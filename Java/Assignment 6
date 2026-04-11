@@ -1,0 +1,223 @@
+1.
+import java.io.*;
+import java.util.*;
+class StudentRecord {
+    private String name;
+    private String subject;
+    private int marks;
+    
+    public StudentRecord(String name, String subject, int marks) {
+        this.name = name;
+        this.subject = subject;
+        this.marks = marks;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getSubject() {
+        return subject;
+    }
+    
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+    
+    public int getMarks() {
+        return marks;
+    }
+    
+    public void setMarks(int marks) {
+        this.marks = marks;
+    }
+    
+    @Override
+    public String toString() {
+        return "StudentRecord{name='" + name + "', subject='" + subject + "', marks=" + marks + "}";
+    }
+}
+
+public class StudentPerformanceAnalyzer {
+    
+    public static void main(String[] args) {
+        StudentPerformanceAnalyzer analyzer = new StudentPerformanceAnalyzer();
+        analyzer.analyzeStudentPerformance();
+    }
+    
+    public void analyzeStudentPerformance() {
+        List<StudentRecord> studentRecords = new ArrayList<>();
+        
+        // Read CSV file and populate student records
+        try {
+            studentRecords = readStudentRecords("students.csv");
+        } catch (IOException e) {
+            System.err.println("Error reading student data: " + e.getMessage());
+            return;
+        }
+        
+        // Process data and generate report
+        try {
+            generateReport(studentRecords, "report.txt");
+            System.out.println("Report generated successfully: report.txt");
+        } catch (IOException e) {
+            System.err.println("Error generating report: " + e.getMessage());
+        }
+    }
+    
+    private List<StudentRecord> readStudentRecords(String filename) throws IOException {
+        List<StudentRecord> records = new ArrayList<>();
+        
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String line;
+            boolean headerSkipped = false;
+            
+            while ((line = br.readLine()) != null) {
+                if (!headerSkipped) {
+                    headerSkipped = true; // Skip header row
+                    continue;
+                }
+                
+                // Split line by comma
+                String[] parts = line.split(",");
+                if (parts.length >= 4) {
+                    try {
+                        // Extract data: StudentID,Name,Subject,Marks
+                        String name = parts[1].trim();
+                        String subject = parts[2].trim();
+                        int marks = Integer.parseInt(parts[3].trim());
+                        
+                        // Create StudentRecord and add to list
+                        StudentRecord record = new StudentRecord(name, subject, marks);
+                        records.add(record);
+                    } catch (NumberFormatException e) {
+                        System.err.println("Invalid marks format in line: " + line);
+                    }
+                }
+            }
+        } catch (FileNotFoundException e) {
+            throw new IOException("File not found: " + filename, e);
+        }
+        
+        return records;
+    }
+    
+    private void generateReport(List<StudentRecord> records, String outputFilename) throws IOException {
+        // HashMaps for processing
+        Map<String, Integer> totalMarksPerStudent = new HashMap<>();
+        Map<String, Integer> subjectCountPerStudent = new HashMap<>();
+        Map<String, StudentRecord> subjectToppers = new HashMap<>();
+        
+        // Process all records
+        for (StudentRecord record : records) {
+            String studentName = record.getName();
+            String subject = record.getSubject();
+            int marks = record.getMarks();
+            
+            // Update total marks per student
+            totalMarksPerStudent.put(studentName, 
+                totalMarksPerStudent.getOrDefault(studentName, 0) + marks);
+            
+            // Update subject count per student
+            subjectCountPerStudent.put(studentName, 
+                subjectCountPerStudent.getOrDefault(studentName, 0) + 1);
+            
+            // Update subject topper
+            StudentRecord currentTopper = subjectToppers.get(subject);
+            if (currentTopper == null || marks > currentTopper.getMarks()) {
+                subjectToppers.put(subject, record);
+            }
+        }
+        
+        // Find overall topper
+        String overallTopper = null;
+        int highestTotal = -1;
+        
+        for (Map.Entry<String, Integer> entry : totalMarksPerStudent.entrySet()) {
+            if (entry.getValue() > highestTotal) {
+                highestTotal = entry.getValue();
+                overallTopper = entry.getKey();
+            }
+        }
+        
+        // Write report to file
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputFilename))) {
+            bw.write("===== STUDENT REPORT =====\n");
+            bw.write("Total & Average Marks:\n");
+            
+            // Sort students by name for consistent output
+            List<String> studentNames = new ArrayList<>(totalMarksPerStudent.keySet());
+            Collections.sort(studentNames);
+            
+            for (String studentName : studentNames) {
+                int total = totalMarksPerStudent.get(studentName);
+                int subjectCount = subjectCountPerStudent.get(studentName);
+                double average = (double) total / subjectCount;
+                
+                bw.write(String.format("%s: Total = %d, Average = %.2f\n", 
+                    studentName, total, average));
+            }
+            
+            bw.write("\nSubject Toppers:\n");
+            
+            // Sort subjects for consistent output
+            List<String> subjects = new ArrayList<>(subjectToppers.keySet());
+            Collections.sort(subjects);
+            
+            for (String subject : subjects) {
+                StudentRecord topper = subjectToppers.get(subject);
+                bw.write(String.format("%s: %s (%d)\n", 
+                    subject, topper.getName(), topper.getMarks()));
+            }
+            
+            bw.write("\nOverall Topper: " + overallTopper + "\n");
+        }
+    }
+}
+
+-------------------------------------------------------
+Student.csv
+
+StudentID,Name,Subject,Marks
+1,Amit,Math,78
+2,Neha,Math,85
+3,Rahul,Math,67
+1,Amit,Science,82
+2,Neha,Science,90
+3,Rahul,Science,70
+1,Amit,English,75
+2,Neha,English,88
+3,Rahul,English,72
+4,Priya,Math,91
+4,Priya,Science,89
+4,Priya,English,95
+
+--------------------------------------------------------------------
+report.txt
+
+===== STUDENT REPORT =====
+Total & Average Marks:
+Amit: Total = 235, Average = 78.33
+Neha: Total = 263, Average = 87.67
+Priya: Total = 275, Average = 91.67
+Rahul: Total = 209, Average = 69.67
+
+Subject Toppers:
+English: Priya (95)
+Math: Priya (91)
+Science: Neha (90)
+
+Overall Topper: Priya
+---------------------------------------------------------------
+Output:
+
+PS C:\Users\rupal\OneDrive\Documents\Java\A6> javac StudentPerformanceAnalyzer.java
+PS C:\Users\rupal\OneDrive\Documents\Java\A6> java StudentPerformanceAnalyzer      
+Report generated successfully: report.txt
+------------------------------------------------------------------------
+2.
+
