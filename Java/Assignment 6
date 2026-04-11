@@ -221,3 +221,101 @@ Report generated successfully: report.txt
 ------------------------------------------------------------------------
 2.
 
+import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
+
+class ActivityFileProcessor{
+    public static void main(String args[]){
+        HashMap<String, Integer> userActivityMap = new HashMap<>();
+        
+        try (BufferedReader reader = new BufferedReader(new FileReader("activity.txt"))) {
+            String line;
+            
+            // Read file line-by-line
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("\\s+");
+                if (parts.length >= 2) {
+                    String user = parts[0];
+                    // Increment count for each user occurrence
+                    userActivityMap.put(user, userActivityMap.getOrDefault(user, 0) + 1);
+                }
+            }
+            
+            // Find user with maximum activity
+            String maxUser = null;
+            int maxCount = 0;
+            for (Map.Entry<String, Integer> entry : userActivityMap.entrySet()) {
+                if (entry.getValue() > maxCount) {
+                    maxCount = entry.getValue();
+                    maxUser = entry.getKey();
+                }
+            }
+            
+            // Write results to activity_summary.txt
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("activity_summary.txt"))) {
+                writer.write("ACTIVITY SUMMARY\n");
+                writer.write("================\n\n");
+                
+                for (Map.Entry<String, Integer> entry : userActivityMap.entrySet()) {
+                    writer.write(entry.getKey() + ": " + entry.getValue() + " activities\n");
+                }
+                
+                writer.write("\nUser with max activity: " + maxUser + " (" + maxCount + ")\n");
+            }
+            
+            System.out.println("Processing completed!");
+            
+        } catch (FileNotFoundException e) {
+            System.err.println("Error: activity.txt file not found");
+        } catch (IOException e) {
+            System.err.println("Error: I/O exception occurred");
+        }
+    }
+}
+
+-----------------------------------------------------------
+activity.txt
+
+User1 LOGIN 
+User2 LOGIN 
+User1 PURCHASE 
+User3 LOGIN 
+User2 LOGOUT 
+User1 LOGOUT 
+User4 LOGIN 
+User3 PURCHASE 
+User2 PURCHASE 
+User1 LOGIN 
+User4 LOGOUT 
+User3 LOGOUT 
+User5 LOGIN 
+User5 PURCHASE 
+User2 LOGIN 
+User1 PURCHASE 
+User3 LOGIN 
+User4 PURCHASE 
+User5 LOGOUT 
+User2 LOGOUT
+------------------------------------------------------------
+activity_summary.txt
+
+ACTIVITY SUMMARY
+================
+
+User2: 5 activities
+User1: 5 activities
+User5: 3 activities
+User4: 3 activities
+User3: 4 activities
+
+User with max activity: User2 (5)
+
+-------------------------------------------------------------------
+Output:
+
+PS C:\Users\rupal\OneDrive\Documents\Java\a6> javac ActivityFileProcessor.java
+PS C:\Users\rupal\OneDrive\Documents\Java\a6> java ActivityFileProcessor      
+Processing completed!
+
+--------------------------------------------------------------------------
