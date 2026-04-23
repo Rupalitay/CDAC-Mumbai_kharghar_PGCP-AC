@@ -1,200 +1,17 @@
 
 -------------------------------------------------------------------------------
 5. Registration form
-<html lang="en">
-<head>
-    <title>Registration Form</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .container {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            width: 100%;
-            max-width: 500px;
-            transform: translateY(0);
-            transition: transform 0.3s ease;
-        }
-
-        .container:hover {
-            transform: translateY(-5px);
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 30px;
-            font-size: 28px;
-            font-weight: 600;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #555;
-            font-weight: 500;
-            font-size: 14px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="password"],
-        input[type="tel"],
-        input[type="date"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e1e1e1;
-            border-radius: 8px;
-            font-size: 14px;
-            background-color: #fafafa;
-        }
-
-
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            margin-right: 10px;
-            width: 18px;
-            height: 18px;
-        }
-
-        .checkbox-group label {
-            margin-bottom: 0;
-            cursor: pointer;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-        }
-
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Registration Form</h1>
-        <form id="registrationForm">
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="firstName">First Name *</label>
-                    <input type="text" id="firstName" name="firstName" required>
-                </div>
-                <div class="form-group">
-                    <label for="lastName">Last Name *</label>
-                    <input type="text" id="lastName" name="lastName" required>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="email">Email Address </label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone">
-            </div>
-
-            <div class="form-group">
-                <label for="password">Password *</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="birthdate">Date of Birth</label>
-                    <input type="date" id="birthdate" name="birthdate">
-                </div>
-                <div class="form-group">
-                    <label for="gender">Gender</label>
-                    <select id="gender" name="gender">
-                        <option value="">Select</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="address">Address</label>
-                <textarea id="address" name="address" placeholder="Enter your full address"></textarea>
-            </div>
-
-            <div class="checkbox-group">
-                <input type="checkbox" id="terms" name="terms" required>
-                <label for="terms">I agree to the Terms and Conditions and Privacy Policy *</label>
-            </div>
-
-            <div class="checkbox-group">
-                <input type="checkbox" id="newsletter" name="newsletter">
-                <label for="newsletter">I would like to receive newsletters and updates</label>
-            </div>
-
-            <button type="submit" class="submit-btn" >Register</button>
-        </form>
-    </div>
-</body>
-</html>
 
 ------------------------------------------------------------------------
-6. Student Registration Form
+ Student Registration Form
+
 
 <html lang="en">
 <head>
     <title>Student Registration Form</title>
     <style>
-      *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body{
+            body{
             font-family: Arial, sans-serif;   
             padding: 20px;
             min-height: 100vh;
@@ -202,11 +19,10 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(45deg,rgb(90, 200, 75),rgb(65, 65, 195));
         }
         .container{
             margin: 20px auto;
-            background: white;
+            background: rgb(21, 18, 113);
             border-radius: 20px;
             padding: 30px;
             width: 100%;
@@ -222,13 +38,13 @@
         .section{
             margin-bottom: 25px;
             padding: 20px;
-            background: white;
+            background: rgb(44, 59, 156);
             border-radius: 10px;
             border-left: 4px solid blue ;
 
         }
         .section-title{
-            color: blue;
+            color: rgb(180, 180, 199);
             font-size: 18px;
             margin-bottom: 15px;
             margin-top: 15px;
@@ -617,6 +433,90 @@
     </body>
 </html>
 
+---------------------------------------------------------------
+6.
+
+<html>
+    <head>
+        <title>Login-page</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <style>
+            *{
+                font-family:  sans-serif;
+            }
+            body{
+                background: linear-gradient(180deg,#9C27B0,#F44336);
+            }
+            #con{
+                width: 450px;
+                height: 400px;
+                background-color: rgb(241, 244, 245);
+                text-align: center;
+                margin: 100px auto;
+                border-radius: 20px;
+            }
+
+            #con h1{
+                padding-top:40px ;
+                padding-bottom: 20px;
+            }
+            .form-control{
+                margin-bottom: 30px;
+            }
+
+            .form-control input{
+                padding-top: 15px;
+                padding-bottom: 15px;
+                width: 65%;
+                border:0;
+                border-bottom-width: 2px;
+                border-bottom-style: solid;
+                border-bottom-color: #AB47BC;
+                outline:0;
+            }
+            .form-control button{
+                padding-top: 10px;
+                padding-bottom: 10px;
+                width: 25%;
+                border-radius: 25px;
+                background-color: aliceblue;
+                border-width: 2;
+                border-color: #AB47BC;
+                cursor: pointer;
+                transition: background 1s;
+            }
+            .form-control button:hover{
+                background: #9C27B0;
+                color:azure;
+            }
+            a{
+                /* text-decoration: underline; */
+                text-decoration: dotted;
+            }
+        </style>
+
+    </head>
+    <body>
+        
+        <div id = "con">
+            <h1>Login</h1>
+            <form>
+                <div class="form-control">
+                    <input type="text" placeholder="Enter UserName">
+                </div>
+                <div class="form-control">
+                    <input type="password" placeholder="Enter Password">
+                </div>
+                <div class="form-control">
+                    <button type="submit">Login</button>
+                </div>
+                
+                
+            </form>
+            <p>Need Account?<a href="#">  Sign up</a></p>
+        </div>    
+    </body>
+</html>
 ----------------------------------------------------------------
 7. Signup.html
 
@@ -629,8 +529,9 @@
     <body>
         <div class="container">
             <div class="sign-division" style="background: white; color: #333; border-radius: 0 25px 25px 0;">
-                <h1>Create,</h1>
-                <h1>Account!</h1> 
+                <h1 style="color: #62055c;">Welcome !!!</h1>
+                <h1 style="color: #764ba2; align-self: self-start; margin: 10px;">Create a new </h1>
+                <h1 style="color: #764ba2; align-self: self-end;">Account!</h1> 
                 <p>Sign up if you don't have an account...</p>
                 <div class="form-control">
                     <button type="submit" style="background: linear-gradient(to right, #667eea 0%, #764ba2 100%); border: none;">SIGN UP</button>
@@ -696,7 +597,7 @@ body{
 
 .container{
     background-color: white;
-    border-radius: 25px;
+    border-radius: 100px;
     position: relative;
     overflow: hidden;
     width: 768px;
@@ -711,7 +612,7 @@ body{
     color: white;
     padding: 40px;
     text-align: center;
-    border-radius: 25px 0 0 25px;
+    border-radius: 80px 0 0 280px;
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -826,4 +727,307 @@ input::placeholder{
 
 
 -------------------------------------------------------------------------
+8. Contact us
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-column">
+            <h1>Get in touch</h1>
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fas fa-user"></i>
+                    <div class="info-text">
+                        <span class="label">Name</span>
+                        <span class="value">HTML CSS Tutorials</span>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div class="info-text">
+                        <span class="label">Email</span>
+                        <span class="value">htmlcss3tutorials@gmail.com</span>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div class="info-text">
+                        <span class="label">Phone</span>
+                        <span class="value">+91 1234567890</span>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="info-text">
+                        <span class="label">Address</span>
+                        <span class="value">123 Street, Bangalore, India, 500001</span>
+                    </div>
+                </div>
+            </div>
+            <div class="social-icons">
+                <a href="#" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+           
+        </div>
+        
+        <div class="right-column">
+            <h1>Contact Us</h1>
+            <form class="contact-form" action="mailto:hello@company.com" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email ID" name="email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Website" name="website">
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Contact Number" name="phone">
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+-------------------------------------------------------------------------
+contact.css
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.left-column {
+    flex: 0 0 35%;
+    background: linear-gradient(180deg, #2C5282 0%, #4A90E2 50%, #63B3ED 100%);
+    color: white;
+    padding: 50px 30px;
+    position: relative;
+}
+
+.left-column h1 {
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.info-item i {
+    font-size: 20px;
+    margin-right: 20px;
+    width: 24px;
+    text-align: center;
+    opacity: 0.9;
+}
+
+.info-text .label {
+    font-size: 13px;
+    opacity: 0.7;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-text .value {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.social-icons a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.social-icons a:hover {
+    opacity: 1;
+}
+
+.decorative-shapes {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    overflow: hidden;
+}
+
+.circle-1 {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    bottom: 30px;
+    left: 30px;
+}
+
+.circle-2 {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 182, 193, 0.4);
+
+    bottom: 60px;
+    left: 140px;
+}
+
+.circle-3 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    bottom: 40px;
+    right: 60px;
+}
+
+.triangle-1 {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 80px solid transparent;
+    border-right: 80px solid transparent;
+    border-bottom: 120px solid rgba(173, 216, 230, 0.6);
+    bottom: 0;
+    right: 0;
+    transform: rotate(45deg);
+}
+
+.triangle-2 {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 70px solid transparent;
+    border-right: 70px solid transparent;
+    border-bottom: 100px solid rgba(255, 182, 193, 0.7);
+    bottom: 0;
+    left: 0;
+    transform: rotate(-45deg);
+}
+
+.right-column {
+    flex: 0 0 65%;
+    background: white;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
+.right-column h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.contact-form {
+    max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+    background: #f8f9fa;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #4A90E2;
+    background: white;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: #4A90E2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #357ABD;
+}
 
