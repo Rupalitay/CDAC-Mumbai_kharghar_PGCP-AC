@@ -2,7 +2,345 @@
 -------------------------------------------------------------------------------
 5. Registration form
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="a1registration.css">
+</head>
+<body>
+    <div class="page-container">
+        <!-- Header Section -->
+        <div class="header-row">
+            <div>
+                <h1>Registration <span>Form</span></h1>
+                <p class="sub-text">This space is where you can share information on the section, such as: topic, discussion points, goals and activities.</p>
+            </div>
+            <div class="date-reg">
+                <p>DATE OF REGISTRATION</p>
+                <div class="date-boxes">
+                    <div class="box"><input type="text" maxlength="1"></div>
+                    <div class="box"><input type="text" maxlength="1"></div> / 
+                    <div class="box"><input type="text" maxlength="1"></div>
+                    <div class="box"><input type="text" maxlength="1"></div> / 
+                    <div class="box"><input type="text" maxlength="1"></div>
+                    <div class="box"><input type="text" maxlength="1"></div>
+                </div>
+            </div>
+        </div>
 
+        <!-- Personal Information Section -->
+        <div class="section-title">PERSONAL INFORMATION</div>
+        
+        <div class="field full-width">
+            <label>Full Name :</label>
+            <input type="text">
+        </div>
+
+        <div class="form-row">
+            <div class="form-col">
+                <div class="field"><label>Nickname :</label><input type="text"></div>
+                <div class="field">
+                    <label>Date of Birth :</label>
+                    <div class="date-boxes">
+                        <div class="box"><input type="text" maxlength="1"></div>
+                        <div class="box"><input type="text" maxlength="1"></div>
+                        <span>/</span>
+                        <div class="box"><input type="text" maxlength="1"></div>
+                        <div class="box"><input type="text" maxlength="1"></div>
+                        <span>/</span>
+                        <div class="box"><input type="text" maxlength="1"></div>
+                        <div class="box"><input type="text" maxlength="1"></div>
+                    </div>
+                </div>
+
+                <div class="field"><label>Email :</label><input type="text"></div>
+                <div class="field">
+                    <label>Gender :</label>
+                    <div class="gender-options">
+                        <label class="check-label"><input type="radio" name="gender"> Male</label>
+                        <label class="check-label"><input type="radio" name="gender"> Female</label>
+                    </div>
+                </div>
+                <div class="field"><label for="maritalStatus">Marital Status</label><input type="text"></div>
+                        
+                <div class="field">
+                            <label for="country">Country</label>
+                            <input type="text" id="country" name="country">
+                        </div>
+                        
+                        <div class="field">
+                            <label for="nationalId">National Id No</label>
+                            <input type="text" id="nationalId" name="nationalId">
+                        </div>
+                    </div>
+           
+            <div class="form-col">
+                <div class="field"><label>Place Of Birth :</label><input type="text"></div>
+                <div class="field"><label>Nationality :</label><input type="text"></div>
+                <div class="field"><label>Domicile :</label><input type="text"></div>
+                <div class="field"><label>CP Domicile :</label><input type="text"></div>
+                <div class="field"><label>Start time :</label><input type="number"></div>
+                <div class="field"><label>Post Code :</label><input type="number"></div>
+                <div class="field"><label>Phone :</label><input type="number"></div>
+            </div>
+        </div>
+
+        <!-- Address Section -->
+        <div class="section-title">ADDRESS</div>
+        <div class="field full-width"><label>Present Address :</label><input type="text"></div>
+        <div class="form-row">
+            <div class="form-col"><div class="field"><label>The City :</label><input type="text"></div></div>
+            <div class="form-col"><div class="field"><label>Present State :</label><input type="text"></div></div>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="footer">
+            <div class="contact-info">
+                <div class="section-title small-title">ADDRESS <span class="dark">SCHOOL :</span></div>
+                <p><b>A :</b> 123 Anywhere St., Any City, ST 12345</p>
+                <p><b>P :</b> +123-456-7890 &nbsp;&nbsp; <b>E :</b> hello@reallygreatsite.com</p>
+            </div>
+            <div class="footer-right">
+                <div class="sigs">
+                    <div class="sig-box"><div class="line"></div><p>Register Signature</p></div>
+                    <div class="sig-box"><div class="line"></div><p>Officer Signature</p></div>
+                </div>
+                <div class="thanks">
+                    <h2>THANK YOU <span>FOR REGISTRATION</span></h2>
+                    <p>Write your instructions here. You can add details<br>or examples to help your reader along!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+-------------------------------------------------------------------------------------------------------------------
+a1registration.css
+
+
+* { 
+    box-sizing: border-box;  
+}
+body { 
+    font-family: 'Arial', sans-serif; 
+    background-color: #f5f5f5; 
+    padding: 20px; 
+    color: #333; }
+
+/* Container */
+.page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 50px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Header */
+.header-row { 
+    display: flex; 
+    justify-content: space-between; 
+    margin-bottom: 30px; 
+}
+h1 { 
+    color: #0f1816; 
+    font-size: 32px; 
+    margin: 0; 
+    text-transform: none; 
+}
+h1 span { 
+    color: #19a27d; 
+}
+.sub-text { 
+    font-size: 13px; 
+    color: #666; 
+    max-width: 450px; 
+    margin-top: 10px; 
+    line-height: 1.4; }
+
+/* SHARED STYLES: This styles the boxes everywhere */
+body .page-container .date-boxes {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+body .page-container .date-boxes .box {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+body .page-container .date-boxes .box input[type="text"] {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 14px;
+    background: transparent;
+    cursor: text;
+}
+
+/* SPECIFIC OVERRIDES: These only apply to certain areas */
+
+/* Align the registration boxes to the right */
+body .page-container .date-reg .date-boxes {
+    justify-content: flex-end;
+}
+
+/* Align the registration text to the right */
+body .page-container .date-reg p {
+    text-align: right;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+/* Section Titles */
+.section-title {
+    color: #0d1715;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 3px solid #21dbbc;
+    padding-bottom: 5px;
+    margin: 30px 0 20px 0;
+    display: inline-block;
+    transform: uppercase;
+    width:fit-content;
+    min-width: 220px;
+}
+.small-title {
+    margin-top: 0; 
+    margin-bottom: 10px; 
+}
+.dark { 
+    color: #333; 
+}
+
+
+/* Container for the whole Personal Information block */
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px; /* Space between the two columns */
+
+}
+
+.form-col {
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+.form-col-inner {
+  display: flex;
+  flex-direction: row;
+  flex: 1; /* Ensures columns are equal width */
+  gap: 10px; /* Space between fields in a column */
+}
+/* Individual field container */
+.field {
+    display: flex;
+    align-items: center; /* Vertically center label and input */
+}
+
+/* Label styling */
+.field label {
+    width: 140px; /* Fixed width so all inputs start at the same vertical line */
+    font-size: 13px;
+    font-weight: bold;
+    color: #333;
+    flex-shrink: 0;
+}
+
+/* Input styling */
+.field input[type="text"], 
+.field input[type="number"] {
+    flex-grow: 1; /* Input fills the remaining space */
+    border: 1px solid #ccc;
+    height: 27px;
+    padding: 0px 10px;
+}
+
+/* Special case for Full Name and present address which spans the whole width */
+.field.full-width {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Gender options (Male/Female on same line) */
+.gender-options {
+    display: flex;
+}
+
+.check-label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+/* Footer */
+.footer {
+    margin-top: 50px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-end; 
+}
+.contact-info { 
+    font-size: 12px; 
+    color: #333; 
+    line-height: 1.8; 
+}
+.footer-right { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-end; 
+}
+
+.sigs { 
+    display: flex; 
+    gap: 40px; 
+    margin-bottom: 30px; 
+}
+.sig-box { 
+    width: 180px; 
+    text-align: center; 
+}
+.line { 
+    border-top: 1px solid #333; 
+    margin-bottom: 8px; 
+}
+.sig-box p { 
+    font-size: 11px; 
+    font-weight: bold; 
+}
+
+.thanks { 
+    text-align: right; 
+}
+.thanks h2 { 
+    color: #2a7d6f; 
+    font-size: 22px; 
+    margin: 0; 
+}
+.thanks h2 span { 
+    color: #333; 
+}
+.thanks p { 
+    font-size: 11px; 
+    color: #666; 
+    margin-top: 5px; 
+    line-height: 1.4; 
+}
 ------------------------------------------------------------------------
  Student Registration Form
 
