@@ -1,0 +1,1101 @@
+index.html
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamborghini - Home</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">
+            <img src="Nlogo-removebg-preview.png" alt="Lamborghini Logo">
+            <span>Lamborghini</span>
+        </a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li class="dropdown">
+                <a href="#">Account ▼</a>
+                <div class="dropdown-content">
+                    <a href="signup.html">Sign Up</a>
+                    <a href="signin.html">Sign In</a>
+                </div>
+            </li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Scrolling Text -->
+    <div class="scrolling-text">
+        <marquee behavior="scroll" direction="left">
+            Welcome to Lamborghini - Experience the Ultimate in Luxury and Performance • New Models Available • Book
+            Your Test Drive Today •
+        </marquee>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Lamborghini</h1>
+            <p>Experience the pinnacle of Italian automotive excellence</p>
+            <a href="about.html" class="btn">Discover More</a>
+            <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section">
+            <h2>Why Choose Lamborghini</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Lamborghini represents the ultimate combination of luxury, performance, and Italian
+                        craftsmanship. Each vehicle is a masterpiece of engineering, designed to deliver an unparalleled
+                        driving experience.</p>
+                    <p>From the iconic Aventador to the revolutionary Huracán, our cars push the boundaries of what's
+                        possible in automotive design and technology.</p>
+                    <a href="about.html" class="btn">Learn More</a>
+                </div>
+                <div class="about-image">
+                    <img src="lim.jpg" alt="Lamborghini Car">
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="section">
+            <h2>Our Collection</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="lam-jpg.jpg" alt="Lamborghini Model">
+                </div>
+                <div class="about-image">
+                    <img src="limo.avif" alt="Lamborghini Interior">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <div class="footer-item"><i class="fas fa-map-marker-alt"></i>
+                    <p class="footer-text"> Via Modena, 12</p><br>
+                    <p class="footer-text pd-left-57">40019 Sant'Agata Bolognese</p><br>
+                    <p class="footer-text pd-left-57">Bologna, Italy </p>
+                </div>
+                <div class="footer-item"><i class="fas fa-phone"></i>
+                    <p class="footer-text"> +39 051 6817 111</p>
+                </div>
+                <div class="footer-item"><i class="fas fa-envelope"></i>
+                    <p class="footer-text">@lamborghini.com</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Follow us on social media</h3>
+                <div class="social-icon">
+                    <a href="#" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Lamborghini. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+
+---------------------------------------------------------------------
+about.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamborghini - About Us</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">
+            <img src="Nlogo-removebg-preview.png" alt="Lamborghini Logo">
+            <span>Lamborghini</span>
+        </a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li class="dropdown">
+                <a href="#">Account ▼</a>
+                <div class="dropdown-content">
+                    <a href="signup.html">Sign Up</a>
+                    <a href="signin.html">Sign In</a>
+                </div>
+            </li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Scrolling Text -->
+    <div class="scrolling-text">
+        <marquee behavior="scroll" direction="left">
+            Discover Our Heritage • Italian Excellence Since 1963 • Innovation Meets Tradition •
+        </marquee>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>About Us</h1>
+            <p>A Legacy of Excellence and Innovation</p>
+        </section>
+
+        <!-- About Section -->
+        <section class="section">
+            <h2>Our Story</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="lim.jpg" alt="Lamborghini Factory">
+                </div>
+                <div class="about-text">
+                    <p>Founded in 1963 by Ferruccio Lamborghini, our company has been at the forefront of automotive innovation for over six decades. What started as a tractor manufacturing company has evolved into one of the world's most prestigious luxury sports car manufacturers.</p>
+                    <p>Our commitment to excellence is reflected in every vehicle we produce. Each Lamborghini is handcrafted in our Sant'Agata Bolognese factory, where skilled artisans combine traditional Italian craftsmanship with cutting-edge technology.</p>
+                    <p>From the legendary Miura to the modern Revuelto, our cars have always pushed the boundaries of design, performance, and technology. We continue to innovate with hybrid and electric powertrains, ensuring that Lamborghini remains at the pinnacle of automotive excellence.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="section">
+            <h2>Our Values</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p><strong>Innovation:</strong> We constantly push the boundaries of what's possible in automotive engineering and design.</p>
+                    <p><strong>Excellence:</strong> Every detail matters. From the smallest component to the overall design, we strive for perfection.</p>
+                    <p><strong>Heritage:</strong> We honor our Italian roots and the legacy of our founder while embracing the future.</p>
+                    <p><strong>Passion:</strong> Our love for cars drives everything we do. We create vehicles that inspire passion in drivers worldwide.</p>
+                </div>
+                <div class="about-image">
+                    <img src="lon.avif" alt="Lamborghini Interior">
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section" style="text-align: center;">
+            <h2>Join the Lamborghini Family</h2>
+            <p style="margin-bottom: 30px; font-size: 1.2rem;">Experience the thrill of owning a Lamborghini</p>
+            <a href="signup.html" class="btn">Create Account</a>
+            <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
+        </section>
+    </main>
+
+   <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+               <div class="footer-item"><i class="fas fa-map-marker-alt"></i>
+                    <p class="footer-text"> Via Modena, 12</p><br>
+                    <p class="footer-text pd-left-57">40019 Sant'Agata Bolognese</p><br>
+                    <p class="footer-text pd-left-57">Bologna, Italy </p>
+                </div>
+                <div class="footer-item"><i class="fas fa-phone"></i><p class="footer-text"> +39 051 6817 111</p></div>
+                <div class="footer-item"><i class="fas fa-envelope"></i><p class="footer-text">@lamborghini.com</p></div>
+            </div>
+            <div class="footer-section">
+                <h3>Follow us on social media</h3>
+                <div class="social-icon">
+                    <a href="#" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Lamborghini. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
+-----------------------------------------------------------------
+signup.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamborghini - Sign Up</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">
+            <img src="Nlogo-removebg-preview.png" alt="Lamborghini Logo">
+            <span>Lamborghini</span>
+        </a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li class="dropdown">
+                <a href="#">Account ▼</a>
+                <div class="dropdown-content">
+                    <a href="signup.html">Sign Up</a>
+                    <a href="signin.html">Sign In</a>
+                </div>
+            </li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Sign Up Form Section -->
+        <section class="section">
+            <h2>Create Account</h2>
+            <div class="form-container">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" name="country">
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Create Account</button>
+                </form>
+                <p style="text-align: center; margin-top: 20px;">
+                    Already have an account? <a href="signin.html" style="color: #FFD700;">Sign In</a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+   <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <div class="footer-item"><i class="fas fa-map-marker-alt"></i>
+                    <p class="footer-text"> Via Modena, 12</p><br>
+                    <p class="footer-text pd-left-57">40019 Sant'Agata Bolognese</p><br>
+                    <p class="footer-text pd-left-57">Bologna, Italy </p>
+                </div>
+                <div class="footer-item"><p class="footer-text">Bologna, Italy </p></div>
+                <div class="footer-item"><i class="fas fa-phone"></i><p class="footer-text"> +39 051 6817 111</p></div>
+                <div class="footer-item"><i class="fas fa-envelope"></i><p class="footer-text">@lamborghini.com</p></div>
+            </div>
+            <div class="footer-section">
+                <h3>Follow us on social media</h3>
+                <div class="social-icon">
+                    <a href="#" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Lamborghini. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+--------------------------------------------------------------------------------
+signin.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamborghini - Sign In</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">
+            <img src="Nlogo-removebg-preview.png" alt="Lamborghini Logo">
+            <span>Lamborghini</span>
+        </a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li class="dropdown">
+                <a href="#">Account ▼</a>
+                <div class="dropdown-content">
+                    <a href="signup.html">Sign Up</a>
+                    <a href="signin.html">Sign In</a>
+                </div>
+            </li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Sign In Form Section -->
+        <section class="section">
+            <h2>Login to Your Account</h2>
+            <div class="form-container">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label style="font-weight: normal;">
+                            <input type="checkbox" name="remember"> Remember me
+                        </label>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Sign In</button>
+                </form>
+                <p style="text-align: center; margin-top: 15px;">
+                    <a href="#" style="color: #FFD700;">Forgot Password?</a>
+                </p>
+                <p style="text-align: center; margin-top: 20px;">
+                    Don't have an account? <a href="signup.html" style="color: #FFD700;">Sign Up</a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <div class="footer-item"><i class="fas fa-map-marker-alt"></i>
+                    <p class="footer-text"> Via Modena, 12</p><br>
+                    <p class="footer-text pd-left-57">40019 Sant'Agata Bolognese</p><br>
+                    <p class="footer-text pd-left-57">Bologna, Italy </p>
+                </div>
+                <div class="footer-item"><i class="fas fa-phone"></i><p class="footer-text"> +39 051 6817 111</p></div>
+                <div class="footer-item"><i class="fas fa-envelope"></i><p class="footer-text">@lamborghini.com</p></div>
+            </div>
+            <div class="footer-section">
+                <h3>Follow us on social media</h3>
+                <div class="social-icon">
+                    <a href="#" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Lamborghini. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+---------------------------------------------------------------------------------
+contact.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamborghini - Contact Us</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">
+            <img src="Nlogo-removebg-preview.png" alt="Lamborghini Logo">
+            <span>Lamborghini</span>
+        </a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li class="dropdown">
+                <a href="#">Account ▼</a>
+                <div class="dropdown-content">
+                    <a href="signup.html">Sign Up</a>
+                    <a href="signin.html">Sign In</a>
+                </div>
+            </li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+
+
+    <!-- Main Content -->
+    <main>
+        <!-- Contact Form Section -->
+        <section class="section">
+            <h2>Send Us a Message</h2>
+            <div class="form-container">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Contact Info Section -->
+        <section class="section">
+            <h2>Contact Information</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3><i class="fas fa-map-marker-alt"></i> Address</h3>
+                    <p>Via Modena, 12</p>
+                    <p>40019 Sant'Agata Bolognese</p>
+                    <p>Bologna, Italy</p>
+                </div>
+                <div class="contact-item">
+                    <h3><i class="fas fa-phone"></i> Phone</h3>
+                    <p>+39 051 6817 111</p>
+                    <p>+39 051 6817 222</p>
+                    <p>Mon-Fri: 9AM - 6PM</p>
+                </div>
+                <div class="contact-item">
+                    <h3><i class="fas fa-envelope"></i> Email</h3>
+                    <p>info@lamborghini.com</p>
+                    <p>sales@lamborghini.com</p>
+                    <p>support@lamborghini.com</p>
+                </div>
+                <div class="contact-item">
+                    <h3>🌐 Social Media</h3>
+                    <p>Follow us on social platforms</p>
+                    <p>for latest updates and news</p>
+                    <div class="social-links" style="justify-content: center; margin-top: 10px;">
+                    <a href="#" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <div class="footer-item"><i class="fas fa-map-marker-alt"></i>
+                    <p class="footer-text"> Via Modena, 12</p><br>
+                    <p class="footer-text pd-left-57">40019 Sant'Agata Bolognese</p><br>
+                    <p class="footer-text pd-left-57">Bologna, Italy </p>
+                </div>
+                <div class="footer-item"><i class="fas fa-phone"></i><p class="footer-text"> +39 051 6817 111</p></div>
+                <div class="footer-item"><i class="fas fa-envelope"></i><p class="footer-text">@lamborghini.com</p></div>
+            </div>
+            <div class="footer-section">
+                <h3>Follow us on social media</h3>
+                <div class="social-icon">
+                    <a href="#" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Lamborghini. All Rights Reserved.</p>
+        </div>
+    </footer>   
+</body>
+</html>
+----------------------------------------------------------------------------------
+
+styles.css
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #FFD700;
+    --secondary-color: #1a1a1a;
+    --accent-color: #E6B800;
+    --text-color: #ffffff;
+    --text-dark: #333333;
+    --hover-color: #C4A000;
+    --transition: all 0.3s ease;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: #f5f5f5;
+    padding-top: 70px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to right, #111, #333);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.nav-logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.nav-logo span {
+    color: var(--primary-color);
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-menu li {
+    position: relative;
+    margin: 0 15px;
+}
+
+.nav-menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    padding: 10px 15px;
+    display: block;
+}
+
+.nav-menu a:hover {
+    color: var(--primary-color);
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--secondary-color);
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+    border-radius: 0 0 5px 5px;
+}
+
+.dropdown-content a {
+    color: var(--text-color);
+    padding: 12px 20px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.dropdown-content a:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 3px 0;
+    transition: var(--transition);
+}
+
+.hamburger:hover span {
+    background-color: var(--accent-color);
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Hero Section */
+.hero {
+    height: calc(100vh - 70px);
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('lam-jpg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-color);
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    animation: fadeInUp 1s ease;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    animation: fadeInUp 1.5s ease;
+}
+
+/* Scrolling Text */
+.scrolling-text {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 15px 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.scrolling-text marquee {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+/* Page Sections */
+.section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.section h2::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 15px auto;
+}
+
+/* About Section */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Forms */
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Contact Info */
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.contact-item {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.contact-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.contact-item p {
+    color: var(--text-dark);
+    line-height: 1.8;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 40px 20px 20px;
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 400px;
+}
+
+.footer-item{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #ccc;
+    margin-bottom: 12px;
+    text-decoration: none;
+    display: block;
+    transition: var(--transition);
+}
+
+.footer-item p{
+    margin: 0;
+    display: inline-flex;
+}
+
+.footer-item i{
+    font-size: 1.2rem;
+    width: 15px;
+    text-align: center;
+    display: inline-flex;
+    color:aliceblue;
+}
+
+.footer-text{
+    padding-left: 40px;
+    gap: 15px;
+}
+
+.footer-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.footer-section a:hover {
+    color: var(--primary-color);
+}
+
+.social-icon {
+  display: flex ;
+  flex-direction: row ;
+  gap: 10px; 
+  align-items: center;
+}
+
+.social-icon a {
+    width: 40px;
+    height: 40px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    gap: 10px;
+    display: inline-flex;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.social-icon a:hover {
+    background-color: gray;
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #888;
+}
+.pd-left-57{
+    padding-left: 57px;
+}
+
+
