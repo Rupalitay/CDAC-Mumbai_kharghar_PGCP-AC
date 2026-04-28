@@ -1,0 +1,195 @@
+1.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Manipulation - Paragraph Style Change</title>
+  <style>
+    button {
+      padding: 10px 20px;
+      background-color: #0078D7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <p id="disciplineText">
+    It is rightly said that being disciplined is essential in life. When a person leads a disciplined life, 
+    they set an easy path to success. They will develop an approach to happiness and a beautiful future ahead. 
+    Being disciplined is the practice of having a scheduled daily routine which helps an individual to be punctual 
+    and hard-working. An individual is taught what being disciplined means from the time they are young. 
+    Even though discipline takes a lot of effort, the advantages of a disciplined life make it a worthwhile endeavour.
+  </p>
+
+  <button type="button" onclick="changeStyle()">Change Paragraph Style</button>
+
+  <script>
+    function changeStyle() {
+      const para = document.getElementById("disciplineText");
+      para.style.fontFamily = "Georgia, serif";
+      para.style.fontSize = "20px";
+      para.style.color = "#b22222"; // dark red
+    }
+  </script>
+</body>
+</html>
+----------------------------------------------------------------------------------------
+2.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Information Form</title>
+</head>
+<body>
+
+    <h2>Registration Form</h2>
+    <!-- Form creation -->
+    <form id="userForm">
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" required>
+        </div>
+        <br><br>
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" required>
+        </div>
+        <br><br>
+        <div class="form-group">
+            <label for="contactNo">Contact No.:</label>
+            <input type="tel" id="contactNo" required>
+        </div>
+        <br><br>
+        <div class="form-group">
+            <label for="emailId">Email ID:</label>
+            <input type="email" id="emailId" required>
+        </div>
+        <br><br>
+        <button type="button" onclick="displayFormValues()">Submit</button>
+    </form>
+
+    <!-- Area to print values -->
+    <div id="displayArea" style="display:none;">
+        <h3>Submitted Values:</h3>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        // JavaScript function to get and print values
+        function displayFormValues() {
+            // Getting values from the form
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const contactNo = document.getElementById('contactNo').value;
+            const emailId = document.getElementById('emailId').value;
+
+            // Simple check to ensure fields aren't empty
+            if(firstName && lastName && contactNo && emailId) {
+                const resultDiv = document.getElementById('displayArea');
+                const resultText = document.getElementById('result');
+
+                // Printing values to the browser page
+                resultText.innerHTML = `
+                    <strong>First Name:</strong> ${firstName} <br>
+                    <strong>Last Name:</strong> ${lastName} <br>
+                    <strong>Contact No:</strong> ${contactNo} <br>
+                    <strong>Email ID:</strong> ${emailId}
+                `;
+                
+                resultDiv.style.display = 'block';
+            } else {
+                alert("Please fill out all fields.");
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+------------------------------------------------------------------------------
+3.
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Remove items from a drop-down list</title>
+    </head>
+    <body>
+        <select id="fruitSelect">
+            <option value="Apple">Apple</option>
+            <option value="Strawberry">Strawberry</option>
+            <option value="Mango">Mango</option>
+            <option value="Pineapple">Pineapple</option>
+        </select>
+        <input type="button" onclick="removefruit()" value="Remove">
+        <script>
+            function removefruit() {
+                var x = document.getElementById("fruitSelect");
+                x.remove(x.selectedIndex);
+            }
+        </script>
+    </body>
+</html>
+
+---------------------------------------------------------------------
+4.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Highlight Bold Words</title>
+    <script>
+        // Global variable to store bold elements
+        var bold_Items;
+
+        // Function to collect all bold elements when the page loads
+        window.onload = function() {
+            bold_Items = document.getElementsByTagName('strong');
+        };
+
+        // Function to highlight bold words (change color to blue or any color)
+        function highlight() {
+            for (var i = 0; i < bold_Items.length; i++) {
+                bold_Items[i].style.color = "blue";
+                bold_Items[i].style.backgroundColor = "yellow"; // Optional highlight
+            }
+        }
+
+        // Function to return words to normal state
+        function return_normal() {
+            for (var i = 0; i < bold_Items.length; i++) {
+                bold_Items[i].style.color = "black";
+                bold_Items[i].style.backgroundColor = "transparent";
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- The link with mouse events -->
+    <p>
+        [<a href="#" onmouseover="highlight()" onmouseout="return_normal()">
+            On mouse over here bold words of the following paragraph will be highlighted
+        </a>]
+    </p>
+
+    <!-- The paragraph containing bold words -->
+    <p>
+        <strong>We</strong> have just started <strong>this</strong> section for the users 
+        (<strong>beginner</strong> to intermediate) who <strong>want</strong> to work with 
+        <strong>various</strong> JavaScript <strong>problems</strong> and write scripts 
+        online to <strong>test</strong> their JavaScript <strong>skill</strong>.
+    </p>
+
+    
+</body>
+</html>
