@@ -1,0 +1,150 @@
+1.
+<!DOCTYPE >
+<html>
+    <head>
+        <title>Exercise1</title>
+    </head>
+    <body>
+        <script>
+            function toUpperCase(str){
+                return str.toUpperCase();
+            }
+            function processData(toUpperCase,string){
+                const result = toUpperCase(string);
+                return result;
+            }
+            console.log(processData(toUpperCase,"Hello world"));
+        </script>
+    </body>
+</html>
+
+-----------------------------------------------------------------------
+2
+
+<html>
+    <head>
+        <title>Exercise2</title>
+    </head>
+    <body>
+        <script>
+            function multiply(element, index){
+                console.log("index : "+index+ ", Element multiply by 2: " +element*2);
+            }            
+            
+            function forEachElement(arr, callback){
+                for(let i = 0; i<arr.length;i++){
+                    callback(arr[i],i);
+                }
+            }
+
+            let array = [3,3,4,5,6,7,6];
+            console.log(array);
+            forEachElement(array,multiply);
+        </script>
+    </body>
+</html>
+
+--------------------------------------------------------------------------------------
+3.
+
+<html>
+    <head>
+        <title>Exercise3</title>
+    </head>
+    <body>
+        <script>
+            function fetchData(url,callback){
+                setTimeout(()=>{
+                    const response = `Response form ${url}: Data fetched sucessfully`;
+                    callback(response);
+                },3000);
+            }
+
+            fetchData("https://google.com",(result)=>{
+                console.log(result);
+            }
+        );
+            
+        </script>
+    </body>
+</html>
+
+---------------------------------------------------------------------------------
+4.
+
+<html>
+    <head>
+        <title>Exercise4</title>
+    </head>
+    <body>
+        <script>
+            function fetchData(url,callback){
+                setTimeout(()=>{
+                    let iserror = true
+                    if(iserror){
+                        callback(`Error: Invalid ${url} url `,null);
+                    }else{
+                        const response = `Response form ${url}: Data fetched sucessfully`;
+                        callback(null,response);
+                    }
+                    
+                },3000);
+            }
+
+            fetchData("https://googe.com",(error,result)=>{
+                if(error){
+                    console.error(error);
+                }else{
+                    console.log(result);
+                }
+            }
+        );
+            
+        </script>
+    </body>
+</html>
+
+---------------------------------------------------------------------
+5.
+
+<html>
+    <head>
+        <title>Exercise5</title>
+    </head>
+    <body>
+        <script>
+            function fetchData(url,callback){
+                setTimeout(()=>{
+                    let iserror = false;
+                    if(iserror){
+                        callback(`Error: Invalid ${url} url `,null);
+                    }else{
+                        const response = `Response form ${url}: Data fetched sucessfully`;
+                        callback(null,response);
+                    }
+                    
+                },2000);
+            }
+
+            function processData(data, callback){
+                setTimeout(()=>{
+                    const processedResult = `${data} - processed sucessfully`;
+                    callback(processedResult);
+                },1000);
+            }
+
+            fetchData("https://google.com",(error,result)=>{
+                if(error){
+                    console.error("Fetch Error: ",error);
+                }else{
+                    console.log("Fetched: ",result);
+                    
+                    processData(result,(finalOutput)=>{
+                        console.log("Final Result: ",finalOutput);
+                    });
+                }
+            });
+            
+        </script>
+    </body>
+</html>
