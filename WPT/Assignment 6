@@ -1,0 +1,255 @@
+1.
+const TAX_RATE = 0.08;
+const CURRENCY = "RS."
+
+var storeName = "Quick Shop"
+
+let cartItems = [];
+let totalSubtotal = 0;
+
+function addItem(name,price){
+    cartItems.push({name,price});
+    totalSubtotal += price;
+    console.log(`Added ${name} to cart.`);   
+}
+
+addItem("Milk",60);
+addItem("Bread",50);
+addItem("Sugar",40);
+
+let taxAmount = totalSubtotal * TAX_RATE;
+let finalTotal = totalSubtotal + taxAmount;
+
+console.log("----Receipt----");
+console.log("Store: ",storeName);
+console.log("Items: ",cartItems.length);
+console.log("Subtotal: ", CURRENCY + totalSubtotal);
+console.log("Tax: ",CURRENCY+taxAmount);
+console.log("Total: ",CURRENCY+finalTotal);
+------------------------------------------------------------
+2.
+
+function calculatearea(side1, side2){
+    return side1 * side2;
+}
+
+const calculateareaarrow = (side1,side2) => side1*side2;
+
+console.log("Area calculated with function",calculatearea(2,3));
+console.log("Area calculated with arrow function",calculateareaarrow(2,3));
+--------------------------------------------------------------
+3.
+
+const book = {
+    title:"The Great Gatsy",
+    author: "Scott Fitzgeral",
+    publishedyear: 1925,
+    displayDetails: ()=>{
+        console.log(`Title: ${this.title}`);
+        console.log(`Author: ${this.author}`);
+        console.log(`Year: ${this.publishedyear}`);
+    }
+};
+
+book.displayDetails();
+--------------------------------------------------------------
+4.
+const car = {
+    Brand: "Tesla",
+    model: "Model 3",
+    year: 2023
+};
+
+const {Brand,model,year} = car;
+
+console.log(Brand,model,year);
+
+--------------------------------------------------------------
+5.
+
+const numbers = [10, 20, 30, 40, 50];
+
+const [first, second] = numbers;
+
+console.log(first, second);
+--------------------------------------------------------------
+6.
+
+const names = ["Alice", "Bob", "Charlie"];
+const lengths = names.map(name => name.length);
+console.log(lengths);
+--------------------------------------------------------------
+7.
+
+const numbers = [1,3,5,6,8,4,4,7];
+const evens = numbers.filter(num => num%2 === 0);
+
+console.log(evens);
+--------------------------------------------------------------
+8.
+
+const cart = [{price: 10} , {price:89},{price:45}];
+const total = cart.reduce((sum,items)=> sum + items.price,0);
+
+console.log(total);
+--------------------------------------------------------------
+9.
+
+ function sumAll(...args){
+    return args.reduce((sum,current) => sum + current , 0);
+}
+
+const result1 = sumAll(5,6,67,45);
+console.log(result1);
+
+const result2 = sumAll(3,6,3,6,3,7,8,9);
+console.log(result2);
+--------------------------------------------------------------
+10.
+
+const fruits1 = ["apple", "banana"];
+const fruits2 = ["orange", "mango"];
+const mergedFruits = [...fruits1, ...fruits2];
+
+console.log(mergedFruits);
+--------------------------------------------------------------
+11.
+
+
+function executeWithDelay(callback,delay){
+    console.log(`Waiting for ${delay}ms...`);
+    setTimeout(()=>{
+        callback();
+    },delay);
+}
+
+const mycallback = () =>{
+    console.log("Callback executed")
+};
+
+executeWithDelay(mycallback,2000);
+--------------------------------------------------------------
+12.
+
+const mypromise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+        resolve("resolve after 3 seconds");
+    },3000);
+});
+
+console.log(mypromise);
+mypromise.then((data) => {
+    console.log(data);
+});
+--------------------------------------------------------------
+13.
+function createCounter(){
+    let count = 0;
+
+    return function(){
+        count++;
+        return count;
+    };
+}
+
+const counter = createCounter();
+
+console.log(counter());
+console.log(counter());
+--------------------------------------------------------------
+14.
+
+async function fetchData() {
+    try{
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+        const data = await response.json();
+        console.log(data);
+    }catch(error){
+        console.log("Error in fetching the data:", error);
+    }
+}
+
+fetchData();
+--------------------------------------------------------------
+15.
+
+function processNumbers(nums) {
+  return nums
+    .filter(num => num % 2 === 0)   // Keep only even numbers
+    .map(num => num * 2)            // Double those numbers
+    .reduce((acc, curr) => acc + curr, 0); // Sum them up
+}
+
+const numbers = [1, 2, 3, 4, 5, 6];
+console.log(processNumbers(numbers)); // Output: 24 (4 + 8 + 12)
+
+--------------------------------------------------------------
+Section 2.
+
+function fetchInitialExpenses(){
+    return new Promise((resolve) => {
+        setTimeout(()=>{
+            resolve([
+                {description: "Groceries" , amount: 100, date:"2026-04-28"},
+                {description: "Milk" , amount: 60, date:"2026-04-28"},
+                {description: "Vegetables" , amount: 70, date:"2026-04-27"},
+                {description: "Toy" , amount: 600, date:"2026-04-27"},
+                {description: "Bottle" , amount: 200, date:"2026-04-26"}
+            ]);
+        },1000);
+    });
+}
+
+function createTracker(){
+
+    let expense = [];
+    return{
+         addExpenses:(callback , ...newExpenses)=>{
+            expense = [...expense,...newExpenses];
+            callback("Expenses added sucessfully!");
+        },
+        getExpenses: () => expense
+    };
+}
+
+const tracker = createTracker();
+
+const displayDetails = ({description,amount,date}) => {
+    console.log(`${date}: ${description} - Rs.${amount}`);
+}
+
+const processExpenses = (expenseList) =>{
+    console.log("----All Descriptions----");
+    const description = expenseList.map(exp => exp.description);
+    console.log(description);
+
+    console.log("----Expenses Greater than 100----");
+    const expenseListgreaterthan100 = expenseList.filter(exp => exp.amount > 100);
+    console.log(expenseListgreaterthan100);
+
+    const total = expenseList.reduce((sum,exp) => sum + exp.amount, 0);
+    console.log(`Total Expenses: Rs.${total}`);
+
+}
+
+const successMessage = (msg) => console.log(`[Notification]: ${msg}`);
+
+async function personalBudgetTracker() {
+    console.log("Loading initial data..");
+    const initialdata = await fetchInitialExpenses();
+
+    tracker.addExpenses(successMessage,...initialdata);
+
+    const newItem = {description:"Internet Bill", amount: 350, date: "2026-04-28"};
+    tracker.addExpenses(successMessage,newItem);
+
+    const currentExpenses = tracker.getExpenses();
+    console.log("--Expenses log..");
+    currentExpenses.forEach(displayDetails);
+    processExpenses(currentExpenses);
+
+}
+personalBudgetTracker();
+
+
+--------------------------------------------------------------
